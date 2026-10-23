@@ -1,0 +1,43 @@
+{
+  "attempts": [
+    {
+      "model_id": "facebook/dinov3-vits16-pretrain-lvd1689m",
+      "revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+      "weight_access_status": 401,
+      "gated": "manual"
+    },
+    {
+      "model_id": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "weight_access_status": 200,
+      "gated": false
+    }
+  ],
+  "selected_model": "facebook/dinov2-small",
+  "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+  "local_path": "C:\\Users\\Omar Ahmad\\Documents\\Codex\\2026-10-20\\oka-listen-i-have-a-project-2\\work\\models\\dinov2-small",
+  "files": [
+    {
+      "file": "model.safetensors",
+      "sha256": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "bytes": 88249960
+    },
+    {
+      "file": "config.json",
+      "sha256": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "bytes": 547
+    },
+    {
+      "file": "preprocessor_config.json",
+      "sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "bytes": 436
+    },
+    {
+      "file": "README.md",
+      "sha256": "4c20dca454a8e5c670e8de5c7e6040f512aeca5438516f7623eedc4e3b00599c",
+      "bytes": 3033
+    }
+  ],
+  "downloaded_utc": "2026-10-23T13:00:53Z",
+  "selection_reason": "Preferred DINOv3 if accessible; otherwise prespecified ungated DINOv2 fallback."
+}

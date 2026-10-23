@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "identical paired predictions produce exactly zero interval",
+    "perfect arm improvement interval is positive on constructed data",
+    "swapping arms reverses the paired difference and interval",
+    "known confusion matrix and harm-related counts correct"
+  ],
+  "synthetic_only": true,
+  "bootstrap_test_resamples": 200,
+  "production_resamples": 2000,
+  "note": "This validates mathematical invariants, not actual project results or test-set independence."
+}

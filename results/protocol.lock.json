@@ -1,0 +1,73 @@
+{
+  "locked_at_utc": "2026-10-23T13:30:00.634900+00:00",
+  "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+  "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+  "model": "facebook/dinov2-small",
+  "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "reference_seed": 17,
+  "hyperparameter_search": "None; fixed protocol after runtime pilot",
+  "selection": "Validation macro-F1; lower loss on exact tie; earlier epoch",
+  "test_evaluated_before_lock": false,
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 20261020,
+    "paired": true,
+    "class_stratified": true
+  },
+  "stress_tests": {
+    "seeds": [
+      17
+    ],
+    "blur": "Gaussian radius1 at224px",
+    "brightness": "PIL factor0.7 before normalization"
+  },
+  "runs": [
+    {
+      "arm": "frozen",
+      "seed": 17,
+      "config_sha256": "910e857fb8de5e6b0a7aec17df1a7196eb995e0ff82316732f2960d4b9c953e2",
+      "checkpoint_sha256": "35c0a2decaed85db0af8fabb9ade80db5583a0a9ba3fc15438623dcfe37c3c25",
+      "best_epoch": 9
+    },
+    {
+      "arm": "partial",
+      "seed": 17,
+      "config_sha256": "a126be2382858b34700b50a6ba1fc1a1c7ee1b76b2de478de1ec779f4b46cd57",
+      "checkpoint_sha256": "e702885bd3f2ac9595df952de813b26c7282eadb933e122394b1798e0035f8ca",
+      "best_epoch": 3
+    },
+    {
+      "arm": "frozen",
+      "seed": 42,
+      "config_sha256": "732ccabc9f27a7fbf882290c0f4143f87b5ed1310478b3f32d5b94ea67841a09",
+      "checkpoint_sha256": "db1d63a6e1405d9cd5912b06b053db5e35c3a0ee89a1a91d68e5b390e50ca72e",
+      "best_epoch": 2
+    },
+    {
+      "arm": "partial",
+      "seed": 42,
+      "config_sha256": "12c74a6f1b9ce666324e5a30463e5e38a97a19c5755ae35fc689047344a21baa",
+      "checkpoint_sha256": "d7b98e490086a5a84df3fd8f2a98e4eb3e6cd249e06cae847a375685ef297479",
+      "best_epoch": 5
+    },
+    {
+      "arm": "frozen",
+      "seed": 2026,
+      "config_sha256": "17d4cd9214595c75fb38354e514bbfe7515f779af1e250484f35bcb5cc4b6547",
+      "checkpoint_sha256": "6165330e0c6cd836cab844ddeeaa1c0b97afeb958e90ab1ee9594cd55bc8fa4b",
+      "best_epoch": 10
+    },
+    {
+      "arm": "partial",
+      "seed": 2026,
+      "config_sha256": "455259f128be543b50bb744043eb91efb46472113778224aa762a3b2a51447f5",
+      "checkpoint_sha256": "c475d6fdde7a47d62112c53ebdc0da9336c29bb187537c4dbcd669d4350c24c2",
+      "best_epoch": 9
+    }
+  ]
+}

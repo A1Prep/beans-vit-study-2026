@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "runs_verified": 6,
+  "test_units_per_run": 128,
+  "metrics_independently_recomputed": true,
+  "paired_initial_heads_match": true,
+  "provenance_verified": [
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "frozen",
+      "seed": 17,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\frozen\\seed_17\\best.pt",
+      "checkpoint_sha256": "35c0a2decaed85db0af8fabb9ade80db5583a0a9ba3fc15438623dcfe37c3c25",
+      "config_sha256": "910e857fb8de5e6b0a7aec17df1a7196eb995e0ff82316732f2960d4b9c953e2",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    },
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "partial",
+      "seed": 17,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\partial\\seed_17\\best.pt",
+      "checkpoint_sha256": "e702885bd3f2ac9595df952de813b26c7282eadb933e122394b1798e0035f8ca",
+      "config_sha256": "a126be2382858b34700b50a6ba1fc1a1c7ee1b76b2de478de1ec779f4b46cd57",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    },
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "frozen",
+      "seed": 42,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\frozen\\seed_42\\best.pt",
+      "checkpoint_sha256": "db1d63a6e1405d9cd5912b06b053db5e35c3a0ee89a1a91d68e5b390e50ca72e",
+      "config_sha256": "732ccabc9f27a7fbf882290c0f4143f87b5ed1310478b3f32d5b94ea67841a09",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    },
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "partial",
+      "seed": 42,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\partial\\seed_42\\best.pt",
+      "checkpoint_sha256": "d7b98e490086a5a84df3fd8f2a98e4eb3e6cd249e06cae847a375685ef297479",
+      "config_sha256": "12c74a6f1b9ce666324e5a30463e5e38a97a19c5755ae35fc689047344a21baa",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    },
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "frozen",
+      "seed": 2026,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\frozen\\seed_2026\\best.pt",
+      "checkpoint_sha256": "6165330e0c6cd836cab844ddeeaa1c0b97afeb958e90ab1ee9594cd55bc8fa4b",
+      "config_sha256": "17d4cd9214595c75fb38354e514bbfe7515f779af1e250484f35bcb5cc4b6547",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    },
+    {
+      "status": "provenance_verified",
+      "schema": "local_runs",
+      "arm": "partial",
+      "seed": 2026,
+      "checkpoint": "D:\\CodexWork\\beans-vit-project\\runs\\partial\\seed_2026\\best.pt",
+      "checkpoint_sha256": "c475d6fdde7a47d62112c53ebdc0da9336c29bb187537c4dbcd669d4350c24c2",
+      "config_sha256": "455259f128be543b50bb744043eb91efb46472113778224aa762a3b2a51447f5",
+      "summary_sha256": null,
+      "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+      "training_code_sha256": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f",
+      "source_hashes_verified": {
+        "experiment.py": "9dceb0bf7817cded87091d0954346118b85b7755bffa6ef14e6ae195f8a6de3f"
+      },
+      "protocol_lock_sha256": "b5f50a121447a12d2450f8e4120233e4f1cfe8e0ba3017d55459beb23a8dbf1e",
+      "scope": "Artifact consistency with this lock; not independent proof of lock chronology or prior test access"
+    }
+  ],
+  "validation_timing": "Standalone validator applied after original execution; harness recorded and checked training sources/configurations at lock creation before test calls.",
+  "limits": [
+    "Artifact hashes establish consistency, not independent proof of chronology.",
+    "Colab full workflow has not been executed; actual experiments used local CUDA."
+  ]
+}

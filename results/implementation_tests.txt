@@ -1,0 +1,12 @@
+test_augmented_pixels_and_shuffle_ignore_unrelated_rng_consumption (test_experiment.ControlledExperimentTests.test_augmented_pixels_and_shuffle_ignore_unrelated_rng_consumption) ... ok
+test_loss_ties_can_save_without_extending_patience (test_experiment.ControlledExperimentTests.test_loss_ties_can_save_without_extending_patience) ... ok
+test_manifest_exclusions_and_label_mapping_are_enforced (test_experiment.ControlledExperimentTests.test_manifest_exclusions_and_label_mapping_are_enforced) ... ok
+test_metrics_include_missing_predictions_without_nan (test_experiment.ControlledExperimentTests.test_metrics_include_missing_predictions_without_nan) ... ok
+test_partial_update_changes_only_final_blocks_norm_and_head (test_experiment.ControlledExperimentTests.test_partial_update_changes_only_final_blocks_norm_and_head) ... ok
+test_real_tiny_dinov2_checkpoint_reloads_without_model_download (test_experiment.ControlledExperimentTests.test_real_tiny_dinov2_checkpoint_reloads_without_model_download) ... ok
+test_test_evaluation_requires_explicit_protocol_gate (test_experiment.ControlledExperimentTests.test_test_evaluation_requires_explicit_protocol_gate) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 15.164s
+
+OK

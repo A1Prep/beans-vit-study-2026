@@ -1,0 +1,17 @@
+test_ambiguous_duplicate_run_selection_is_rejected (test_validate_protocol.ProtocolTests.test_ambiguous_duplicate_run_selection_is_rejected) ... ok
+test_empty_checkpoint_selection_is_rejected (test_validate_protocol.ProtocolTests.test_empty_checkpoint_selection_is_rejected) ... ok
+test_intact_relocated_archive_is_accepted (test_validate_protocol.ProtocolTests.test_intact_relocated_archive_is_accepted) ... ok
+test_local_schema_accepts_intact_artifacts (test_validate_protocol.ProtocolTests.test_local_schema_accepts_intact_artifacts) ... ok
+test_modified_checkpoint_is_rejected (test_validate_protocol.ProtocolTests.test_modified_checkpoint_is_rejected) ... ok
+test_modified_manifest_is_rejected (test_validate_protocol.ProtocolTests.test_modified_manifest_is_rejected) ... ok
+test_modified_recorded_analysis_source_is_rejected (test_validate_protocol.ProtocolTests.test_modified_recorded_analysis_source_is_rejected) ... ok
+test_modified_recorded_summary_is_rejected (test_validate_protocol.ProtocolTests.test_modified_recorded_summary_is_rejected) ... ok
+test_modified_run_config_is_rejected (test_validate_protocol.ProtocolTests.test_modified_run_config_is_rejected) ... ok
+test_modified_training_source_is_rejected (test_validate_protocol.ProtocolTests.test_modified_training_source_is_rejected) ... ok
+test_notebook_schema_checks_other_sources_and_summary (test_validate_protocol.ProtocolTests.test_notebook_schema_checks_other_sources_and_summary) ... ok
+test_unselected_run_cannot_reuse_a_selected_checkpoint (test_validate_protocol.ProtocolTests.test_unselected_run_cannot_reuse_a_selected_checkpoint) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.690s
+
+OK

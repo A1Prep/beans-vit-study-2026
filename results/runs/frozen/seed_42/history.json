@@ -1,0 +1,532 @@
+[
+  {
+    "epoch": 1,
+    "train": {
+      "n": 1034,
+      "accuracy": 0.793036750483559,
+      "macro_f1": 0.7929146411829167,
+      "confusion_matrix": [
+        [
+          259,
+          63,
+          23
+        ],
+        [
+          52,
+          263,
+          33
+        ],
+        [
+          16,
+          27,
+          298
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.7920489296636085,
+          "recall": 0.7507246376811594,
+          "f1": 0.7708333333333333,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.7450424929178471,
+          "recall": 0.7557471264367817,
+          "f1": 0.7503566333808845,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.8418079096045198,
+          "recall": 0.873900293255132,
+          "f1": 0.8575539568345324,
+          "support": 341
+        }
+      ],
+      "loss": 0.529954638886959,
+      "seconds": 12.444959400000243,
+      "gradient_checks": {
+        "all_trainable_have_gradients": true,
+        "no_frozen_gradients": true,
+        "all_gradients_finite": true
+      }
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.8721804511278195,
+      "macro_f1": 0.8727268023902527,
+      "confusion_matrix": [
+        [
+          35,
+          8,
+          1
+        ],
+        [
+          6,
+          39,
+          0
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.8333333333333334,
+          "recall": 0.7954545454545454,
+          "f1": 0.8139534883720929,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8125,
+          "recall": 0.8666666666666667,
+          "f1": 0.8387096774193549,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9767441860465116,
+          "recall": 0.9545454545454546,
+          "f1": 0.9655172413793104,
+          "support": 44
+        }
+      ],
+      "loss": 0.3417955054376358,
+      "seconds": 1.2592101000000184
+    },
+    "saved_best": true,
+    "patience_counter": 0
+  },
+  {
+    "epoch": 2,
+    "train": {
+      "n": 1034,
+      "accuracy": 0.8858800773694391,
+      "macro_f1": 0.8857100801302624,
+      "confusion_matrix": [
+        [
+          294,
+          37,
+          14
+        ],
+        [
+          31,
+          299,
+          18
+        ],
+        [
+          7,
+          11,
+          323
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.8855421686746988,
+          "recall": 0.8521739130434782,
+          "f1": 0.8685376661742984,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.861671469740634,
+          "recall": 0.8591954022988506,
+          "f1": 0.860431654676259,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9098591549295775,
+          "recall": 0.9472140762463344,
+          "f1": 0.9281609195402298,
+          "support": 341
+        }
+      ],
+      "loss": 0.2976360696888523,
+      "seconds": 12.265472300000056
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.9097744360902256,
+      "macro_f1": 0.9101282691987341,
+      "confusion_matrix": [
+        [
+          38,
+          5,
+          1
+        ],
+        [
+          4,
+          41,
+          0
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.8837209302325582,
+          "recall": 0.8636363636363636,
+          "f1": 0.8735632183908046,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8723404255319149,
+          "recall": 0.9111111111111111,
+          "f1": 0.891304347826087,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9767441860465116,
+          "recall": 0.9545454545454546,
+          "f1": 0.9655172413793104,
+          "support": 44
+        }
+      ],
+      "loss": 0.30308129912928533,
+      "seconds": 1.3332362000001012
+    },
+    "saved_best": true,
+    "patience_counter": 0
+  },
+  {
+    "epoch": 3,
+    "train": {
+      "n": 1034,
+      "accuracy": 0.9187620889748549,
+      "macro_f1": 0.9186910202293476,
+      "confusion_matrix": [
+        [
+          304,
+          31,
+          10
+        ],
+        [
+          28,
+          313,
+          7
+        ],
+        [
+          3,
+          5,
+          333
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9074626865671642,
+          "recall": 0.881159420289855,
+          "f1": 0.8941176470588235,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8968481375358166,
+          "recall": 0.8994252873563219,
+          "f1": 0.8981348637015781,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9514285714285714,
+          "recall": 0.9765395894428153,
+          "f1": 0.9638205499276411,
+          "support": 341
+        }
+      ],
+      "loss": 0.22531945804562745,
+      "seconds": 12.513094999999794
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.8571428571428571,
+      "macro_f1": 0.8556083859021436,
+      "confusion_matrix": [
+        [
+          29,
+          15,
+          0
+        ],
+        [
+          2,
+          43,
+          0
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.90625,
+          "recall": 0.6590909090909091,
+          "f1": 0.763157894736842,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.7288135593220338,
+          "recall": 0.9555555555555556,
+          "f1": 0.8269230769230769,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 1.0,
+          "recall": 0.9545454545454546,
+          "f1": 0.9767441860465117,
+          "support": 44
+        }
+      ],
+      "loss": 0.34418206196978574,
+      "seconds": 1.3774261000003207
+    },
+    "saved_best": false,
+    "patience_counter": 1
+  },
+  {
+    "epoch": 4,
+    "train": {
+      "n": 1034,
+      "accuracy": 0.9197292069632496,
+      "macro_f1": 0.9200697163050212,
+      "confusion_matrix": [
+        [
+          304,
+          35,
+          6
+        ],
+        [
+          30,
+          316,
+          2
+        ],
+        [
+          3,
+          7,
+          331
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9020771513353115,
+          "recall": 0.881159420289855,
+          "f1": 0.8914956011730205,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.88268156424581,
+          "recall": 0.9080459770114943,
+          "f1": 0.8951841359773371,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.976401179941003,
+          "recall": 0.9706744868035191,
+          "f1": 0.9735294117647059,
+          "support": 341
+        }
+      ],
+      "loss": 0.20523227241099226,
+      "seconds": 13.377291600000262
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.9097744360902256,
+      "macro_f1": 0.9099074993166746,
+      "confusion_matrix": [
+        [
+          37,
+          6,
+          1
+        ],
+        [
+          3,
+          42,
+          0
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9024390243902439,
+          "recall": 0.8409090909090909,
+          "f1": 0.8705882352941177,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8571428571428571,
+          "recall": 0.9333333333333333,
+          "f1": 0.8936170212765957,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9767441860465116,
+          "recall": 0.9545454545454546,
+          "f1": 0.9655172413793104,
+          "support": 44
+        }
+      ],
+      "loss": 0.22047505253239683,
+      "seconds": 1.3322875000003478
+    },
+    "saved_best": false,
+    "patience_counter": 2
+  },
+  {
+    "epoch": 5,
+    "train": {
+      "n": 1034,
+      "accuracy": 0.9284332688588007,
+      "macro_f1": 0.9286461531343733,
+      "confusion_matrix": [
+        [
+          307,
+          32,
+          6
+        ],
+        [
+          22,
+          322,
+          4
+        ],
+        [
+          3,
+          7,
+          331
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9246987951807228,
+          "recall": 0.8898550724637682,
+          "f1": 0.9069423929098966,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8919667590027701,
+          "recall": 0.9252873563218391,
+          "f1": 0.9083215796897038,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9706744868035191,
+          "recall": 0.9706744868035191,
+          "f1": 0.9706744868035191,
+          "support": 341
+        }
+      ],
+      "loss": 0.18564297867005752,
+      "seconds": 12.089310599999862
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.8947368421052632,
+      "macro_f1": 0.8938470066518848,
+      "confusion_matrix": [
+        [
+          34,
+          9,
+          1
+        ],
+        [
+          3,
+          42,
+          0
+        ],
+        [
+          1,
+          0,
+          43
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.8947368421052632,
+          "recall": 0.7727272727272727,
+          "f1": 0.8292682926829269,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.8235294117647058,
+          "recall": 0.9333333333333333,
+          "f1": 0.8749999999999999,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9772727272727273,
+          "recall": 0.9772727272727273,
+          "f1": 0.9772727272727273,
+          "support": 44
+        }
+      ],
+      "loss": 0.22545712424400158,
+      "seconds": 1.3250782000000072
+    },
+    "saved_best": false,
+    "patience_counter": 3
+  }
+]

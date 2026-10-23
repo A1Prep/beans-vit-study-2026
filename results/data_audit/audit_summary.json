@@ -1,0 +1,113 @@
+{
+  "generated_utc": "2026-10-23T13:07:29.267341+00:00",
+  "dataset_revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+  "expected_counts": {
+    "train": 1034,
+    "validation": 133,
+    "test": 128
+  },
+  "original_counts": {
+    "test": 128,
+    "train": 1034,
+    "validation": 133
+  },
+  "included_counts": {
+    "test": 128,
+    "train": 1034,
+    "validation": 133
+  },
+  "excluded_images": [],
+  "class_counts": [
+    {
+      "split": "train",
+      "label": 0,
+      "label_name": "angular_leaf_spot",
+      "original_count": 345,
+      "included_count": 345
+    },
+    {
+      "split": "train",
+      "label": 1,
+      "label_name": "bean_rust",
+      "original_count": 348,
+      "included_count": 348
+    },
+    {
+      "split": "train",
+      "label": 2,
+      "label_name": "healthy",
+      "original_count": 341,
+      "included_count": 341
+    },
+    {
+      "split": "validation",
+      "label": 0,
+      "label_name": "angular_leaf_spot",
+      "original_count": 44,
+      "included_count": 44
+    },
+    {
+      "split": "validation",
+      "label": 1,
+      "label_name": "bean_rust",
+      "original_count": 45,
+      "included_count": 45
+    },
+    {
+      "split": "validation",
+      "label": 2,
+      "label_name": "healthy",
+      "original_count": 44,
+      "included_count": 44
+    },
+    {
+      "split": "test",
+      "label": 0,
+      "label_name": "angular_leaf_spot",
+      "original_count": 43,
+      "included_count": 43
+    },
+    {
+      "split": "test",
+      "label": 1,
+      "label_name": "bean_rust",
+      "original_count": 43,
+      "included_count": 43
+    },
+    {
+      "split": "test",
+      "label": 2,
+      "label_name": "healthy",
+      "original_count": 42,
+      "included_count": 42
+    }
+  ],
+  "corrupt_images": [],
+  "dimension_counts": {
+    "500x500": 1295
+  },
+  "mode_counts": {
+    "RGB": 1295
+  },
+  "exact_hash_groups": [],
+  "confirmed_duplicate_groups": [],
+  "phash_method": "32x32 luminance; DCT-II low 8x8; median threshold; 64-bit Hamming distance",
+  "phash_threshold": 12,
+  "near_duplicate_candidate_pairs": 14,
+  "cross_split_candidate_pairs": 7,
+  "within_test_candidate_pairs": 0,
+  "visual_review_status": {
+    "distinct": 14
+  },
+  "candidate_contact_sheets": [
+    "near_duplicate_candidates_01.png",
+    "near_duplicate_candidates_02.png",
+    "near_duplicate_candidates_03.png"
+  ],
+  "limitations": [
+    "pHash screening cannot rule out all near-duplicates or photographs of the same plant.",
+    "Farm, plant, person and collection-session identifiers are unavailable in this release.",
+    "Unknown overlap with model pretraining data is not measured.",
+    "Source repository reports 1296 images; the pinned distributed splits contain 1295."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "maximum": 2500,
+  "raw_markdown_whitespace_words": 2201,
+  "rendered_text_whitespace_words": 2120,
+  "includes": [
+    "title",
+    "headings",
+    "tables",
+    "captions",
+    "references"
+  ],
+  "excludes": [
+    "image pixel text",
+    "URLs hidden behind source links"
+  ],
+  "method": "Whitespace token count after removing Markdown syntax for rendered count; raw Markdown retained as conservative text count. An additional 250-word allowance covers labels and numbers embedded in the three figures; this is an allowance, not an OCR count.",
+  "within_limit": true,
+  "source": "report/technical_report.md",
+  "figure_text_allowance": 250,
+  "conservative_budget_count": 2451
+}

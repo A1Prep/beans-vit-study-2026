@@ -1,0 +1,5 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+{"event": "pilot", "arm": "frozen", "status": "passed", "seconds": 25.53889819999995, "n": 1034, "peak_cuda_allocated_bytes": 191750144}
+D:\CodexWork\beans-vit-project\venv\Lib\site-packages\torch\autograd\graph.py:823: UserWarning: Memory Efficient attention defaults to a non-deterministic algorithm. To explicitly enable determinism call torch.use_deterministic_algorithms(True, warn_only=False). (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\attention_backward.cu:685.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+{"event": "pilot", "arm": "partial", "status": "passed", "seconds": 13.32166589999997, "n": 1034, "peak_cuda_allocated_bytes": 288328704}

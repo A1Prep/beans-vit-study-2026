@@ -1,0 +1,13 @@
+{
+  "executed_utc": "2026-10-23T13:35:53.551750+00:00",
+  "notebook": "results_review.ipynb",
+  "purpose": "Read and display saved actual results; does not rerun training",
+  "python": "3.11.3",
+  "schema_validation": "passed",
+  "code_cells_executed": 5,
+  "allow_errors": false,
+  "training_notebook_executed": false,
+  "training_notebook_static_validation": "nbformat schema and all Python cell syntax passed",
+  "training_notebook_cells": 25,
+  "colab_execution_verified": false
+}

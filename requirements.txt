@@ -1,0 +1,13 @@
+# Python 3.11 is the reference environment. Install the CUDA-enabled torch wheel
+# suitable for your system first; torch==2.6.0 also accepts its +cu124 build.
+torch==2.6.0
+transformers==4.57.1
+numpy==2.2.6
+scikit-learn==1.7.2
+Pillow==11.3.0
+matplotlib==3.10.7
+pandas==2.3.3
+requests==2.32.5
+nbformat==5.10.4
+nbclient==0.10.2
+ipykernel==7.0.1

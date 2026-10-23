@@ -1,0 +1,15 @@
+pair_id,image_id_a,image_id_b,distance,split_a,split_b,cross_split,label_a,label_b
+pair_0001,test/bean_rust/bean_rust_test.34.jpg,train/healthy/healthy_train.241.jpg,10,test,train,1,bean_rust,healthy
+pair_0002,test/healthy/healthy_test.20.jpg,train/healthy/healthy_train.228.jpg,10,test,train,1,healthy,healthy
+pair_0003,train/healthy/healthy_train.149.jpg,train/healthy/healthy_train.251.jpg,10,train,train,0,healthy,healthy
+pair_0004,train/healthy/healthy_train.205.jpg,train/healthy/healthy_train.98.jpg,10,train,train,0,healthy,healthy
+pair_0005,test/bean_rust/bean_rust_test.33.jpg,train/bean_rust/bean_rust_train.252.jpg,12,test,train,1,bean_rust,bean_rust
+pair_0006,test/bean_rust/bean_rust_test.34.jpg,train/healthy/healthy_train.239.jpg,12,test,train,1,bean_rust,healthy
+pair_0007,train/angular_leaf_spot/angular_leaf_spot_train.21.jpg,train/healthy/healthy_train.300.jpg,12,train,train,0,angular_leaf_spot,healthy
+pair_0008,train/angular_leaf_spot/angular_leaf_spot_train.219.jpg,train/bean_rust/bean_rust_train.25.jpg,12,train,train,0,angular_leaf_spot,bean_rust
+pair_0009,train/angular_leaf_spot/angular_leaf_spot_train.261.jpg,train/angular_leaf_spot/angular_leaf_spot_train.76.jpg,12,train,train,0,angular_leaf_spot,angular_leaf_spot
+pair_0010,train/angular_leaf_spot/angular_leaf_spot_train.278.jpg,validation/angular_leaf_spot/angular_leaf_spot_val.22.jpg,12,train,validation,1,angular_leaf_spot,angular_leaf_spot
+pair_0011,train/bean_rust/bean_rust_train.332.jpg,validation/angular_leaf_spot/angular_leaf_spot_val.37.jpg,12,train,validation,1,bean_rust,angular_leaf_spot
+pair_0012,train/healthy/healthy_train.105.jpg,train/healthy/healthy_train.98.jpg,12,train,train,0,healthy,healthy
+pair_0013,train/healthy/healthy_train.160.jpg,train/healthy/healthy_train.320.jpg,12,train,train,0,healthy,healthy
+pair_0014,train/healthy/healthy_train.45.jpg,validation/bean_rust/bean_rust_val.27.jpg,12,train,validation,1,healthy,bean_rust

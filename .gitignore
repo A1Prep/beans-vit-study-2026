@@ -1,0 +1,34 @@
+# Environments and local-only resources
+.venv/
+venv/
+env/
+work/
+data/
+models/
+checkpoints/
+.cache/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Raw data, model weights, partial downloads and secrets
+*.zip
+*.tar
+*.tar.gz
+*.parquet
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.part
+*.token
+
+# New notebook reproductions are separate from the submitted study results.
+# Promote selected small outputs deliberately after reviewing their provenance.
+results/reproduction/
+.DS_Store
+Thumbs.db
