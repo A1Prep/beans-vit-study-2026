@@ -12,6 +12,8 @@ See [results/README.md](results/README.md) for the execution status and availabl
 
 The actual local study completed all six runs and final evaluation on 23 October 2026. Mean test macro-F1 was 90.71% for the frozen backbone and 97.16% for partial fine-tuning across the three paired seeds. The [saved results and limitations](results/README.md) explain seed variation, reference-run uncertainty and measured cost. Open the executed [results review notebook](results_review.ipynb) to inspect those metrics and figures without retraining.
 
+A subsequent [overfitting audit](results/README.md#overfitting-audit) checked all six selected checkpoints. Partial fine-tuning had a mean clean training–test macro-F1 gap of 1.42 points. Some late epochs deteriorated; validation-selected checkpoints limited that deterioration. The audit is diagnostic and does not establish absence of overfitting.
+
 Read the [technical report](report/technical_report.md) for the research question, methods, findings, ethical implications and references.
 
 The completed data audit found 1,295 readable, 500×500 RGB images, no exact file/pixel duplicates, and 14 pHash candidate pairs at distance ≤12. AI-assisted visual inspection classified those 14 pairs as distinct; no images were removed. This screen cannot rule out every near-duplicate or establish independence of plants, farms or collection sessions. The audit and per-pair decisions are included under `results/data_audit/`.
@@ -81,6 +83,7 @@ Repeat evaluation for every planned arm and seed. The notebook automates that lo
 
 ```text
 python src/analyse_results.py --runs results/reproduction/example/runs --manifest results/reproduction/example/data_audit/manifest.csv --data-root work/data/beans/images --out results/reproduction/example/analysis
+python src/audit_overfitting.py --runs results/reproduction/example/runs --manifest results/reproduction/example/data_audit/manifest.csv --data-root work/data/beans/images --protocol-lock results/reproduction/example/protocol.lock.json --out results/reproduction/example/overfitting
 python -m unittest discover -s tests -v
 ```
 
@@ -111,6 +114,8 @@ Existing completed/partial training directories are protected against accidental
 | `src/experiment.py` | Pilot, matched training, checkpointing and separate test evaluation |
 | `src/validate_protocol.py` | Checkpoint membership and artifact-hash validation before evaluation |
 | `src/analyse_results.py` | Metrics, paired uncertainty and figures from saved predictions |
+| `src/audit_overfitting.py` | Post-hoc clean train/validation scoring and all-seed history diagnostics of unchanged checkpoints |
+| `results/overfitting/` | Executed diagnostics, per-image predictions, split gaps and learning curves |
 | `tests/` | Focused checks of experiment logic |
 | `results/data_audit/` | Source provenance, counts, hashes, visual duplicate screening and sample figure |
 | `results/` | Actual study evidence; status documented in its README |

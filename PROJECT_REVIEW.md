@@ -10,11 +10,15 @@ Start with the [technical report](report/technical_report.pdf), [saved-results n
 |---|---:|---|
 | Dataset justification and preprocessing | 15% | Report sections 2–3; pinned source archives; class counts; image/hash/duplicate audit; model-specific normalization and matched augmentation |
 | Model selection and implementation | 25% | Report section 4; pretrained DINOv2-Small; frozen and genuine partial fine-tuning; parameter/gradient checks; checkpoint round trips |
-| Evaluation and performance analysis | 20% | Six runs; macro-F1/accuracy/per-class metrics; paired bootstrap; learning curves, errors, runtime and synthetic sensitivity checks |
+| Evaluation and performance analysis | 20% | Six runs; macro-F1/accuracy/per-class metrics; paired bootstrap; all-six-run overfitting audit, clean train/validation/test gaps, learning curves, errors, runtime and synthetic sensitivity checks |
 | Ethical and societal considerations | 20% | Report section 7; missed disease and false alarms; limited geographic and disease coverage; uncertain independence, fairness limits, access, attribution and human review |
 | Report structure, clarity and referencing | 20% | Six-page PDF and editable source; seven primary references; all reported values linked to saved experiment evidence |
 
 Separate AI reviewers checked methods, feasibility and rubric coverage. A final reviewer using a different model independently recomputed all ten evaluation outputs and the bootstrap interval and found no material discrepancy. This is review evidence, not a guarantee of marks. DINOv2 is an established 2023 foundation ViT; the lecturer's interpretation of “state of the art” remains an assessment judgment.
+
+## Overfitting refinement
+
+The report now distinguishes late training deterioration from the performance of the selected checkpoints. Partial fine-tuning averaged 98.59% clean training macro-F1 versus 97.16% test macro-F1, a 1.42-point gap. Seed 42 showed rising validation loss after its selected epoch while training loss fell. Earlier validation-based checkpoint selection limited this deterioration; absence of overfitting cannot be established. The [six-run diagnostic](results/README.md#overfitting-audit) reused the existing test results and left every original checkpoint and setting unchanged.
 
 ## Issues actually encountered
 

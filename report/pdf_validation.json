@@ -2,9 +2,9 @@
   "status": "passed",
   "pages": 6,
   "all_pages_visually_inspected": true,
-  "extractable_words_including_footers": 2174,
+  "extractable_words_including_footers": 2209,
   "additional_raster_figure_word_allowance": 250,
-  "conservative_total_including_allowance": 2424,
-  "pdf_sha256": "db7069005d0c3b91173b88d9bb1be326e95bed539c6df402d3adfa62e42c1061",
-  "notes": "No clipping, overlap, missing visible glyphs or orphaned headings found. Six scientific figures also inspected independently."
+  "conservative_total_including_allowance": 2459,
+  "pdf_sha256": "fa986415bee82e9759a1dde7768c7e43e209f7d0da3af24a3a5a2b0b5e4f64f2",
+  "notes": "All six pages rendered and visually inspected after the overfitting refinement. No clipping, overlap, missing visible glyphs or orphaned headings found. Two new supplementary diagnostic figures also visually inspected."
 }

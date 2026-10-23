@@ -1,0 +1,102 @@
+{
+  "reviewed_utc": "2026-10-23T17:11:50.347929+00:00",
+  "reviewer_role": "Separate Codex AI reviewer; advisory review, not an independent human assessor or grade guarantee",
+  "status": "passed_with_scope_limitations",
+  "scope": "Review of audit_overfitting.py and saved diagnostic artifacts; independent numerical checks without training or new model inference",
+  "checks_performed": [
+    {
+      "check": "Recomputed macro-F1 and accuracy from all clean train/validation prediction CSVs using sklearn",
+      "prediction_files_checked": 12,
+      "status": "passed"
+    },
+    {
+      "check": "Checked row counts, duplicate identifiers and recorded losses against diagnostic metrics files",
+      "prediction_files_checked": 12,
+      "status": "passed",
+      "limitation": "Loss values were compared to recorded measurements, not independently recomputed through model inference."
+    },
+    {
+      "check": "Verified all six checkpoint gap rows by subtracting independently checked split macro-F1 values",
+      "rows_checked": 6,
+      "status": "passed"
+    },
+    {
+      "check": "Verified frozen and partial summary mean macro-F1 values and mean training-validation/training-test gaps",
+      "arms_checked": 2,
+      "status": "passed"
+    },
+    {
+      "check": "Compared history diagnostics to original history.json, including selected/final loss, final F1 deterioration, later-epoch counts and augmented-training-loss changes",
+      "histories_checked": 6,
+      "status": "passed"
+    },
+    {
+      "check": "Verified clean validation identifiers, labels and predicted labels exactly equal the original selected-checkpoint validation outputs",
+      "runs_checked": 6,
+      "status": "passed"
+    },
+    {
+      "check": "Verified reused test metric dictionaries exactly equal original metrics_test.json files",
+      "runs_checked": 6,
+      "status": "passed"
+    },
+    {
+      "check": "Verified diagnostic checkpoint hash references against original protocol lock entries and existing test records",
+      "runs_checked": 6,
+      "status": "passed"
+    },
+    {
+      "check": "Recomputed protocol-lock, audit_overfitting.py source and original experiment.py source SHA256 values and checked recorded values",
+      "hashes_checked": 3,
+      "status": "passed"
+    }
+  ],
+  "script_review": {
+    "train_and_validation_use_identical_clean_preprocessing": true,
+    "model_evaluation_uses_inference_mode": true,
+    "no_optimizer_or_training_step_in_diagnostic": true,
+    "test_metrics_reused_without_new_test_inference": true,
+    "checkpoint_membership_validation_called_before_inference": true,
+    "post_hoc_status_disclosed": true,
+    "meaningful_test_or_provenance_problem_found": false
+  },
+  "verified_findings": {
+    "partial_mean_train_macro_f1": 0.9858653869495179,
+    "partial_mean_validation_macro_f1": 0.9850737215113051,
+    "partial_mean_test_macro_f1": 0.9716170124989046,
+    "partial_mean_train_minus_validation_f1_pp": 0.07916654382127779,
+    "partial_mean_train_minus_test_f1_pp": 1.4248374450613221,
+    "correct_rounded_train_test_gap_pp": 1.42,
+    "frozen_mean_train_minus_test_f1_pp": 3.5533029937114087,
+    "partial_seed_42": {
+      "selected_epoch": 5,
+      "final_epoch": 8,
+      "selected_validation_loss": 0.05982476338408047,
+      "final_validation_loss": 0.1347619931500657,
+      "all_three_post_selection_validation_losses_higher_than_selected": true,
+      "final_minus_selected_augmented_training_loss": -0.020575591051370995
+    }
+  },
+  "interpretation": [
+    "The fixed selected partial checkpoints show small observed mean clean training-validation and training-test macro-F1 gaps on this dataset.",
+    "Partial seed 42 deteriorates after its selected epoch despite lower final augmented training loss, consistent with some overfitting or instability; the earlier validation-selected checkpoint was retained.",
+    "Validation was used for checkpoint selection, so its performance is optimistic as an estimate of independent generalisation.",
+    "Small observed gaps do not prove absence of overfitting, leakage, dependence or distribution shift.",
+    "Original test results and training-source hash remain unchanged; this supplementary diagnostic is post-hoc and does not select a replacement model."
+  ],
+  "rubric_review": {
+    "dataset_and_preprocessing_15_percent": "Substantial executed evidence: provenance, original split, counts, integrity/duplicate audit, normalization and matched augmentation; farm/plant independence remains unverified.",
+    "model_and_implementation_25_percent": "Substantial executed evidence: suitable advanced ViT, genuine partial fine-tuning, paired controls and implementation checks; DINOv2 is established rather than current state of the art, leaving the overview wording subject to assessor interpretation.",
+    "evaluation_20_percent": "Substantial executed evidence: six paired runs, multiple metrics, per-class errors, confidence interval, costs and all-six-checkpoint post-hoc overfitting diagnostic; small fixed test and validation reuse limit inference.",
+    "ethics_20_percent": "Covered with measured error consequences, limited disease/geographic coverage, confidence limitations, fairness/access caveats, attribution and human oversight.",
+    "report_20_percent": "Reviewed report sources previously contained supported claims, references and a compliant word budget; this file does not certify subsequent rendering or edits.",
+    "overall": "All five weighted areas have substantial supporting evidence; this is not a guarantee that every assessor interpretation or a particular grade is satisfied."
+  },
+  "remaining_caveats": [
+    "Student understanding, authorship/AI-assistance review and final submission remain the student responsibilities.",
+    "The private GitHub repository must be accessible to the assessor through the approved submission route; Moodle submission is not established by this review.",
+    "Colab execution and a slide deck are not explicit requirements in the supplied original brief; unexecuted Colab reproduction is a portability limitation, not itself a missing rubric item.",
+    "No current-state-of-the-art or field-deployment superiority claim is established.",
+    "Diagnostic reproducibility requires retaining or regenerating the original selected checkpoints; this review does not modify training or test evidence."
+  ]
+}

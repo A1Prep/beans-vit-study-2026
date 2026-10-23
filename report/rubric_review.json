@@ -1,5 +1,5 @@
 {
-  "verdict": "REPORT CONTENT ACCEPTED; final rendering and student review remain",
+  "verdict": "All five rubric areas have executed evidence; no guarantee of marks or literal model-recency acceptance; student review and submission pending",
   "reviewed_on": "2026-10-23",
   "criteria": [
     {
@@ -12,7 +12,7 @@
     },
     {
       "criterion": "Evaluation and performance analysis (20%)",
-      "evidence": "Three paired seeds, majority baseline, accuracy and macro-F1, class metrics, confusion matrices, curves, per-image errors, bootstrap uncertainty, runtime interpretation and bounded synthetic checks."
+      "evidence": "Three paired seeds, majority baseline, accuracy and macro-F1, class metrics, confusion matrices, curves, per-image errors, bootstrap uncertainty, runtime interpretation and bounded synthetic checks. All-six-run post-hoc clean split audit with saved predictions, selection-aware gaps and late-deterioration analysis."
     },
     {
       "criterion": "Ethical and societal considerations (20%)",
@@ -28,5 +28,6 @@
     "Dataset is small with unverified farm/plant independence and no external evaluation; reported results must stay within this scope.",
     "Independent AI reviews do not determine academic grades or replace student authorship review."
   ],
-  "numerical_review": "Independent reviewer confirmed ten evaluation files and reference bootstrap; no material claim discrepancy."
+  "numerical_review": "Independent reviewer confirmed ten evaluation files and reference bootstrap; no material claim discrepancy.",
+  "overfitting_review": "Mean partial clean train–test macro-F1 gap 1.42 pp; late deterioration present, notably seed 42. Selected checkpoints limit deterioration but do not prove no overfitting. Original protocol and test outcomes unchanged."
 }

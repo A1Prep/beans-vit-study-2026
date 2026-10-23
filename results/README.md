@@ -17,4 +17,19 @@ Seven implementation tests and twelve protocol tamper/portability tests passed. 
 
 `analysis.json`, `comparison.csv`, `run_metrics.csv`, `paired_seed_differences.csv`, `per_class_metrics.csv` and `stress_metrics.csv` are the machine-readable results. `figures/` contains PNG and PDF figures. Audit source hashes and AI-assisted duplicate-screening evidence are under `data_audit/`. Checkpoints and raw data are excluded from Git and can be regenerated using the notebook.
 
+## Overfitting audit
+
+A post-hoc diagnostic evaluated all six unchanged selected checkpoints on the complete training and validation splits with identical clean preprocessing and evaluation mode. Original test scores were reused; no training, checkpoint selection or new test evaluation occurred. All clean validation predictions matched the original saved predictions, and the original protocol, checkpoint and training-source hashes passed validation.
+
+| Method | Mean clean training F1 | Mean validation F1 | Mean test F1 | Training minus test |
+|---|---:|---:|---:|---:|
+| Frozen | 94.27% | 94.01% | 90.71% | 3.55 pp |
+| Partial fine-tuning | 98.59% | 98.51% | 97.16% | 1.42 pp |
+
+These are macro-F1 averages over the three seeds. For partial fine-tuning, individual training–test gaps were -0.09, 2.32 and 2.04 points. A small average gap is reassuring within this split, but does not prove absence of overfitting. Training and validation are reused data, validation guided checkpoint selection, and the test contains only 128 images with unknown farm/plant independence.
+
+The histories show late deterioration. For partial seed 42, validation loss rose from 0.0598 at selected epoch 5 to 0.1348 at epoch 8 while online augmented training loss fell from 0.0913 to 0.0707. All three subsequent validation losses exceeded the selected epoch's loss. This is consistent with overfitting or instability; selecting the earlier checkpoint prevented using the deteriorated final state. Other runs also fluctuated, so it would be incorrect to claim that overfitting never occurred. Loss curves compare online augmented training with clean validation; the new fixed-checkpoint audit supplies a more comparable split evaluation.
+
+See [checkpoint gaps](overfitting/checkpoint_gaps.csv), [history diagnostics](overfitting/history_diagnostics.csv), [all-seed curves](overfitting/all_seed_learning_curves.png), [split comparison](overfitting/checkpoint_generalisation.png) and [provenance](overfitting/audit.json). No hyperparameters were changed in response to these test-aware diagnostics. An independent dataset would be required for a new confirmatory experiment after such changes.
+
 `reproduction/` is reserved for fresh runs and is ignored by Git. The original held-out test has now been evaluated: further choices informed by these results must be described as exploratory, not as a fresh untouched-test experiment.

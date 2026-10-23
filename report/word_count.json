@@ -1,7 +1,7 @@
 {
   "maximum": 2500,
-  "raw_markdown_whitespace_words": 2201,
-  "rendered_text_whitespace_words": 2120,
+  "raw_markdown_whitespace_words": 2236,
+  "rendered_text_whitespace_words": 2155,
   "includes": [
     "title",
     "headings",
@@ -17,5 +17,5 @@
   "within_limit": true,
   "source": "report/technical_report.md",
   "figure_text_allowance": 250,
-  "conservative_budget_count": 2451
+  "conservative_budget_count": 2486
 }
