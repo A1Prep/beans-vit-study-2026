@@ -1,0 +1,4 @@
+# Preserve byte-exact scientific provenance hashes across Windows/Linux checkouts.
+* -text
+*.pdf binary
+*.png binary
