@@ -1,0 +1,8 @@
+{
+  "training_code_sha256": "b1d193f8c46399089c9ff8c21ed0bb31455e0eee6055c5f87c3fe7d84a3dac0f",
+  "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+  "study_plan_sha256": "afaa8f66d972f829d10410cac3cec5a0554051cbbe6c32feda11582c5e45164b",
+  "run_root": "D:\\CodexWork\\beans-vit-project\\model_comparison",
+  "started_utc": "2026-10-24T03:43:01.380564+00:00",
+  "prior_test_exposure": true
+}

@@ -1,44 +1,64 @@
-# Presentation notes
+# Presentation notes: SigLIP 2 versus DINOv2
 
-Presentation: 27 October 2026, 6:30 pm. These notes accompany the technical report and are outside its word count. Review the code, figures and explanations yourself before presenting; do not describe AI-assisted work as independently completed by you.
+Presentation: 27 October 2026, 6:30 pm. These notes describe the fresh 12-run comparison executed on 24 October, not the earlier six-run DINOv2 study. They accompany the report and are outside its word count. Review the code and explanations yourself and disclose AI assistance according to course requirements.
 
 ## Five-minute explanation
 
-1. **Question and motivation.** Can adapting a pretrained vision transformer improve bean-leaf classification over using its frozen representations? This is a controlled comparison of two configurations, not a claim to build a deployable plant-disease diagnosis system.
-2. **Data.** Makerere's Beans release has 1,295 smartphone images from Uganda: 1,034 training, 133 validation and 128 test. Classes are angular leaf spot, bean rust and healthy. No exact duplicates or corrupt images were found. AI-assisted inspection judged 14 perceptual-hash candidate pairs distinct. Test images were accessed for integrity screening before modelling. There are no farm or plant identities, so related-image leakage cannot be ruled out fully.
-3. **Model and comparison.** DINOv2-Small is a pretrained ViT-S/14. A 224-pixel image becomes 256 image-patch tokens plus a class token. The 384-value class representation feeds a three-output linear head. Frozen training updates 1,155 head parameters; partial training updates 3,552,387 parameters in the head, final two transformer blocks and final normalisation. The two arms share starting weights, paired head initialisation and augmented inputs. Three seeds were run.
-4. **Results.** Mean test macro-F1 was 90.71% ± 2.05 for frozen and 97.16% ± 1.18 for partial adaptation: a 6.45-percentage-point difference. Partial won all three pairs. For the prespecified seed 17, the difference was 8.52 points with a paired bootstrap interval of [3.15, 14.10]. This interval is for that reference pair, not the three-seed mean. Mean training time was 100.6 versus 101.8 seconds, but stopping epochs differed; partial was more expensive per epoch (13.28 versus 12.07 seconds).
-5. **Failure analysis and conclusion.** Show the learning curves, confusion matrices and sample outputs. Partial seed 17 made two errors, both predictions of rust: one angular leaf spot and one healthy image. One incorrect prediction had a softmax score of 0.995. Partial adaptation is preferable within the tested settings, but external validation, broader sampling and expert referral remain necessary before practical use.
+1. **Question.** Does the recent SigLIP 2 vision-language encoder improve bean-leaf classification over DINOv2, and what does adaptation cost? Both frozen features and partial fine-tuning were tested, with three matched seeds per configuration. The main comparison is partial SigLIP 2 versus partial DINOv2.
+2. **Dataset.** Makerere Beans has 1,295 images: 1,034 training, 133 validation and 128 test. Expert source labels are angular leaf spot, bean rust and healthy. Images came from Ugandan fields. There were no corrupt images or exact duplicates; AI-assisted inspection judged 14 perceptual-hash candidate pairs distinct. Missing plant/farm identities and unknown pretraining overlap remain limitations.
+3. **Recent model.** SigLIP 2 was published in 2025. At B/16–224 scale, its paper reports 78.2% ImageNet zero-shot accuracy against original SigLIP's 76.2%, leading the same-size baselines in that table. Google's public weights were downloaded and the image tower used. SigLIP's attention-pooled 768-value representation differs from DINOv2's 384-value class token. Each received a new three-class head. Partial adaptation updated the final two blocks and final normalisation; SigLIP's pretrained pooling remained frozen. All four configurations ran on a 4 GB GPU.
+4. **Main result.** Show `results/model_comparison/figures/performance_cost.png`. Mean macro-F1 was 90.71% for frozen DINOv2 and 96.90% for partial DINOv2, frozen SigLIP and partial SigLIP. Partial models differed by less than 0.01 percentage points. SigLIP supplied stronger frozen features, but its partial fine-tuning produced no meaningful average improvement under these settings. It would be misleading to say the newer model won.
+5. **Cost and uncertainty.** Partial DINOv2/SigLIP median observed epoch times were 12.62/16.08 seconds, with peak allocated memory 288/722 MB. Raw means are retained because some epochs were unusually long for unknown reasons. Partial SigLIP-minus-DINO differences were −0.78, +1.55 and −0.77 points. The seed-17 paired bootstrap interval was [−3.13, +1.57] points, including zero. It concerns that pair, not the three-seed mean. The reused test set makes this exploratory.
+6. **Failure analysis.** Show `partial_confusion.png` and `siglip_sample_predictions.png`. Seed-17 partial SigLIP called three leaf-spot images rust; one wrong prediction had 98.65% confidence. Partial DINOv2 made two errors. Neither labelled a diseased image healthy, but the small sample cannot establish safety. Partial DINOv2 offers comparable mean accuracy with a smaller model and memory requirement. Independent farm-level validation is necessary.
+
+## Results to have ready
+
+| Configuration | Accuracy (%) | Macro-F1 (%) | Mean raw training time (s) |
+|---|---:|---:|---:|
+| DINOv2 frozen | 90.62 ± 2.07 | 90.71 ± 2.05 | 102.8 |
+| DINOv2 partial | 96.88 ± 1.56 | 96.90 ± 1.55 | 96.2 |
+| SigLIP 2 frozen | 96.88 ± 1.35 | 96.90 ± 1.34 | 387.5 |
+| SigLIP 2 partial | 96.88 ± 0.78 | 96.90 ± 0.78 | 195.9 |
+
+Values are means ± sample SD across three seeds. Training time excludes validation/loading/checkpoint overhead. Every observed epoch is retained. Lower seed SD does not establish population-level reliability. The partial SigLIP mean is 0.00110 percentage points above partial DINOv2: practically tied, not mathematically identical.
 
 ## Likely questions
 
-**Why choose this dataset?** It is feasible on limited hardware, contains field images, has an existing split and expert source annotations, and allows task-specific discussion of agricultural consequences. Its small size and narrow coverage are also clear limitations.
+**Does SigLIP 2 meet the advanced-model requirement?** It is a recent 2025 vision-language family with leading results among the same-size baselines in its published comparison. This project actually acquired and trained its image tower. That is a defensible contemporary-model rationale, not a claim that it is the latest model in October 2026 or that these Beans results are state of the art.
 
-**Why DINOv2 rather than the newest model?** The intended DINOv3 weights required gated access. DINOv2 offered accessible weights, documented transferable representations and a manageable size. It is an advanced, established foundation ViT from 2023, not the newest 2026 architecture or a claimed state-of-the-art Beans result.
+**Why did the newer model not clearly win?** Stronger frozen representations do not guarantee greater benefits from updating the last two blocks. The dataset is small, and learning rates/adaptation depth were not optimised separately. Model size, pretraining, pooling and preprocessing differ, so the experiment cannot identify one cause.
 
-**Did you train the transformer from scratch?** No. Both models reused pretrained weights. One trained a new classification head; the other also adapted the final two blocks and final normalisation layer.
+**Which model would you choose?** Within this resource-limited experiment, partial DINOv2 achieved essentially the same accuracy with fewer total parameters and less allocated memory. This is an exploratory conclusion, not a deployment decision. Frozen SigLIP is also useful: it reached similar performance while updating only 2,307 classifier parameters, although its full image tower still requires computation and memory.
 
-**Why not train every layer?** Partial adaptation limits memory and optimisation demands on a small dataset. Full fine-tuning was not tested, so the project cannot say it would perform worse.
+**Did you train from scratch or use text prompts?** Neither. Pretrained image towers were reused with supervised classifiers. The SigLIP text tower and zero-shot prompts were not used. Frozen versus partial describes which image-model parameters were updated.
 
-**What is macro-F1?** Precision is the fraction of a class's predictions that are correct; recall is the fraction of that class's true examples found. F1 is their harmonic mean, `2PR/(P+R)`. Macro-F1 averages the three class F1 values equally. Accuracy is the fraction of all images classified correctly.
+**Why not use the first SigLIP token?** It is an image patch, not a class token. The pretrained attention-pooling head supplies the intended image representation. DINOv2 has a class token, so its readout differs.
 
-**What prevented test-set tuning?** Training used training images, and checkpoint selection used validation macro-F1, breaking ties by lower validation loss. The model configurations, reference seed and final protocol were recorded before test prediction calls. Integrity auditing accessed test images earlier; the report discloses that. Artifact hashes establish consistency, not independent proof of chronology.
+**Was this a fair comparison?** The same audited split, seeds, augmentation decisions, head learning rate, stopping rule and final-two-block adaptation policy were used. Head initialisation was paired within each backbone. Preprocessing and model dimensions differ. This compares concrete systems under fixed settings, not each model's best achievable accuracy or a single causal factor.
 
-**Did the model overfit?** Some late epochs showed deterioration. For partial seed 42, validation loss rose from 0.0598 at selected epoch 5 to 0.1348 at epoch 8 while training loss fell; the saved checkpoint precedes that deterioration. We then evaluated all six unchanged selected checkpoints on clean training and validation images and reused the original test results. Partial mean macro-F1 was 98.59% training, 98.51% validation and 97.16% test, a 1.42-point training–test gap (frozen: 3.55 points). These modest gaps support the selected model within this split but cannot prove no overfitting or generalisation to new farms. Validation was used for model selection. The post-hoc audit did not tune settings.
+**Was the test set untouched?** No. Original DINOv2 results were already known, and test images had been viewed for integrity screening. The new plan was fixed before SigLIP test inference; all 12 training runs completed and checkpoints were locked before new evaluation. This preserves the follow-up procedure without undoing prior exposure. The study is explicitly exploratory.
 
-**Why three seeds and a bootstrap?** Seeds expose variation from initialisation and training. The paired bootstrap resamples the same test indices for both reference models, within each class, to assess uncertainty from that fixed test sample. Neither resolves unknown farm dependence or proves performance elsewhere.
+**Did the models overfit?** Partial DINOv2 clean train/validation/test macro-F1 averaged 98.17/98.51/96.90%, versus SigLIP 98.91/98.26/96.90%. Training–test gaps were 1.27 and 2.01 points. Some later epochs deteriorated: SigLIP seed 17 validation loss rose from 0.0618 at selected epoch 6 to 0.3746 at epoch 9 while training loss fell; seed 42 rose from 0.0183 at epoch 4 to 0.2101 at epoch 7. Earlier checkpoints were retained. This is consistent with overfitting or instability. Small selected-checkpoint gaps cannot prove its absence, because validation informed selection and there is no independent farm-level evaluation. No settings were tuned in response to this audit.
 
-**Can zero missed disease cases establish safety?** No. The partial reference run had 0/86 diseased leaves classified healthy and 1/42 healthy leaves classified diseased. These are small, selected-dataset counts. Other diseases would still be forced into the three available labels, and a high score can be wrong.
+**Why does frozen SigLIP score higher on test than training?** Its clean means were 94.42% training, 95.75% validation and 96.90% test. Different small samples have different difficulty. A negative training–test gap does not prove external generalisation or absence of leakage; test has only 128 images.
 
-**Did the robustness tests prove real-world reliability?** No. Blur at radius 1 and brightness multiplied by 0.7 were limited synthetic checks on the same images. Partial F1 was 97.67% under blur and 98.45% under darkening. Frozen F1 improved under both. One severity cannot establish resilience across farms, phones or seasons.
+**Why are raw timing means different from medians?** One frozen SigLIP epoch took 809.10 seconds instead of roughly 13 seconds; a partial SigLIP epoch took 184.36 seconds. Causes are unknown. A documented amendment before new test evaluation added medians/IQRs while retaining every raw total, mean and range. Slow observations were not deleted or attributed to power/sleep events. Different stopping epochs also affect totals. These are measured durations, not controlled hardware benchmarks.
 
-**Is the result reproducible in Colab?** The actual experiments ran locally on an RTX 3050 Laptop GPU with 4 GB memory. The repository includes the workflow, metadata and outputs, but the complete Colab workflow was not executed. CUDA attention warned of possible nondeterminism, so bitwise identical reruns are not promised.
+**What do the error counts mean?** For seed-17 partial models, both had 0/86 diseased images labelled healthy. SigLIP had 0/42 healthy images labelled diseased; DINOv2 had 1/42. SigLIP still confused three leaf-spot images with rust. Wrong disease subtype matters even when disease-versus-healthy counts look favourable. These counts cannot establish safety or justify treatment prescriptions.
 
-**How was AI used?** Codex assisted with implementation, source research, duplicate-image screening, analysis, drafting and review. Experiments actually ran and metrics were recomputed from prediction files. Explain the assistance honestly and follow the course's disclosure requirements; student review and understanding are still required.
+**Did synthetic tests prove reliability?** No. Reference partial SigLIP macro-F1 was 97.67% clean, 96.07% under blur and 97.67% under darkening. DINOv2 scored 98.45%, 97.67% and 98.45%. These are one-severity changes to the same images, not independent farms, devices or seasons.
+
+**What is macro-F1, and why a bootstrap?** Precision measures correctness among a class's predictions; recall measures the fraction of its true examples found. F1 is `2PR/(P+R)`; macro-F1 averages the classes equally. Seeds expose training variation. The paired bootstrap resamples matching test images within classes for the seed-17 partial-model comparison. It does not estimate the three-seed mean's uncertainty or correct unknown farm dependence.
+
+**What are the main ethical limits?** Unfamiliar diseases or other damage are forced into three labels; confidence is uncalibrated. False reassurance or unnecessary intervention could harm farmers. Balanced class results do not establish fairness across regions, farmers or devices; published SigLIP fairness tests concern other benchmarks. Future use needs independent sampling, expert oversight, referral and appropriate treatment of farm-identifying data.
+
+**Was the entire workflow tested in Colab?** The experiments ran locally on an RTX 3050 Laptop GPU. A portable notebook and separate results-review notebook are supplied. A full Colab rerun has not been completed, and bitwise identical CUDA results are not promised.
+
+**How was AI used?** Codex assisted research, implementation, duplicate-image screening, analysis, writing and review. The experiments were executed and prediction files are available for checking. Student understanding and final review remain necessary. Do not describe assisted work as independently completed without assistance.
 
 ## Before presenting
 
-- Open the report and explain each figure without reading the caption aloud.
-- Locate the split manifest, model configuration, training history, prediction CSVs and analysis outputs in the repository.
-- Be able to distinguish training from validation and test data, and a mean across seeds from a reference-run result.
-- Verify the final submission location and any presentation-duration or AI-disclosure requirements from the course.
+- Distinguish mean accuracy, reference-seed results, seed SD and the reference bootstrap.
+- Locate the study plan, checkpoint locks, timing amendment, histories and predictions.
+- Use the current `results/model_comparison` figures, avoiding earlier DINOv2-only results.
+- Verify course-specific duration, submission access and AI-disclosure requirements.

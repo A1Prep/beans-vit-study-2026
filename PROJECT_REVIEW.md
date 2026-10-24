@@ -1,35 +1,28 @@
-# Completed proof of concept
+# Current project review — 24 October 2026
 
-The project was built and executed on 23 October 2026. It is feasible on the available RTX 3050 laptop GPU (4 GB). The six training runs took about 10.1 minutes of measured training-loop time in total, excluding setup, validation and checkpoint operations. The result supports continuing with this topic: partial fine-tuning improved mean test macro-F1 from 90.71% to 97.16%, with a positive difference in all three paired seeds.
+The accessible newer-model comparison has completed end to end. Google's SigLIP 2 (2025) and DINOv2 (2023) each ran frozen and partial configurations with three seeds, followed by evaluation, sample outputs and all-run overfitting checks. The paper-backed recent-model rationale is stronger than the original DINOv2-only study. This does not guarantee the lecturer's grade or establish the newest/best model in October 2026.
 
-Start with the [technical report](report/technical_report.pdf), [saved-results notebook](results_review.ipynb), and [presentation notes](report/presentation_notes.md). The [reproduction notebook](beans_vit.ipynb) downloads the actual data and runs the complete experiment. Full Colab execution has not been tested; the Python workflow was tested locally.
-
-## Coverage against the rubric
-
-| Criterion | Weight | Evidence |
+| Criterion | Weight | Current evidence |
 |---|---:|---|
-| Dataset justification and preprocessing | 15% | Report sections 2–3; pinned source archives; class counts; image/hash/duplicate audit; model-specific normalization and matched augmentation |
-| Model selection and implementation | 25% | Report section 4; pretrained DINOv2-Small; frozen and genuine partial fine-tuning; parameter/gradient checks; checkpoint round trips |
-| Evaluation and performance analysis | 20% | Six runs; macro-F1/accuracy/per-class metrics; paired bootstrap; all-six-run overfitting audit, clean train/validation/test gaps, learning curves, errors, runtime and synthetic sensitivity checks |
-| Ethical and societal considerations | 20% | Report section 7; missed disease and false alarms; limited geographic and disease coverage; uncertain independence, fairness limits, access, attribution and human review |
-| Report structure, clarity and referencing | 20% | Six-page PDF and editable source; seven primary references; all reported values linked to saved experiment evidence |
+| Dataset justification and preprocessing | 15% | Report section 2; pinned field-image dataset; class counts, corruption/hash/duplicate audit; section 4 explains native preprocessing and matched augmentation |
+| Model selection and implementation | 25% | Report sections 3–4; recent public SigLIP 2, benchmark-based rationale, actual download/hash verification, both genuine fine-tuning and frozen baselines; four successful full-epoch pilots |
+| Evaluation and performance analysis | 20% | Report sections 5–6; 12 runs, metrics and class errors, paired bootstrap, cost, all-run overfitting checks, learning curves, confusion matrices and sample predictions |
+| Ethical and societal considerations | 20% | Report section 7; error consequences, missing diseases, confidence, geographic/subgroup limits, access, attribution, privacy and human review |
+| Structure, clarity and referencing | 20% | Updated report below 2,500 words with seven primary references, actual experimental evidence and transparent limitations |
 
-Separate AI reviewers checked methods, feasibility and rubric coverage. A final reviewer using a different model independently recomputed all ten evaluation outputs and the bootstrap interval and found no material discrepancy. This is review evidence, not a guarantee of marks. DINOv2 is an established 2023 foundation ViT; the lecturer's interpretation of “state of the art” remains an assessment judgment.
+Partial SigLIP 2 mean test macro-F1 was 96.90% versus 96.90% for DINOv2. Clean training–test gaps were 2.01 and 1.27 points respectively. Late validation deterioration is retained and discussed; checkpoint selection used validation only. These diagnostics do not prove no overfitting.
 
-## Overfitting refinement
+Independent AI review used a different model and recomputed predictions and intervals rather than treating a language-model rating as scientific evidence. The [verification record](results/model_comparison/independent_review.json) passed. Original DINOv2 source/results remain unchanged and its report is archived. The enlarged study explicitly discloses previously known test results.
 
-The report now distinguishes late training deterioration from the performance of the selected checkpoints. Partial fine-tuning averaged 98.59% clean training macro-F1 versus 97.16% test macro-F1, a 1.42-point gap. Seed 42 showed rising validation loss after its selected epoch while training loss fell. Earlier validation-based checkpoint selection limited this deterioration; absence of overfitting cannot be established. The [six-run diagnostic](results/README.md#overfitting-audit) reused the existing test results and left every original checkpoint and setting unchanged.
+## Issues encountered and resolved or disclosed
 
-## Issues actually encountered
+- DINOv3 required gated access. SigLIP 2 official public weights were downloaded without authentication and the full publisher checksum matched.
+- The earlier system Python installation was unsuitable; an isolated CUDA environment on D: executed the experiments. Its versions are recorded.
+- A model-download interruption and a transient local process/session failure were followed by a successful verified download and fresh successful pilots.
+- SigLIP 2 recorded unusually long frozen and partial epochs of 809.10 and 184.36 seconds. Their causes are unknown. Raw times were kept and median/IQR summaries added before new test inference.
+- CUDA attention can be nondeterministic; seeded reproduction does not promise bitwise-identical results.
+- Full Colab execution remains untested. Both reproduction notebooks are supplied; the comparison review notebook was executed against actual saved results.
 
-- DINOv3 weights returned an access error because they are gated. The accessible DINOv2-Small fallback was used consistently in both arms.
-- The existing Python installation was CPU-only and had a broken SciPy import. An isolated CUDA environment resolved these problems.
-- Installing the GPU environment on C: ran out of disk space. The working environment and trained checkpoints were placed on D:.
-- CUDA attention reported possible nondeterminism. Seeds and sample ordering are recorded, but bitwise-identical retraining is not promised.
-- Automatic approval review blocked deletion of the failed temporary environment in the task's `work/venv` folder, without a more specific reason. That incomplete environment remains outside the deliverable and is not used.
+## Remaining student actions
 
-## Refinement and submission
-
-Read the report and code, verify the source references and assistance disclosure, and practise explaining the controlled comparison and its limits. The current test set has been evaluated; later changes informed by its scores must be described as exploratory. A fresh claim of generalisation would need independent evaluation data.
-
-The GitHub repository is private for review. It must be made accessible to the assessor or the project ZIP uploaded through the permitted submission route before the deadline. Nothing has been submitted to Moodle. See [ASSISTANCE.md](ASSISTANCE.md) for the actual use of AI in developing this draft.
+Review and understand the final report/code, check course AI-assistance requirements, practise the presentation, and provide assessor access to the private GitHub repository or submit the ZIP via the permitted route. Nothing was submitted to Moodle. These student and submission steps are distinct from the completed technical experiment.

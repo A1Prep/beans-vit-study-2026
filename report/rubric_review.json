@@ -1,33 +1,37 @@
 {
-  "verdict": "All five rubric areas have executed evidence; no guarantee of marks or literal model-recency acceptance; student review and submission pending",
-  "reviewed_on": "2026-10-23",
+  "reviewed_on": "2026-10-24",
+  "verdict": "All five rubric areas have executed evidence in the completed newer-model comparison; no grade guarantee",
   "criteria": [
     {
-      "criterion": "Dataset justification and preprocessing (15%)",
-      "evidence": "Task fit, source provenance, exact split/class counts, image audit, related-image limitations, checkpoint normalization, lesion-preserving full resize and paired augmentation."
+      "criterion": "Dataset justification and preprocessing",
+      "weight_percent": 15,
+      "evidence": "Report sections 2 and 4; field-image justification, counts, integrity and duplicate audit, explicit native preprocessing"
     },
     {
-      "criterion": "Model selection and implementation (25%)",
-      "evidence": "ViT-S/14 rationale, precise access/compute fallback, frozen versus final-two-block adaptation, parameter counts, fixed settings, pilots and implementation checks."
+      "criterion": "Model selection and implementation",
+      "weight_percent": 25,
+      "evidence": "Report sections 3\u20134; accessible 2025 SigLIP 2 with primary benchmark rationale, verified acquisition, actual frozen and partial fine-tuning of both models"
     },
     {
-      "criterion": "Evaluation and performance analysis (20%)",
-      "evidence": "Three paired seeds, majority baseline, accuracy and macro-F1, class metrics, confusion matrices, curves, per-image errors, bootstrap uncertainty, runtime interpretation and bounded synthetic checks. All-six-run post-hoc clean split audit with saved predictions, selection-aware gaps and late-deterioration analysis."
+      "criterion": "Evaluation and performance analysis",
+      "weight_percent": 20,
+      "evidence": "Report sections 5\u20136; 12 fresh runs, repeated metrics, class errors, bootstrap, timing, memory, all-checkpoint overfitting checks and bounded sensitivity tests"
     },
     {
-      "criterion": "Ethical and societal considerations (20%)",
-      "evidence": "Actual error consequences, unknown diseases, uncalibrated confidence, expert referral, regional/external-validation limits, fairness metadata limits, accessibility, attribution and compute-cost caveats."
+      "criterion": "Ethical and societal considerations",
+      "weight_percent": 20,
+      "evidence": "Report section 7; asymmetric errors, unknown diseases, uncertainty, external/fairness limits, access, attribution, privacy and human review"
     },
     {
-      "criterion": "Structure, clarity and referencing (20%)",
-      "evidence": "Eight concise sections, seven verified primary references, three embedded figure markers/captions, quantitative consistency and conservative word budget."
+      "criterion": "Structure, clarity and referencing",
+      "weight_percent": 20,
+      "evidence": "Eight numbered sections, seven primary references, three readable figures and verified word limit"
     }
   ],
-  "remaining_risks": [
-    "DINOv2 is established rather than the latest 2026 model; whether this satisfies a literal latest-state-of-the-art reading is an assessor judgment, not guaranteed by reviewers.",
-    "Dataset is small with unverified farm/plant independence and no external evaluation; reported results must stay within this scope.",
-    "Independent AI reviews do not determine academic grades or replace student authorship review."
-  ],
-  "numerical_review": "Independent reviewer confirmed ten evaluation files and reference bootstrap; no material claim discrepancy.",
-  "overfitting_review": "Mean partial clean train–test macro-F1 gap 1.42 pp; late deterioration present, notably seed 42. Selected checkpoints limit deterioration but do not prove no overfitting. Original protocol and test outcomes unchanged."
+  "independent_numerical_review": "results/model_comparison/independent_review.json",
+  "limitations": [
+    "A recent model with strong published same-size comparisons is not a claim of the latest/best model in October 2026 or SOTA Beans performance",
+    "Previously evaluated test set, unknown plant/farm dependence, small sample and no external validation",
+    "AI review does not determine academic grades; student understanding and submission remain required"
+  ]
 }

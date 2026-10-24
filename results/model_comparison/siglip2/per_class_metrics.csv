@@ -1,0 +1,7 @@
+arm,seed,class,precision,recall,f1-score,support
+frozen,17,Angular leaf spot,1.0,0.9534883720930233,0.9761904761904762,43.0
+frozen,17,Bean rust,0.9555555555555556,1.0,0.9772727272727273,43.0
+frozen,17,Healthy,1.0,1.0,1.0,42.0
+partial,17,Angular leaf spot,1.0,0.9302325581395349,0.963855421686747,43.0
+partial,17,Bean rust,0.9347826086956522,1.0,0.9662921348314607,43.0
+partial,17,Healthy,1.0,1.0,1.0,42.0

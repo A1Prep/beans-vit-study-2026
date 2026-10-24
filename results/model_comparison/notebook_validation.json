@@ -1,0 +1,19 @@
+{
+  "validated_utc": "2026-10-24T06:35:10.745470+00:00",
+  "training_notebook": "model_comparison.ipynb",
+  "training_notebook_cells": 21,
+  "training_notebook_executed": false,
+  "training_notebook_static_validation": "nbformat schema and all Python cell syntax passed",
+  "review_notebook": "model_comparison_review.ipynb",
+  "review_notebook_cells": 10,
+  "review_notebook_code_cells_executed": 5,
+  "review_notebook_executed": true,
+  "review_notebook_static_validation": "nbformat schema and all Python cell syntax passed",
+  "allow_errors": false,
+  "python": "3.11.3",
+  "python_executable": "D:\\CodexWork\\beans-vit-project\\venv\\Scripts\\python.exe",
+  "study_completion_sha256": "f0a42f37f61bf749542a67b4e52497ebc316a7d7f1bbab7a45e6553eb7498ef6",
+  "read_evidence_hashes_unchanged": true,
+  "colab_execution_verified": false,
+  "execution_note": "Executed locally as a reader of actual completed results; no training, optimization or test inference."
+}

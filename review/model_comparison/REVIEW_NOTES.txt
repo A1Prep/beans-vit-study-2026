@@ -1,0 +1,32 @@
+Independent comparison review
+
+The completed review is results/model_comparison/independent_review.json.
+verify_model_comparison.py is the exact verifier source identified by its
+verifier_sha256 field. The baseline JSON records original source/run artifact
+hashes captured before reviewing the new comparison results.
+
+This verifier uses its own NumPy confusion-matrix arithmetic and bootstrap. It
+does not import the project's scoring functions, deserialize models, perform
+inference, or use a GPU. It verified 12 clean test runs, 8 synthetic test
+conditions, 24 clean train/validation score sets, per-class metrics, paired
+differences, reference bootstrap, raw timing statistics, acquisition hashes,
+checkpoint locks, copied evidence, and preservation of the original artifacts.
+
+The full local provenance check requires the external pretrained weights and
+trained checkpoint folders. Raw images and model checkpoints are not included
+in this submission. Run with explicit --project, --run-root and
+--original-run-root arguments when using this bundled copy; its original
+defaults refer to the local execution workspace. The baseline file must remain
+beside the verifier. NumPy is required; no ML framework is required.
+
+Delivered prediction CSV files and the audited manifest allow the reported
+classification metrics to be independently recomputed without raw images or
+checkpoint inference. The predictions() and score() functions implement those
+checks separately; main() additionally requires the external provenance files.
+
+The review establishes consistency of recorded evidence. It does not independently
+authenticate historical timestamps or establish absence of earlier test access.
+The comparison remains exploratory because the original DINOv2 test results
+were known. Observed laptop times include unexplained long durations; every
+epoch is retained, and no controlled benchmark or causal explanation is claimed.
+No grade, deployment-readiness, or state-of-the-art guarantee is made.

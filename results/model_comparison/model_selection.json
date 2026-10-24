@@ -1,0 +1,154 @@
+{
+  "status": "selected_for_execution; successful download and runtime must be documented separately",
+  "selection_date": "2026-10-23",
+  "selected_model": {
+    "model_id": "google/siglip2-base-patch16-224",
+    "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+    "developer": "Google",
+    "paper_title": "SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features",
+    "paper_first_submitted": "2025-02-20",
+    "repository_created_at": "2025-02-17T20:00:32Z",
+    "date_note": "Repository creation date and paper submission date are different events; repository creation alone does not prove the precise public release time.",
+    "license": "Apache-2.0",
+    "public_access_metadata": {
+      "checked_on": "2026-10-23",
+      "source": "https://huggingface.co/api/models/google/siglip2-base-patch16-224",
+      "private": false,
+      "gated": false,
+      "safetensors_total_parameters": 375187970,
+      "safetensors_dtype": "F32",
+      "weight_file": "model.safetensors",
+      "scope": "Official API metadata was retrieved successfully without requesting access. This records repository accessibility, not completion of the weight download or training."
+    },
+    "vision_encoder": {
+      "published_base_size_approximate_parameters": 86000000,
+      "parameter_count_note": "The published 86M figure describes the base vision encoder scale; the full checkpoint also contains the text tower. Actual loaded vision parameters, including pooling, must be counted from the implementation.",
+      "image_size": 224,
+      "patch_size": 16,
+      "patch_tokens": 196,
+      "hidden_size": 768,
+      "transformer_layers": 12,
+      "attention_heads": 12,
+      "has_cls_token": false,
+      "checkpoint_model_type": "siglip",
+      "checkpoint_vision_model_type": "siglip_vision_model",
+      "compatible_transformers_class": "SiglipVisionModel",
+      "runtime_strategy": "Load the vision tower only for supervised image classification; the text tower is unnecessary for this experiment.",
+      "readout": "Use output.pooler_output: final patch representations pass through post_layernorm and the pretrained learned multihead attention pooling head, producing one 768-dimensional image vector.",
+      "incorrect_readout_to_avoid": "Do not copy DINOv2's last_hidden_state[:, 0] CLS extraction: SigLIP 2's token zero is an image patch, not a class token.",
+      "architecture_note": "The fixed-resolution SigLIP 2 checkpoint reuses the Siglip implementation. The separate Siglip2/NaFlex API and preprocessing are not the correct configuration for this checkpoint."
+    },
+    "native_processor": {
+      "processor_class": "SiglipProcessor",
+      "image_processor_type": "SiglipImageProcessor",
+      "do_resize": true,
+      "size": { "height": 224, "width": 224 },
+      "spatial_policy": "Direct full-image square resize; no centre crop",
+      "resample": 2,
+      "resample_name": "PIL bilinear",
+      "do_rescale": true,
+      "rescale_factor": 0.00392156862745098,
+      "do_normalize": true,
+      "image_mean": [0.5, 0.5, 0.5],
+      "image_std": [0.5, 0.5, 0.5],
+      "do_convert_rgb_in_checkpoint_config": null,
+      "project_input_handling": "Explicitly convert dataset images to RGB before preprocessing. RGB conversion is a project input safeguard; the checkpoint field itself is null."
+    },
+    "published_evidence": {
+      "table": "Table 1 of the SigLIP 2 paper",
+      "task": "Zero-shot ImageNet-1k validation classification",
+      "matched_variant": "ViT-B/16, 224-pixel input, 196 patch tokens",
+      "siglip2_accuracy_percent": 78.2,
+      "original_siglip_accuracy_percent": 76.2,
+      "difference_percentage_points": 2.0,
+      "scope": "These are the authors' published benchmark results, not this project's Beans results or a claim that all model sizes and tasks are best in October 2026.",
+      "training_advances": [
+        "Image-text sigmoid objective combined with captioning-related pretraining",
+        "Self-distillation and masked prediction objectives",
+        "Active data curation and distillation for compact fixed-resolution models"
+      ],
+      "pretraining_data": "The paper describes WebLI with 10 billion images and 12 billion alt-texts; this differs substantially from DINOv2 pretraining."
+    },
+    "selection_rationale": [
+      "A 2025 vision-language model directly strengthens the modern-model rationale relative to the established 2023 DINOv2 baseline.",
+      "Official public weights, Apache-2.0 licensing and existing Transformers 4.57.1 support reduce access and integration uncertainty.",
+      "The compact 224-pixel variant has published same-scale performance evidence and permits vision-only loading.",
+      "The current experiment harness can support a frozen classifier and bounded partial adaptation with model-specific normalization and readout.",
+      "A runtime pilot must verify feasibility on the RTX 3050 Laptop GPU with 4 GB memory before reporting successful execution."
+    ],
+    "proposed_partial_adaptation": {
+      "status": "design recommendation; actual execution metadata is authoritative",
+      "train": ["new three-class linear classifier", "vision_model.encoder.layers[-2:]", "vision_model.post_layernorm"],
+      "pooling_policy": "The pretrained attention pooling head may remain frozen while gradients propagate through it to the unfrozen encoder blocks; record the actual policy explicitly.",
+      "checks_required": ["correct output shape", "intended trainable parameter counts", "finite gradients", "frozen weights unchanged", "trainable weights updated", "checkpoint reload agreement", "measured GPU memory and runtime"]
+    }
+  },
+  "considered_alternative": {
+    "model_id": "facebook/PE-Core-B16-224",
+    "revision": "a16450b46fef32363459920c2685a1b4ef13dcd9",
+    "developer": "Meta",
+    "paper_title": "Perception Encoder: The best visual embeddings are not at the output of the network",
+    "paper_and_official_release_date": "2025-04-17",
+    "repository_created_at": "2025-04-17T05:18:55Z",
+    "license": "Apache-2.0",
+    "public_access_metadata": {
+      "checked_on": "2026-10-23",
+      "source": "https://huggingface.co/api/models/facebook/PE-Core-B16-224",
+      "private": false,
+      "gated": false,
+      "weight_file": "PE-Core-B16-224.pt",
+      "published_checkpoint_size_approximate_gb": 1.79
+    },
+    "published_vision_parameters_approximate": 90000000,
+    "published_base_imagenet_accuracy_percent": 78.4,
+    "evidence": "The PE paper explicitly reports state-of-the-art results across model scales on its evaluated classification/retrieval benchmark groups; individual benchmark advantages are mixed.",
+    "native_input": "Official transform defaults to full-image bilinear resize, RGB conversion, division by 255, and mean/std 0.5 for each channel.",
+    "native_readout": "The official vision forward path applies final normalization, configured attention pooling and the output projection. The model card gives a 1024-dimensional CLIP output for the base model.",
+    "decision": "Not selected for this extension",
+    "reason": "PE is credible and publicly accessible, but adding its separate PE/timm implementation, checkpoint mapping and validation would introduce more integration work before the deadline. SigLIP 2 fits the already working Transformers environment. This decision does not establish that PE would perform worse on Beans."
+  },
+  "existing_baseline": {
+    "model_id": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "role": "Previously executed baseline; preserve its results and provenance",
+    "recorded_acquisition_evidence": "results/model_acquisition.json",
+    "recorded_execution_evidence": "results/final_verification.json"
+  },
+  "reporting_rules": {
+    "recommended_model_description": "SigLIP 2 is a recent (2025) vision-language foundation-model family with state-of-the-art-competitive compact-model results in its published comparisons. Its accessible B/16-224 variant was selected for a controlled transfer experiment under the available compute budget.",
+    "preferred_concrete_evidence": "At the matched B/16-224 scale, the published ImageNet zero-shot result improves from 76.2% for original SigLIP to 78.2% for SigLIP 2.",
+    "do_not_claim": [
+      "The latest or universally best model available in October 2026",
+      "State-of-the-art performance on Beans without a comprehensive comparable benchmark",
+      "That newer publication date guarantees higher Beans performance",
+      "That gains over DINOv2 isolate the effect of architecture or publication date",
+      "That published fairness improvements establish fairness for Beans or its farmers",
+      "Successful download or GPU execution based solely on public repository metadata"
+    ],
+    "comparison_caveats": [
+      "Model capacity, pretraining data/objectives, spatial interpolation, normalization and readout differ; compare concrete systems, not a single isolated causal factor.",
+      "Preserve the audited data split and original DINOv2 results. Freeze the new settings before inspecting SigLIP 2 test predictions and retain underperforming runs.",
+      "Disclose that this is an expanded study after the original DINOv2 evaluation. Do not describe the entire enlarged investigation as prospectively untouched.",
+      "Published bias and fairness results concern the paper's separate evaluation datasets. They motivate investigation and do not constitute a Beans-specific fairness audit.",
+      "The small test set, unknown plant/farm dependence and lack of external validation still apply."
+    ]
+  },
+  "primary_sources": [
+    {"id":"siglip2-paper","url":"https://arxiv.org/abs/2502.14786","supports":"Paper title, authors and first submission date"},
+    {"id":"siglip2-full-paper","url":"https://arxiv.org/html/2502.14786v1","supports":"Table 1 benchmark values, training recipe, base scale, WebLI description and separate bias/fairness evaluations"},
+    {"id":"google-model-card","url":"https://huggingface.co/google/siglip2-base-patch16-224","supports":"Official model identity, intended vision use and Apache-2.0 licence"},
+    {"id":"google-api","url":"https://huggingface.co/api/models/google/siglip2-base-patch16-224","supports":"Observed official access metadata, revision, repository creation date and full-checkpoint parameter metadata"},
+    {"id":"google-config","url":"https://huggingface.co/google/siglip2-base-patch16-224/blob/75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2/config.json","supports":"Fixed-resolution checkpoint model type"},
+    {"id":"google-processor","url":"https://huggingface.co/google/siglip2-base-patch16-224/blob/75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2/preprocessor_config.json","supports":"Native resize, interpolation, scaling, normalization and RGB configuration field"},
+    {"id":"google-release-code","url":"https://github.com/google-research/big_vision/blob/main/big_vision/configs/proj/image_text/README_siglip2.md","supports":"Official checkpoints, compact model scale and fixed-resolution versus NaFlex implementation distinction"},
+    {"id":"transformers-implementation","url":"https://raw.githubusercontent.com/huggingface/transformers/v4.57.1/src/transformers/models/siglip/modeling_siglip.py","supports":"SiglipVisionModel, final normalization, learned attention pooling and pooler_output semantics"},
+    {"id":"pe-paper","url":"https://arxiv.org/html/2504.13181v2","supports":"PE benchmark claims and base-variant comparison limitations"},
+    {"id":"meta-release","url":"https://ai.meta.com/research/publications/perception-encoder-the-best-visual-embeddings-are-not-at-the-output-of-the-network/","supports":"Official release date and family description"},
+    {"id":"pe-model-card","url":"https://huggingface.co/facebook/PE-Core-B16-224","supports":"Official model identity, architecture, vision scale, output dimension, results and licence"},
+    {"id":"pe-api","url":"https://huggingface.co/api/models/facebook/PE-Core-B16-224","supports":"Observed access metadata, revision and repository creation date"},
+    {"id":"pe-files","url":"https://huggingface.co/facebook/PE-Core-B16-224/tree/main","supports":"Official checkpoint file and approximate download size"},
+    {"id":"pe-transforms","url":"https://raw.githubusercontent.com/facebookresearch/perception_models/main/core/vision_encoder/transforms.py","supports":"Official preprocessing defaults"},
+    {"id":"pe-implementation","url":"https://raw.githubusercontent.com/facebookresearch/perception_models/main/core/vision_encoder/pe.py","supports":"Official vision forward path, pooling and projection"}
+  ]
+}

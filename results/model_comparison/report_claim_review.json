@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-24T08:00:18.046729+00:00",
+  "scope": "Independent numerical and scientific claim review of final report source and presentation notes; no grade guarantee or new model inference.",
+  "source_sha256": {
+    "report/technical_report.md": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
+    "report/presentation_notes.md": "a25feaa4c4934bdb268508021f87c09aad02fc0eac9cadd199a06823395ba075",
+    "results/model_comparison/independent_review.json": "32054c9ae773ce0cbe9e5d08463e95ee42434b733e91d960f5d6b296050877ef",
+    "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
+    "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
+    "results/model_comparison/paired_model_differences.csv": "88d0ea57e45eda61c54f59df179e5c61b0780096423944e642fb9bf0eef97566",
+    "results/model_comparison/combined_checkpoint_gaps.csv": "d5292ed9f60f506c6af920ac37e0f9dd3bb2b0f59786296c29c21f89677c9c75",
+    "results/model_comparison/siglip_selected_examples.csv": "559efb2173ef700fb29d6d3f13616c7fbd4bbd0631c79f3d9816797f94f69eb9",
+    "results/model_comparison/timing_analysis_amendment.json": "0e0e718ac1dbd191987d0ddb094170d9dfe204c7ffa27f80febbfd463237e7a0",
+    "results/model_comparison/implementation_tests.txt": "161a5ccd9970c11783795936c4f209f44ca48807cea72ffe1fe7d069fab60a57",
+    "results/data_audit/audit_summary.json": "40bbbb7c94babeaae43097caa926d6e251811b66b6e1f90265a51504ee2bd855",
+    "results/data_audit/visual_review_record.json": "3bb0a21f2e978b8592f7a852b96b1cdbad4071451e53669ade1647c709c1c73f"
+  },
+  "unresolved_material_findings": [],
+  "report_whitespace_words_including_references_and_markers": 2035,
+  "word_limit": 2500,
+  "raw_source_below_word_limit": true,
+  "pdf_visual_review_performed_by_this_reviewer": false,
+  "rubric_coverage_without_grade_prediction": [
+    {
+      "area": "dataset",
+      "status": "passed",
+      "weight": 15,
+      "evidence": "Loaded 1,295 images; split/class counts, RGB dimensions, no corrupt/exact duplicates and 14 screened pairs including seven cross-split pairs match audit files. Expert source labels are distinguished from AI duplicate screening; missing farm/plant identities and unknown pretraining overlap are disclosed."
+    },
+    {
+      "area": "model and implementation",
+      "status": "passed",
+      "weight": 25,
+      "evidence": "Concrete accessible SigLIP2 checkpoint, native bilinear preprocessing, frozen pretrained attention pooler and partial gradients are accurate. DINO full-image resize override is explicit. Loaded parameter counts and adaptation settings match run metadata; the model-family comparison is not represented as a causal age/architecture experiment."
+    },
+    {
+      "area": "evaluation",
+      "status": "passed",
+      "weight": 20,
+      "evidence": "All four configuration means/sample SDs, raw mean training times, majority baseline, paired-seed differences, reference bootstrap, clean split means/gaps, class errors, harm-type counts, highest wrong confidence and stress scores match independently recomputed artifacts. The bootstrap concerns seed 17, not the three-seed mean. Later loss deterioration and selected-checkpoint caveats are supported by history files."
+    },
+    {
+      "area": "ethics",
+      "status": "passed",
+      "weight": 20,
+      "evidence": "The report connects error types to plausible agricultural harms without claiming measured deployment outcomes; covers restricted classes, uncalibrated confidence, geographic/farmer/device fairness limits, referral/expert oversight, consent/privacy, licences/attribution, environmental limitations and AI assistance."
+    },
+    {
+      "area": "report",
+      "status": "passed",
+      "weight": 20,
+      "evidence": "Text contains completed results and no placeholders; conclusion accurately reports stronger frozen SigLIP features and effectively tied partial means with smaller DINOv2 parameter/memory costs. References and experimental limitations are explicit. This content review does not certify PDF layout; visual review is separate."
+    }
+  ],
+  "rounding": "DINOv2 frozen accuracy is exactly 90.625%; 90.62 uses ties-to-even formatting consistently. 90.63 would also be defensible under half-up formatting. This has no scientific effect.",
+  "primary_paper_fact_checked": {
+    "url": "https://arxiv.org/html/2502.14786v1",
+    "claim": "Table 1 B/16 at 224 resolution reports ImageNet zero-shot accuracy 78.2 for SigLIP2 versus 76.2 for original SigLIP; the specified same-size comparison supports recent-model selection without a Beans SOTA claim."
+  },
+  "key_exact_results": {
+    "partial_siglip2_minus_dinov2_mean_macro_f1_percentage_points": 0.001101562425945612,
+    "reference_seed17_difference_percentage_points": -0.7770757367027481,
+    "reference_seed17_bootstrap_ci95_percentage_points": [
+      -3.13437134008446,
+      1.570583887657051
+    ]
+  },
+  "interpretation": "No consistent partial-model advantage is established across three seeds. These are exploratory results on a previously evaluated small test set. Observed laptop timing retains unexplained long durations and is not a controlled hardware benchmark.",
+  "remaining_limits": [
+    "No external farm-level validation or pretraining-overlap measurement.",
+    "Unknown plant/farm dependence is not corrected by the paired image bootstrap.",
+    "No fresh confirmatory claim, deployment certification or grade guarantee.",
+    "Full Colab training was not executed; presentation notes disclose local execution."
+  ]
+}

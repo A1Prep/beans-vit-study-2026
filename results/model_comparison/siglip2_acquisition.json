@@ -1,0 +1,38 @@
+{
+  "model_id": "google/siglip2-base-patch16-224",
+  "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+  "downloaded_utc": "2026-10-23T17:53:41.755364+00:00",
+  "gated": false,
+  "authentication_used": false,
+  "license": "apache-2.0",
+  "download_method": "Public HTTPS, resumed using four concurrent ranges; complete published LFS SHA256 verified",
+  "local_path": "D:\\CodexWork\\beans-vit-project\\models\\siglip2-base-patch16-224",
+  "files": [
+    {
+      "file": "config.json",
+      "bytes": 253,
+      "sha256": "fe8b5fe6d5734360678fd71c11c21e1ea3364bd8598d34295d9206335973ffd7",
+      "published_lfs_sha256": null
+    },
+    {
+      "file": "preprocessor_config.json",
+      "bytes": 394,
+      "sha256": "9b36b57ebaf20f09bf4c22100ccc21877ea6bfe5aead0c00c59f8af8ccefacfc",
+      "published_lfs_sha256": null
+    },
+    {
+      "file": "README.md",
+      "bytes": 3375,
+      "sha256": "39ac3705d62af9ffa1a14675b8ccb220a75f2d81acd530e564a3b1e3dfe418d8",
+      "published_lfs_sha256": null
+    },
+    {
+      "file": "model.safetensors",
+      "bytes": 1500800904,
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "published_lfs_sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b"
+    }
+  ],
+  "official_model_card": "https://huggingface.co/google/siglip2-base-patch16-224",
+  "paper": "https://arxiv.org/abs/2502.14786"
+}

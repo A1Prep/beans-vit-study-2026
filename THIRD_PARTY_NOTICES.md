@@ -39,3 +39,7 @@ Pretrained weights and derived trained checkpoints are not distributed in this r
 ## Software dependencies and project code
 
 Python packages are installed separately from the pinned requirements; their own licenses and notices continue to apply. This repository does not vendor those packages. No repository-wide license has been selected for the original student project code. The notices above preserve third-party attribution and do not apply the dataset or model license to all project files.
+
+## SigLIP 2 model attribution
+
+The follow-up comparison uses Google's `google/siglip2-base-patch16-224`, revision `75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2`, under the Apache-2.0 license identified in its [official model card](https://huggingface.co/google/siglip2-base-patch16-224). Cite Tschannen et al. (2025), [SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features](https://arxiv.org/abs/2502.14786). Only its pretrained vision tower is used for this supervised classification experiment. Model weights are downloaded separately and are not distributed in this repository or project ZIP. Dataset-image excerpts in the new comparison figures remain covered by the Makerere notice above.

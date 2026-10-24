@@ -1,21 +1,14 @@
 {
   "maximum": 2500,
-  "raw_markdown_whitespace_words": 2236,
-  "rendered_text_whitespace_words": 2155,
-  "includes": [
-    "title",
-    "headings",
-    "tables",
-    "captions",
-    "references"
-  ],
-  "excludes": [
-    "image pixel text",
-    "URLs hidden behind source links"
-  ],
-  "method": "Whitespace token count after removing Markdown syntax for rendered count; raw Markdown retained as conservative text count. An additional 250-word allowance covers labels and numbers embedded in the three figures; this is an allowance, not an OCR count.",
+  "raw_markdown_whitespace_words": 2035,
+  "pdf_extracted_words_including_footers": 2008,
+  "figure_text_words_from_companion_vector_pdfs": {
+    "model_comparison/figures/performance_cost": 54,
+    "model_comparison/figures/partial_confusion": 52,
+    "model_comparison/figures/siglip_sample_predictions": 58
+  },
+  "total_figure_text_words": 164,
+  "conservative_budget_count": 2199,
   "within_limit": true,
-  "source": "report/technical_report.md",
-  "figure_text_allowance": 250,
-  "conservative_budget_count": 2486
+  "method": "Maximum of raw Markdown whitespace tokens and extracted final PDF tokens including footers, plus all extracted words from the three companion vector figure PDFs. Report embeds these figures as raster images, so their labels are counted separately."
 }

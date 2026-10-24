@@ -1,5 +1,7 @@
 # Execution evidence
 
+This page records the original six-run DINOv2 study completed on 23 October. The [newer SigLIP 2 comparison](model_comparison/README.md) has its own 12-run evidence and report. Original verification records in this folder describe the original study; its report is [archived here](../report/archive/dinov2_study_2026-10-23/technical_report.pdf).
+
 **Completed locally on 23 October 2026:** data acquisition and audit, both full-epoch GPU pilots, six training runs, locked test evaluation, synthetic sensitivity checks, and statistical analysis. The full Colab workflow has not been executed.
 
 The backbone was `facebook/dinov2-small` at revision `ed25f3a31f01632728cabb09d1542f84ab7b0056`. All experiments used the original audited Makerere Beans split: 1,034 train, 133 validation and 128 test images. The hardware was an NVIDIA GeForce RTX 3050 Laptop GPU with 4 GB VRAM, PyTorch 2.6.0+cu124, Python 3.11 and transformers 4.57.1. Exact installed versions are in `environment-lock.txt`.

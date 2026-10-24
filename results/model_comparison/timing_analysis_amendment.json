@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-10-24T05:58:39.0055066Z",
+  "before_new_test_evaluation": true,
+  "original_dinov2_test_results_previously_known": true,
+  "status": "Descriptive analysis amendment recorded during follow-up training, before any new follow-up test evaluation",
+  "inspected_followup_run_root": "D:\\CodexWork\\beans-vit-project\\model_comparison",
+  "observed_new_test_artifact_count": 0,
+  "motivation": {
+    "model": "siglip2",
+    "arm": "frozen",
+    "seed": 17,
+    "epoch": 9,
+    "observed_training_seconds": 809.0957316000004,
+    "complete_run_training_seconds": 930.0125158000001,
+    "other_nine_epochs": "Approximately 13 seconds each",
+    "cause": "Unknown; no causal attribution",
+    "history_relative_path": "siglip2/runs/frozen/seed_17/history.csv",
+    "history_sha256": "f727ce5bc65cc84740a5ad991c96e0fc9b3e6ac883a6bab71be0b190673f4f27",
+    "summary_relative_path": "siglip2/runs/frozen/seed_17/summary.json",
+    "summary_sha256": "7ba3f255e4eaf20dc00222c4d510696b07f8b6eca431edc85b473f25f420c982"
+  },
+  "training_changes": false,
+  "checkpoint_selection_changes": false,
+  "test_evaluation_changes": false,
+  "raw_times_preserved": true,
+  "existing_metrics_retained": [
+    "Per-run total and mean training time",
+    "Configuration mean run time",
+    "Pooled total time, total epochs and time per epoch",
+    "Peak allocated CUDA memory"
+  ],
+  "additional_descriptive_statistics": [
+    "Per-run median observed training epoch time",
+    "Per-configuration median, first and third quartiles, interquartile range, minimum and maximum across every observed training epoch from all three seeds"
+  ],
+  "quantile_method": "NumPy linear interpolation",
+  "cost_figure_metric": "Median observed training epoch time with interquartile range, pooled across all completed epochs in each model/arm",
+  "exclusions_or_corrections": "None: no epoch is removed, replaced, corrected or assigned a cause",
+  "interpretation": "Medians describe typical observed durations; raw means and totals retain long observations. Unequal completed epoch counts weight seeds differently in pooled summaries. These durations are not corrected or controlled hardware benchmarks."
+}

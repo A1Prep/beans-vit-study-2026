@@ -1,0 +1,165 @@
+{
+  "diagnostic": "post-hoc, no optimization",
+  "checkpoint_sha256": "ff45ce360051d8fc58384a44ad25e9e14edb9db023b53ca2db80e3851488bc6d",
+  "measurements": {
+    "train": {
+      "n": 1034,
+      "accuracy": 0.9555125725338491,
+      "macro_f1": 0.955639261107745,
+      "confusion_matrix": [
+        [
+          331,
+          11,
+          3
+        ],
+        [
+          26,
+          320,
+          2
+        ],
+        [
+          1,
+          3,
+          337
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9245810055865922,
+          "recall": 0.9594202898550724,
+          "f1": 0.9416785206258891,
+          "support": 345
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.9580838323353293,
+          "recall": 0.9195402298850575,
+          "f1": 0.93841642228739,
+          "support": 348
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 0.9853801169590644,
+          "recall": 0.9882697947214076,
+          "f1": 0.986822840409956,
+          "support": 341
+        }
+      ],
+      "loss": 0.12215552327711302,
+      "seconds": 9.393619300000864
+    },
+    "validation": {
+      "n": 133,
+      "accuracy": 0.9548872180451128,
+      "macro_f1": 0.955219768392957,
+      "confusion_matrix": [
+        [
+          42,
+          2,
+          0
+        ],
+        [
+          3,
+          42,
+          0
+        ],
+        [
+          1,
+          0,
+          43
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "angular_leaf_spot",
+          "precision": 0.9130434782608695,
+          "recall": 0.9545454545454546,
+          "f1": 0.9333333333333332,
+          "support": 44
+        },
+        {
+          "label": 1,
+          "name": "bean_rust",
+          "precision": 0.9545454545454546,
+          "recall": 0.9333333333333333,
+          "f1": 0.9438202247191012,
+          "support": 45
+        },
+        {
+          "label": 2,
+          "name": "healthy",
+          "precision": 1.0,
+          "recall": 0.9772727272727273,
+          "f1": 0.9885057471264368,
+          "support": 44
+        }
+      ],
+      "loss": 0.12257957996282362,
+      "seconds": 1.1390446000004886
+    }
+  },
+  "existing_test_metrics": {
+    "n": 128,
+    "accuracy": 0.8984375,
+    "macro_f1": 0.8993187395066512,
+    "confusion_matrix": [
+      [
+        39,
+        4,
+        0
+      ],
+      [
+        3,
+        39,
+        1
+      ],
+      [
+        2,
+        3,
+        37
+      ]
+    ],
+    "per_class": [
+      {
+        "label": 0,
+        "name": "angular_leaf_spot",
+        "precision": 0.8863636363636364,
+        "recall": 0.9069767441860465,
+        "f1": 0.896551724137931,
+        "support": 43
+      },
+      {
+        "label": 1,
+        "name": "bean_rust",
+        "precision": 0.8478260869565217,
+        "recall": 0.9069767441860465,
+        "f1": 0.8764044943820224,
+        "support": 43
+      },
+      {
+        "label": 2,
+        "name": "healthy",
+        "precision": 0.9736842105263158,
+        "recall": 0.8809523809523809,
+        "f1": 0.925,
+        "support": 42
+      }
+    ],
+    "loss": 0.17062328476458788,
+    "seconds": 1.56071079999856,
+    "arm": "frozen",
+    "seed": 17,
+    "split": "test",
+    "corruption": "clean",
+    "checkpoint_epoch": 9,
+    "checkpoint_sha256": "ff45ce360051d8fc58384a44ad25e9e14edb9db023b53ca2db80e3851488bc6d",
+    "manifest_sha256": "37c2a4c929150ebb899954c9896ab9fbc51b6d3b1c02f1006bfb6ee00b2ad340",
+    "protocol_lock_sha256": "22d0b434ea4c32a54044ccdece6ee6cdc7ed51aaf33ac9d106273daed08c0765"
+  },
+  "validation_predictions_match_original": true
+}

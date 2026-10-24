@@ -1,18 +1,18 @@
-# Bean-Leaf Disease Classification with a Pretrained Vision Transformer: Frozen Features versus Partial Fine-Tuning
+# Bean-Leaf Disease Classification with SigLIP 2 and DINOv2: Accuracy, Adaptation and Computational Cost
 
-Experiments executed: 23 October 2026.
+Experiments executed: 24 October 2026.
 
-## 1. Introduction
+## 1. Introduction and research question
 
-Image-based recognition could support agricultural assessment, but a classifier must be evaluated beyond its overall accuracy. The practical question here is whether a small labelled dataset benefits from adapting an existing vision model. Vision transformers represent an image as a sequence of embedded patches and use attention to exchange information across them [1]. Pretraining enables these representations to be reused for a new classification task.
+This study compares the recent SigLIP 2 (2025) vision-language encoder with DINOv2 (2023) for bean-leaf classification [1,2]. Both use attention over image-patch representations learned through pretraining.
 
-This study asks: on the published Beans split, does updating the final layers of a pretrained transformer improve macro-F1 over a frozen backbone, how reliable is the difference, and what additional training cost does it require? The contribution is a controlled comparison of two adaptation strategies, with reproducible evaluation and analysis of failure consequences. The experiment evaluates recognition of three dataset categories; it does not establish a field-ready diagnostic system.
+The primary question was whether partial SigLIP 2 fine-tuning improved macro-F1 over partial DINOv2. Frozen features, adaptation benefits, cost and failures provided secondary comparisons. This was an exploratory extension: original DINOv2 test results were already known. Both backbones were trained afresh under fixed settings, but the reused test set cannot provide fresh confirmatory evidence.
 
-## 2. Dataset and audit
+## 2. Dataset selection and audit
 
-Beans contains smartphone photographs collected in Ugandan fields by Makerere AI Lab with the National Crops Resources Research Institute. Agricultural experts assigned three labels: angular leaf spot, bean rust and healthy [3]. The small labelled sample motivates transfer learning, while field backgrounds provide a more relevant setting than isolated leaf cutouts.
+Makerere AI Lab's Beans dataset contains smartphone photographs from Ugandan fields, collected with the National Crops Resources Research Institute and labelled by agricultural experts as angular leaf spot, bean rust or healthy [3]. Its limited sample size motivates pretrained representations; field backgrounds provide a relevant challenge beyond isolated leaf cutouts.
 
-The pinned Hugging Face release contains 1,034 training, 133 validation and 128 test images [4]. The original repository reports 1,296 images; the distributed splits actually loaded here total 1,295. Table 1 reports the retained class counts. All images were 500 × 500 RGB, with no corrupt files. File and decoded-pixel hashes found no exact duplicates. A 64-bit perceptual-hash screen at Hamming distance ≤12 produced 14 candidate pairs, including seven across splits. Recorded AI-assisted visual duplicate screening judged them distinct; no images were excluded. Test images were accessed for this integrity audit before modelling, but not for training or checkpoint selection. This screening was not independent expert verification of disease labels.
+The pinned Hugging Face release contains 1,295 images, although the original repository describes 1,296 [3,4]. Table 1 gives the actual loaded counts. Every image was 500 × 500 RGB, with no corrupt files. File and decoded-pixel hashes found no exact duplicates. A 64-bit perceptual-hash screen at Hamming distance ≤12 produced 14 candidate pairs, including seven across splits. Recorded AI-assisted visual screening judged them distinct, so none were excluded. This was not independent expert verification of labels.
 
 | Class | Training | Validation | Test |
 |---|---:|---:|---:|
@@ -21,100 +21,108 @@ The pinned Hugging Face release contains 1,034 training, 133 validation and 128 
 | Healthy | 341 | 44 | 42 |
 | Total | 1,034 | 133 | 128 |
 
-Table 1. Audited split counts; no exclusions were required.
+Table 1. Retained counts from the audited dataset release.
 
-The original split was preserved. The manifest, audit decisions and revisions accompany the code. Perceptual hashing cannot exclude every related photograph. No plant or farm identifiers were available, so independence at those levels and geographic generalisation remain unverified. Potential overlap with the backbone's pretraining collection was not measured.
+The published split was preserved. Test images had also been inspected during the original integrity audit. No plant or farm identifiers were available, so independence at those levels is unverified. Hash screening cannot exclude every related photograph, and overlap with either backbone's pretraining collection was not measured. Revisions, the manifest and screening decisions accompany the code.
 
-## 3. Pre-processing
+## 3. Model selection and configuration
 
-Images were converted to RGB and resized in full to 224 × 224 using bicubic interpolation. Their square aspect ratio was preserved. Values were divided by 255 and normalised using checkpoint channel means (0.485, 0.456, 0.406) and standard deviations (0.229, 0.224, 0.225) [6]. The official processor resizes to 256 and centre-crops to 224; the full-image resize here deliberately retains peripheral image regions while reducing fine detail.
+Google's public `google/siglip2-base-patch16-224` checkpoint was downloaded without authentication and its published weight hash verified [5]. The 2025 family combines image-text learning, captioning, self-distillation, masked prediction and data curation [1]. Its paper reports 78.2% ImageNet zero-shot accuracy versus original SigLIP's 76.2%, leading the same-size B/16–224 baselines in Table 1 [1]. This supports selecting a recent advanced model; it establishes neither the best October 2026 model nor state-of-the-art Beans performance.
 
-Training applied horizontal and vertical flips, each with probability 0.5, followed by rotation sampled uniformly from −15° to 15°, with mean-colour border fill. These bounded changes vary orientation while avoiding deliberate colour alteration or aggressive cropping of disease evidence. Validation and test preparation was deterministic. Augmentation and sample order were deterministic functions of seed, epoch and image identifier, giving both training arms matched inputs. Frozen features were computed from the augmented images during training, avoiding a comparison against an unaugmented cache.
+Only SigLIP 2's image tower was used. Its 12 blocks process 196 patches of 16 × 16 pixels at 224 × 224, with 768-dimensional embeddings and 12 attention heads. Final normalisation and pretrained attention pooling produce a vector for a new three-class linear classifier [5,6]. Token zero is an image patch, not a class token. This fixed-resolution checkpoint uses `SiglipVisionModel`, distinct from NaFlex.
 
-## 4. Model and training
+DINOv2 used `facebook/dinov2-small`: 12 blocks, 384-dimensional embeddings, six heads and 256 patches of 14 × 14 pixels, plus a class token. Its final normalised class token fed the classifier [2,7]. DINOv2's LVD-142M pretraining differs from SigLIP 2's WebLI pretraining. Capacity, pretraining, pooling and preprocessing differ, so this system comparison cannot isolate publication year or architecture.
 
-The backbone was facebook/dinov2-small, a ViT-S/14 pretrained through DINOv2 self-supervision and distillation on the curated LVD-142M collection [2,5]. Its configuration has 12 transformer blocks, 384-dimensional embeddings and six attention heads. At 224 × 224, 14 × 14 patches produce 256 patch tokens plus a class token [5,6]. The final 384-dimensional class token feeds a new linear three-class classifier. The exact model and dataset revisions are recorded in the accompanying metadata.
+| Model | Total parameters | Frozen-arm trainable | Partial-arm trainable |
+|---|---:|---:|---:|
+| DINOv2-S/14 | 22,057,731 | 1,155 | 3,552,387 |
+| SigLIP 2-B/16 | 92,886,531 | 2,307 | 14,179,587 |
 
-DINOv2 offers documented transferable representations and a manageable model size. It is an established vision foundation model, not the newest 2026 architecture or a claimed state-of-the-art Beans result. Accessible weights made this a practical choice after the preferred DINOv3 checkpoint required gated access. Meta recommends starting with frozen features [5], motivating a test of whether adaptation benefits this small dataset.
+Table 2. Actual loaded image-model counts, including pooling and the new classifier; the SigLIP text tower is excluded.
 
-Arm A trained only the classifier. Arm B additionally trained blocks 10–11 and the final normalisation layer, leaving earlier layers fixed. Both used the same backbone weights, paired classifier initialisation, data, augmentation and head learning rate. The backbone stayed in evaluation mode in both arms to disable stochastic layers; gradient tracking remained enabled for trainable parameters in Arm B. Trainable counts were 1,155 and 3,552,387 (22,057,731 total in each model).
+## 4. Pre-processing and training
 
-Cross-entropy was optimised with AdamW: head learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1, and mixed FP16 precision. Learning rates were constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 increases. Checkpoint ties used lower validation loss, then earlier epoch. Three paired seeds (17, 42 and 2026) completed both arms; no hyperparameter search was performed. Settings were fixed before final test evaluation. A full-epoch pilot verified finite gradients, unchanged frozen weights, updates to intended parameters and matching pilot outputs after checkpoint reload. Seven implementation tests passed. Runtime was measured on an NVIDIA GeForce RTX 3050 Laptop GPU (4 GB), using PyTorch 2.6.0 with CUDA 12.4. Configurations, histories, revisions and per-image predictions support reproduction. Random seeds and data ordering were controlled, but CUDA attention issued a nondeterminism warning; bitwise reproduction is not guaranteed. Codex assisted with implementation, analysis, drafting and review; the reported experiments were executed.
+RGB images were resized in full to 224 × 224, preserving their square aspect ratio. SigLIP 2 followed its native bilinear resize and channel mean/standard deviation 0.5 [5]. DINOv2 used bicubic interpolation, means (0.485, 0.456, 0.406) and standard deviations (0.229, 0.224, 0.225). Its official resize-to-256/centre-crop processor was deliberately replaced with full-image resizing to retain peripheral regions [7]. Both approaches reduce fine detail.
 
-## 5. Evaluation
+Training used horizontal and vertical flips with probability 0.5 each, then rotation uniformly within ±15°, with model-specific mean-colour fill. This varied orientation without deliberately changing lesion colour or cropping symptoms. Seed-, epoch- and image-dependent randomness matched sample order and augmentation decisions. Validation/test preprocessing was deterministic. Frozen representations were computed from augmented training images.
 
-The primary metric was macro-F1, the unweighted mean of the three class F1 scores, giving each class equal influence. Accuracy, class-specific precision, recall, F1 and support, and confusion matrices provide complementary views. A majority-class classifier, selected from training labels only, supplies a simple baseline. Both arms were evaluated on the same audited test images after all model-selection decisions were fixed.
+The frozen arm trained only the classifier. Partial adaptation additionally trained the final two blocks and final normalisation. SigLIP's pretrained pooling head remained frozen while gradients passed through it. Backbones stayed in evaluation mode with gradients enabled for intended parameters. Classifier initialisation was paired within each backbone; representation dimensions prevent identical heads across backbones.
 
-For repeated training, the mean and standard deviation across paired seeds describe optimisation variability. This is distinct from uncertainty caused by the small test sample. For the prespecified reference seed 17, a paired class-stratified bootstrap used 2,000 resamples (random seed 20261020) to estimate a 95% percentile interval for the partial-minus-frozen macro-F1 difference. Each resample used the same image indices for both arms. This interval concerns that reference pair, not the three-seed mean. The interval is conditional on the observed class composition and an independence assumption; it cannot account for unknown plant or farm dependence. A difference was interpreted alongside its size, uncertainty and training cost rather than accuracy alone.
+Cross-entropy used AdamW, classifier learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1 and CUDA FP16. Rates remained constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 improvement; checkpoint ties used lower loss, then earlier epoch. Three seeds (17, 42, 2026), two arms and two models completed 12 fresh runs. No hyperparameter search was performed; settings were not separately optimised for each backbone.
+
+Full-epoch pilots passed for both models/arms; 35 implementation, protocol and analysis tests passed. Execution used an RTX 3050 Laptop GPU (4 GB), PyTorch 2.6.0/CUDA 12.4 and Transformers 4.57.1. Configurations, histories, hashes and predictions support reproduction. Controlled seeds do not guarantee bitwise CUDA reproducibility. Codex assisted implementation, analysis and drafting.
+
+## 5. Evaluation design
+
+Macro-F1 was primary because it weights each class equally. Accuracy, class precision/recall/F1, confusion matrices and examples complemented it. The training-majority classifier supplied a baseline. All 12 runs finished before selected checkpoints were locked and new test inference began; prior test exposure still applies.
+
+Means and sample standard deviations over three seeds describe training variability. The primary reference comparison was seed-17 partial SigLIP 2 minus partial DINOv2. A paired class-stratified bootstrap used 2,000 resamples, seed 20261023 and shared image indices for a descriptive 95% percentile interval. This concerns that pair, not the three-seed mean; unknown plant/farm dependence remains uncorrected.
+
+Raw training totals/means and peak allocated CUDA memory quantify measured cost. SigLIP's frozen seed-17 epoch 9 recorded 809.10 seconds while its other epochs took about 13 seconds; the cause is unknown. Before new test evaluation, a documented descriptive amendment added observed epoch medians, quartiles and ranges. Figure 1 uses pooled epoch medians and interquartile ranges; all raw durations remain retained, with no exclusion or correction. These are observed durations, not controlled hardware benchmarks.
+
+Selected checkpoints were scored on clean training/validation images, reusing saved test scores. Online augmented training loss is not directly comparable to clean validation loss. Reference-seed blur (radius 1) and brightness ×0.7 examined synthetic sensitivity, not field robustness.
 
 ## 6. Results and interpretation
 
-Table 2 shows improvements for partial fine-tuning under the fixed configurations. The mean macro-F1 gain was 6.45 percentage points; both arms substantially exceeded the training-majority baseline, which always predicted bean rust.
+Both partial models averaged 96.90% macro-F1, differing by less than 0.01 percentage points (Table 3). SigLIP's frozen features exceeded frozen DINOv2 by 6.18 points; partial adaptation improved DINOv2 by 6.18 points but produced no meaningful average gain for SigLIP.
 
-| Approach | Accuracy (%) | Macro-F1 (%) | Mean training time (s) |
+| Configuration | Accuracy (%) | Macro-F1 (%) | Mean training (s) |
 |---|---:|---:|---:|
-| Majority baseline | 33.59 | 16.76 | — |
-| Frozen features | 90.63 ± 2.07 | 90.71 ± 2.05 | 100.6 |
-| Partial fine-tuning | 97.14 ± 1.19 | 97.16 ± 1.18 | 101.8 |
+| DINOv2 frozen | 90.62 ± 2.07 | 90.71 ± 2.05 | 102.8 |
+| DINOv2 partial | 96.88 ± 1.56 | 96.90 ± 1.55 | 96.2 |
+| SigLIP 2 frozen | 96.88 ± 1.35 | 96.90 ± 1.34 | 387.5 |
+| SigLIP 2 partial | 96.88 ± 0.78 | 96.90 ± 0.78 | 195.9 |
 
-Table 2. Means ± sample standard deviations across three seeds; the deterministic baseline has one result. Training time excludes validation, loading and checkpoint overhead.
+Table 3. Means ± sample SD across three seeds. Raw training times exclude validation/loading/checkpoint overhead and retain long observations. The majority baseline scored 33.59% accuracy and 16.76% macro-F1.
 
-| Paired seed | Frozen F1 (%) | Partial F1 (%) | Difference (points) |
-|---|---:|---:|---:|
-| 17 | 89.93 | 98.45 | +8.52 |
-| 42 | 89.16 | 96.14 | +6.97 |
-| 2026 | 93.04 | 96.90 | +3.86 |
+Partial SigLIP-minus-DINO differences were −0.78, +1.55 and −0.77 points for seeds 17, 42 and 2026. The reference bootstrap interval was [−3.13, +1.57] points, including zero. Neither the seed pattern nor this interval establishes superiority.
 
-Table 3. Every paired seed favoured partial fine-tuning. The reference difference was +8.52 points, with bootstrap interval [3.15, 14.10]. This supports a positive difference for that pair under the stated sampling assumptions; it does not establish superiority on other datasets.
+<!--FIGURE:model_comparison/figures/performance_cost-->
 
-Reference checkpoints were epochs 3 and 9 for partial and frozen training (Figure 1). Across all six histories, some later epochs deteriorated: partial seed 42 validation loss rose from 0.060 at selected epoch 5 to 0.135 at epoch 8 while training loss fell, consistent with overfitting or instability. Validation-based checkpoint selection limited this deterioration. A post-hoc audit scored unchanged checkpoints on clean training and validation images, reusing existing test results. Partial mean macro-F1 was 98.59%, 98.51% and 97.16% on training, validation and test: a 1.42-point training–test gap, versus 3.55 for frozen features. These modest gaps cannot exclude overfitting; validation also informed selection. All-seed curves and diagnostics accompany the code. Online augmented training loss is not directly comparable to clean validation loss.
+Figure 1. Test macro-F1 means, seed standard deviations and individual runs; median observed training epoch time with interquartile range. Raw totals and ranges remain in the accompanying results.
 
-<!--FIGURE:learning_curves-->
+Partial DINOv2/SigLIP median epoch times were 12.62/16.08 seconds, with peak allocated memory 288/722 MB. SigLIP's extra capacity did not yield higher mean accuracy. Long durations included 809.10 seconds for frozen SigLIP and 184.36 seconds for partial SigLIP; causes remain unknown. Raw totals should not be treated as controlled speed comparisons.
 
-Figure 1. Training/validation loss and validation macro-F1 for reference seed 17. Selection used validation macro-F1, then lower loss.
+Clean train/validation/test macro-F1 averaged 98.17/98.51/96.90% for partial DINOv2 and 98.91/98.26/96.90% for partial SigLIP: training–test gaps of 1.27 and 2.01 points. Later epochs showed deterioration; SigLIP seed 17 validation loss rose from 0.062 at selected epoch 6 to 0.375 at epoch 9 while training loss fell, consistent with overfitting or instability. Validation selection retained the earlier checkpoint. Small selected-checkpoint gaps cannot exclude overfitting; validation informed selection. Supplementary curves show every run.
 
-The reference partial model made two errors: one angular leaf spot and one healthy image were classified as bean rust (Figure 2). Its class F1 scores were 98.82%, 97.73% and 98.80%, respectively; rust precision was 95.56% despite 100% recall. Frozen class F1 scores were 89.66%, 87.64% and 92.50%, making rust the weakest class in both. Full precision, recall and support tables accompany the code. Figure 3 includes a wrong rust prediction with a 99.5% softmax score, illustrating why confidence alone cannot justify a diagnosis.
+<!--FIGURE:model_comparison/figures/partial_confusion-->
 
-<!--FIGURE:confusion_matrices-->
+Figure 2. Partial-model test confusion matrices for reference seed 17; entries are image counts.
 
-Figure 2. Test confusion matrices for seed 17: rows are true classes, columns predicted classes; entries are counts.
+Reference SigLIP misclassified three leaf-spot images as rust; class F1 was 96.39%, 96.63% and 100%. Rust precision was 93.48%, recall 100%; leaf-spot recall was 93.02%. DINOv2 made two errors, with class F1 98.82%, 97.73% and 98.80%. Neither labelled a diseased leaf healthy (0/86); healthy-as-diseased counts were 0/42 for SigLIP and 1/42 for DINOv2. One SigLIP error had 98.65% confidence. All per-class metrics accompany the code.
 
-<!--FIGURE:sample_predictions-->
+Under blur/darkening, reference SigLIP macro-F1 was 96.07%/97.67%, versus 97.67% clean; DINOv2 scored 97.67%/98.45%, versus 98.45%. These limited checks cannot establish field reliability. With 128 test images, each error changes accuracy by 0.78 points; three seeds and no external validation limit conclusions.
 
-Figure 3. Seed-17 partial predictions: up to four highest-confidence errors, then lowest-confidence correct cases to complete six examples. Scores are uncalibrated.
+<!--FIGURE:model_comparison/figures/siglip_sample_predictions-->
 
-Similar total training times reflect different stopping epochs. Frozen runs completed 25 epochs altogether, versus 23 for partial training. Pooled training time per epoch increased from 12.07 to 13.28 seconds, despite the much larger trainable parameter count. Thus similar elapsed training cost does not imply equal computational work per epoch.
-
-Supplementary synthetic checks applied Gaussian blur (radius 1 at 224 pixels) or brightness ×0.7 to the same reference test images. Partial macro-F1 was 97.67% under blur and 98.45% under darkening, versus 98.45% clean; frozen scores rose from 89.93% to 92.25% under either change. These non-monotonic responses at one severity do not establish field robustness.
-
-Only 128 test images were available; one error changes accuracy by 0.78 points. Three seeds, fixed hyperparameters, uncertain image independence and no external validation limit the conclusion. The comparison concerns these configurations, not each strategy's best achievable performance.
+Figure 3. SigLIP 2 partial predictions: highest-confidence errors first, then lowest-confidence correct cases to fill six examples. Scores are uncalibrated.
 
 ## 7. Ethical and societal considerations
 
-The potential benefit is more accessible assistance in recognising visible leaf symptoms, but mistakes have unequal consequences. The partial reference run labelled 0/86 diseased leaves healthy and 1/42 healthy leaves diseased, compared with 1/86 and 5/42 for frozen features. Zero observed missed cases does not establish zero risk. Missed disease could delay expert assessment; false alarms could cause unnecessary expense or inappropriate intervention. These are plausible consequences, not outcomes measured by this experiment. Any future tool should support agricultural experts, communicate limitations and avoid automatically prescribing treatment.
+The potential benefit is accessible assistance with recognising visible symptoms where agronomic advice is difficult to obtain. Errors have unequal consequences: missed disease could delay expert assessment; false alarms could cause expense or inappropriate intervention. The reported harm-related counts are small-sample observations, not measured deployment outcomes. Zero observed disease-as-healthy errors does not establish zero risk. Any future system should assist agricultural experts and avoid automatically prescribing treatment.
 
-The dataset covers one crop and two disease categories within a restricted collection. Other diseases, pests or nutrient problems would still be forced into one of the three classes. A high softmax score is therefore not proof of correctness or a calibrated diagnostic probability. Before practical use, the system would need prospective data covering other regions, seasons, devices and disease presentations, alongside an independently validated rejection or referral policy. Earlier plant-disease research reported large performance losses on images acquired differently from its training data [7]; that finding motivates external validation but does not predict the size of any Beans-specific decline.
+The dataset represents one crop and two disease categories from a restricted collection. Other diseases, pests and nutrient problems would still be forced into one of three labels. Softmax confidence cannot establish correctness, especially outside the training distribution. Before deployment, prospective evaluation should cover independently collected farms, seasons, devices and disease presentations. A calibrated rejection or referral policy would need separate validation, and users should be able to obtain expert review rather than receiving an unsupported definitive diagnosis.
 
-Balanced class scores cannot establish fairness across farmers. No suitable demographic or farm identifiers were available for those tests. Meta also reports socioeconomic and geographic biases in DINOv2 on separate benchmarks [5]; this is a reason to investigate representation, not evidence that a particular Beans error was caused by those biases. Unequal access to suitable phones, connectivity and agronomic support should inform any later deployment design.
+Balanced classes do not establish fairness across farmers. Farm, location and relevant demographic metadata are insufficient for subgroup evaluation here. The models' large pretraining collections may also encode unequal geographic or socioeconomic representation. SigLIP 2's reported fairness improvements concern separate benchmarks [1]; they do not certify fairness for this agricultural application. Testing performance across local collection conditions and involving agricultural practitioners would be necessary. Phone quality, connectivity and access to advice could influence who benefits, even if model accuracy were similar.
 
-Attribution must recognise Makerere AI Lab, the agricultural annotators and the model authors. Reusing pretrained weights and limiting adaptation avoids reproducing the full pretraining workload, although the present runtime does not measure the model's entire environmental footprint. The report therefore gives measured experiment cost without inventing carbon savings. Public availability of data also does not itself establish blanket consent for unrelated future uses.
+Makerere AI Lab, expert annotators and model authors require attribution. Dataset MIT and model Apache-2.0 notices accompany the project; public availability does not itself demonstrate consent for unrelated future collection or deployment. New field data should minimise unnecessary personal or farm-identifying information. Reusing pretrained weights and restricting adaptation reduces the work performed in this experiment, but local runtime excludes the models' substantial pretraining costs and does not justify invented carbon savings. Transparent limitations and disclosure of AI assistance support accountable reporting rather than an exaggerated claim of readiness.
 
 ## 8. Conclusion
 
-Partial adaptation improved mean test macro-F1 from 90.71% to 97.16%, winning all three paired comparisons. It is the preferred configuration within this experiment, with similar total training time but higher per-epoch cost. The result supports adapting pretrained representations for this dataset; it does not establish deployable diagnosis. Next steps are validation on independently collected farms and a validation-only comparison of additional fine-tuning depths, with calibrated uncertainty and expert referral evaluated before practical use.
+SigLIP 2 was accessible and feasible, and supplied stronger frozen features; the partial-model means were effectively tied. For this exploratory resource-limited setting, partial DINOv2 offers comparable accuracy with a smaller model and memory requirement. Testing recent models remains valuable without assuming improvement. Independent farm-level validation and validation-only tuning are the next priorities.
 
 ## References
 
-[1] Dosovitskiy, A., et al. (2021). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. ICLR. [Source](https://arxiv.org/abs/2010.11929).
+[1] Tschannen, M., et al. (2025). SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features. [Paper](https://arxiv.org/abs/2502.14786).
 
-[2] Oquab, M., et al. (2023). DINOv2: Learning Robust Visual Features without Supervision. arXiv:2304.07193. [Source](https://arxiv.org/abs/2304.07193).
+[2] Oquab, M., et al. (2023). DINOv2: Learning Robust Visual Features without Supervision. [Paper](https://arxiv.org/abs/2304.07193).
 
-[3] Makerere AI Lab (2020). Bean disease dataset (ibean). [Source](https://github.com/AI-Lab-Makerere/ibean).
+[3] Makerere AI Lab (2020). Bean disease dataset. [Repository](https://github.com/AI-Lab-Makerere/ibean).
 
-[4] Makerere AI Lab (n.d.). Beans dataset card and release metadata. Hugging Face. Accessed 23 October 2026. [Source](https://huggingface.co/datasets/AI-Lab-Makerere/beans/blob/main/README.md).
+[4] Makerere AI Lab (n.d.). Beans dataset card. Accessed 24 October 2026. [Dataset](https://huggingface.co/datasets/AI-Lab-Makerere/beans).
 
-[5] Meta AI (n.d.). DINOv2-S/B/L/g model card. Accessed 23 October 2026. [Source](https://github.com/facebookresearch/dinov2/blob/main/MODEL_CARD.md).
+[5] Google (2025). SigLIP 2 B/16–224 model and processor. [Model card](https://huggingface.co/google/siglip2-base-patch16-224). [Processor](https://huggingface.co/google/siglip2-base-patch16-224/blob/75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2/preprocessor_config.json).
 
-[6] Meta AI / Hugging Face (n.d.). DINOv2-Small checkpoint and image-processor configurations. Accessed 23 October 2026. [Source](https://huggingface.co/facebook/dinov2-small/blob/main/config.json). [Image processor](https://huggingface.co/facebook/dinov2-small/blob/main/preprocessor_config.json).
+[6] Hugging Face (2025). Transformers 4.57.1 SigLIP implementation. [Source](https://github.com/huggingface/transformers/blob/v4.57.1/src/transformers/models/siglip/modeling_siglip.py).
 
-[7] Mohanty, S. P., Hughes, D. P., and Salathé, M. (2016). Using Deep Learning for Image-Based Plant Disease Detection. Frontiers in Plant Science, 7, 1419. [Source](https://doi.org/10.3389/fpls.2016.01419).
+[7] Meta AI (n.d.). DINOv2-Small configuration and processor. [Configuration](https://huggingface.co/facebook/dinov2-small/blob/ed25f3a31f01632728cabb09d1542f84ab7b0056/config.json). [Processor](https://huggingface.co/facebook/dinov2-small/blob/ed25f3a31f01632728cabb09d1542f84ab7b0056/preprocessor_config.json).
