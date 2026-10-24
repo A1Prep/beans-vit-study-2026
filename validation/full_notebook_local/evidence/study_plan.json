@@ -1,0 +1,138 @@
+{
+  "created_utc": "2026-10-24T13:50:14.754767+00:00",
+  "study_status": "Reproduction of the fixed exploratory follow-up; original test exposure remains disclosed",
+  "motivation": "User requested a newer accessible advanced model and an end-to-end comparison against DINOv2",
+  "primary_question": "Under fixed low-resource adaptation settings, how does partial SigLIP2 compare with partial DINOv2 on the published Beans test split?",
+  "secondary_questions": [
+    "Frozen representation comparison",
+    "Within-backbone effect of adapting final two blocks",
+    "Cost, run variability, class errors, synthetic sensitivity and overfitting"
+  ],
+  "models": {
+    "dinov2": {
+      "model_id": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "readout": "Final normalized CLS token,384dim",
+      "resize": "Full224 bicubic as original study",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "siglip2": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "readout": "Pretrained attention-pooled image representation,768dim; vision tower only",
+      "resize": "Official full224 bilinear",
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "dataset": {
+    "manifest": "D:\\CodexWork\\beans-vit-project\\notebook_validation_20261024\\results\\reproduction\\comparison_20261024T134944Z\\data_audit\\manifest.csv",
+    "manifest_sha256": "97a098b142d5a72aa9986305b10543b8e41b8b67369ba76e4c43936e322724d6",
+    "split_sizes": {
+      "train": 1034,
+      "validation": 133,
+      "test": 128
+    },
+    "original_split_preserved": true,
+    "test_images_previously_seen_for_integrity_audit": true
+  },
+  "settings": {
+    "seeds": [
+      17,
+      42,
+      2026
+    ],
+    "arms": [
+      "frozen",
+      "partial"
+    ],
+    "runs": 12,
+    "batch_size": 8,
+    "epochs": 10,
+    "patience": 3,
+    "head_lr": 0.001,
+    "backbone_lr": 1e-05,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "scheduler": "constant",
+    "gradient_clip_norm": 1,
+    "amp": "FP16 CUDA",
+    "augmentation": "Matched seed/epoch/image randomness: horizontal and vertical flips with probability 0.5; rotation uniform from -15 to +15 degrees; native-mean fill",
+    "partial_policy": "Final two transformer blocks, final normalization and new linear classifier; SigLIP pretrained MAP pooling head stays frozen",
+    "head_initialization": "Paired within each backbone; dimensions differ across backbones",
+    "hyperparameter_search": "None",
+    "selection": "Highest validation macro-F1; lower loss on exact tie; earlier epoch; patience resets only on strict F1 increase"
+  },
+  "execution": {
+    "both_backbones_retrained": true,
+    "original_artifacts_immutable": true,
+    "pilot": "Both arms: full training epoch, gradient and freeze checks, checkpoint round trip; no test inference",
+    "evaluation": "All 12 training runs finish; create per-backbone checkpoint locks; then evaluate each selected checkpoint on test",
+    "failure_policy": "Diagnose implementation/access/hardware failures; record any protocol amendment before rerunning; do not silently change settings based on test results"
+  },
+  "analysis": {
+    "primary_metric": "macro-F1",
+    "supporting_metrics": [
+      "accuracy",
+      "class precision, recall and F1",
+      "confusion matrix",
+      "training seconds",
+      "time per epoch",
+      "peak CUDA allocated memory"
+    ],
+    "seed_summary": "Mean and sample standard deviation over three paired seeds; show every seed",
+    "reference_seed": 17,
+    "bootstrap": {
+      "resamples": 2000,
+      "seed": 20261023,
+      "paired": true,
+      "class_stratified": true,
+      "scope": "Seed-17 partial SigLIP2 minus DINOv2; descriptive, conditional on this previously evaluated small test set"
+    },
+    "stress_tests": {
+      "seeds": [
+        17
+      ],
+      "transforms": [
+        "Gaussian blur radius 1",
+        "brightness factor 0.7"
+      ],
+      "same_reference_images": true
+    },
+    "overfitting": "Evaluate all unchanged selected checkpoints on clean training and validation data; reuse recorded test results; inspect all histories"
+  },
+  "interpretation_limits": [
+    "Prior test exposure makes this expanded study exploratory, not fresh confirmatory evidence.",
+    "Backbone sizes, pretrained data, representation pooling and native preprocessing differ; this does not isolate age or pretraining objective.",
+    "Same learning rates/adaptation depth are a fixed resource protocol, not separately optimized best performance for each model.",
+    "No known plant/farm IDs, no independent external dataset, unknown pretraining overlap.",
+    "Recent competitive model family does not establish best performance in October2026 or a state-of-the-art Beans result."
+  ],
+  "reproduction": {
+    "run_id": "comparison_20261024T134944Z",
+    "original_plan": "results/model_comparison/study_plan.json",
+    "original_plan_sha256": "afaa8f66d972f829d10410cac3cec5a0554051cbbe6c32feda11582c5e45164b",
+    "original_plan_created_utc": "2026-10-23T17:48:43.984158+00:00",
+    "experimental_settings_changed": false,
+    "regenerated_manifest_has_runtime_specific_absolute_paths": true,
+    "prior_test_exposure_retained": true,
+    "timing_policy_sha256": "9a765e767daaa9e18e66dd03b7e21a2fbb2129eb73cb8317d19f5a802ab5e116"
+  }
+}

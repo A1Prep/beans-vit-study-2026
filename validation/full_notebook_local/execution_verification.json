@@ -1,0 +1,45 @@
+{
+  "started_utc": "2026-10-24T13:49:38.738778+00:00",
+  "execution_location": "Windows local RTX 3050 Laptop GPU; not Google Colab",
+  "source_notebook_sha256": "864d1a4d44231c1c7c9fe5c425a4e37947d734d1d7c683fe7380e5cca3f8f3db",
+  "source_code_changed_for_execution": false,
+  "project_directory": "D:\\CodexWork\\beans-vit-project\\notebook_validation_20261024",
+  "python": "D:\\CodexWork\\beans-vit-project\\venv\\Scripts\\python.exe",
+  "status": "passed",
+  "colab_execution_verified": false,
+  "last_completed_cell_index": 19,
+  "code_cells_executed": 10,
+  "errors": 0,
+  "study_completion": "D:\\CodexWork\\beans-vit-project\\notebook_validation_20261024\\results\\reproduction\\comparison_20261024T134944Z\\completion.json",
+  "training_runs": 12,
+  "study_completion_sha256": "bdcb077ed9624901c75637c53966694b4fc76fb631e5fc1249a7062c6a9bda78",
+  "finished_utc": "2026-10-24T17:31:36.674797+00:00",
+  "verified_utc": "2026-10-24T17:31:57.538418+00:00",
+  "executed_notebook": "model_comparison_executed_local.ipynb",
+  "executed_notebook_sha256": "591d6e43525cf2c93aaf1cb26f2027fcf1da5cb7393352c1ebd3f2c84bb192cf",
+  "copied_evidence": "validation/full_notebook_local/evidence",
+  "identical_cell_sources_to_template": true,
+  "clean_test_evaluations": 12,
+  "synthetic_test_evaluations": 8,
+  "clean_training_validation_evaluations": 24,
+  "downloaded_pretrained_weights": {
+    "dinov2": {
+      "model_id": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "bytes": 88249960,
+      "sha256": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "matches_previously_verified_official_weights": true
+    },
+    "siglip2": {
+      "model_id": "google/siglip2-base-patch16-224",
+      "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      "bytes": 1500800904,
+      "sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+      "matches_previously_verified_official_weights": true
+    }
+  },
+  "export_zip_crc_and_contents_verified": true,
+  "exported_zip_sha256": "4b8be8edd3a546525e1cd79df07c5a93d116b4a1a3953ff0b088a31606ac1ba7",
+  "main_report_results_replaced": false,
+  "verification_scope": "Unmodified full notebook executed locally, all 12 new runs, evaluation, analysis and export. Colab-only environment and browser-download branches were not executed."
+}

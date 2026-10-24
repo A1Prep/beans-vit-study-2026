@@ -1,0 +1,8 @@
+{
+  "completed_utc": "2026-10-24T17:31:33.993929+00:00",
+  "status": "completed",
+  "run_count": 12,
+  "prior_test_exposure": true,
+  "study_plan_sha256": "a53245b16206083661e176762d26c0c7dd4fc205950b94c5b2d342f71c0f85e4",
+  "training_source_sha256": "b1d193f8c46399089c9ff8c21ed0bb31455e0eee6055c5f87c3fe7d84a3dac0f"
+}

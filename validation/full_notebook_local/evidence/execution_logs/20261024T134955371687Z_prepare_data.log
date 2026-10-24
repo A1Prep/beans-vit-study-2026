@@ -1,0 +1,23 @@
+Acquiring train archive
+Acquiring validation archive
+Acquiring test archive
+{
+  "original_counts": {
+    "test": 128,
+    "train": 1034,
+    "validation": 133
+  },
+  "included_counts": {
+    "test": 128,
+    "train": 1034,
+    "validation": 133
+  },
+  "corrupt_images": [],
+  "near_duplicate_candidate_pairs": 14,
+  "cross_split_candidate_pairs": 7,
+  "within_test_candidate_pairs": 0,
+  "visual_review_status": {
+    "distinct": 14
+  }
+}
+Manifest: D:\CodexWork\beans-vit-project\notebook_validation_20261024\results\reproduction\comparison_20261024T134944Z\data_audit\manifest.csv

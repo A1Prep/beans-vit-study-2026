@@ -1,0 +1,21 @@
+{
+  "checked_date": "2026-10-24",
+  "status": "not_executed",
+  "hosted_colab_execution_verified": false,
+  "colab_required_by_assignment": false,
+  "browser_attempt": {
+    "url": "https://colab.research.google.com/",
+    "page_opened": true,
+    "authentication_state_observed": "signed out",
+    "managed_runtime_started": false,
+    "notebook_cells_executed_on_colab": 0
+  },
+  "reason": "An authenticated Google session was unavailable. The user asked whether Colab was required and was told that it is optional; required deliverables are the report, code and visual outputs. No credentials were requested or entered by the agent.",
+  "local_execution_evidence": "notebook_validation.json",
+  "bootstrap_checks": "notebook_bootstrap_validation.json",
+  "interpretation": "Local GPU experiments, local full-notebook execution and Windows bootstrap checks do not constitute a hosted Colab test. Colab-only isolated environment installation and browser download remain unverified on Colab.",
+  "documentation": [
+    "https://research.google.com/colaboratory/faq.html",
+    "https://research.google.com/colaboratory/runtime-version-faq.html"
+  ]
+}

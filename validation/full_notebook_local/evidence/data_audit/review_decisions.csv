@@ -1,0 +1,15 @@
+pair_id,image_id_a,image_id_b,decision,notes
+pair_0001,test/bean_rust/bean_rust_test.34.jpg,train/healthy/healthy_train.241.jpg,distinct,"AI-assisted visual review: Different lesion patterns, surface texture, leaf outlines and ground vegetation."
+pair_0002,test/healthy/healthy_test.20.jpg,train/healthy/healthy_train.228.jpg,distinct,"AI-assisted visual review: Inspected full-resolution originals: different vein branching, leaf-edge shape and small red marks; similar composition only."
+pair_0003,train/healthy/healthy_train.149.jpg,train/healthy/healthy_train.251.jpg,distinct,AI-assisted visual review: Inspected full-resolution originals: pointed intact leaf versus broad damaged/missing tip; different veins and blemishes.
+pair_0004,train/healthy/healthy_train.205.jpg,train/healthy/healthy_train.98.jpg,distinct,AI-assisted visual review: Inspected full-resolution originals: different vein layout and upper-left hole/blemish placement; different leaf shape.
+pair_0005,test/bean_rust/bean_rust_test.33.jpg,train/bean_rust/bean_rust_train.252.jpg,distinct,"AI-assisted visual review: Different leaf scale, orientation, surrounding leaves and visible spot patterns."
+pair_0006,test/bean_rust/bean_rust_test.34.jpg,train/healthy/healthy_train.239.jpg,distinct,"AI-assisted visual review: Different lesion patterns, strongly different surface corrugation and background."
+pair_0007,train/angular_leaf_spot/angular_leaf_spot_train.21.jpg,train/healthy/healthy_train.300.jpg,distinct,"AI-assisted visual review: Different leaf shapes, disease-mark distribution and framing."
+pair_0008,train/angular_leaf_spot/angular_leaf_spot_train.219.jpg,train/bean_rust/bean_rust_train.25.jpg,distinct,AI-assisted visual review: Multiple attached leaves versus a single held leaf with blue fingernail; different photographs and leaves.
+pair_0009,train/angular_leaf_spot/angular_leaf_spot_train.261.jpg,train/angular_leaf_spot/angular_leaf_spot_train.76.jpg,distinct,"AI-assisted visual review: Different necrotic lesion arrangements, outlines and ground backgrounds."
+pair_0010,train/angular_leaf_spot/angular_leaf_spot_train.278.jpg,validation/angular_leaf_spot/angular_leaf_spot_val.22.jpg,distinct,AI-assisted visual review: Inspected full-resolution originals: substantially different lesion arrangement and leaf outline; no matching local damage pattern.
+pair_0011,train/bean_rust/bean_rust_train.332.jpg,validation/angular_leaf_spot/angular_leaf_spot_val.37.jpg,distinct,"AI-assisted visual review: Different leaf orientation, lesion pattern, hand pose and ground background."
+pair_0012,train/healthy/healthy_train.105.jpg,train/healthy/healthy_train.98.jpg,distinct,"AI-assisted visual review: Different leaf edge, venation, small holes and background."
+pair_0013,train/healthy/healthy_train.160.jpg,train/healthy/healthy_train.320.jpg,distinct,"AI-assisted visual review: Different surface corrugation, vein structure, leaf outline and background."
+pair_0014,train/healthy/healthy_train.45.jpg,validation/bean_rust/bean_rust_val.27.jpg,distinct,AI-assisted visual review: Leaf over dark fabric versus leaf over soil; different leaf appearance and framing.

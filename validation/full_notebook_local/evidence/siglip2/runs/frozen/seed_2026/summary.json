@@ -1,0 +1,24 @@
+{
+  "arm": "frozen",
+  "seed": 2026,
+  "epochs_completed": 10,
+  "best_epoch": 9,
+  "best_validation_macro_f1": 0.96247100990934,
+  "best_val_macro_f1": 0.96247100990934,
+  "best_validation_loss": 0.11342276218242216,
+  "wall_seconds": 6760.961728200004,
+  "training_seconds": 6735.8206186000025,
+  "validation_seconds": 15.318555000019842,
+  "peak_cuda_allocated_bytes": 482041344,
+  "peak_cuda_reserved_bytes": 555745280,
+  "trainable_params": 2307,
+  "total_params": 92886531,
+  "total_parameters": 92886531,
+  "trainable_parameters": 2307,
+  "trainable_names": [
+    "classifier.weight",
+    "classifier.bias"
+  ],
+  "unfrozen_modules": [],
+  "test_evaluated": false
+}

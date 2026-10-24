@@ -1,0 +1,20 @@
+{
+  "reviewer": "Codex assistant visual review; not an agricultural expert or independent human annotation",
+  "candidate_threshold": 12,
+  "pairs_reviewed": 14,
+  "confirmed_duplicate_pairs": 0,
+  "distinct_pairs": 14,
+  "uncertain_pairs": 0,
+  "evidence": [
+    "near_duplicate_candidates_01.png",
+    "near_duplicate_candidates_02.png",
+    "near_duplicate_candidates_03.png"
+  ],
+  "full_resolution_extra_checks": [
+    "pair_0002",
+    "pair_0003",
+    "pair_0004",
+    "pair_0010"
+  ],
+  "scope": "Duplicate-image screening only; these decisions do not validate diagnostic labels or farm/plant independence."
+}

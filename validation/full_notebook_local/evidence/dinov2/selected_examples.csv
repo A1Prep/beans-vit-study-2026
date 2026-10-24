@@ -1,0 +1,7 @@
+image_id,label,label_name,predicted_label,predicted_name,confidence,prob_0,prob_1,prob_2,arm,seed,split,corruption,prediction
+test/angular_leaf_spot/angular_leaf_spot_test.36.jpg,0,angular_leaf_spot,1,bean_rust,0.9961172342300416,0.0038825869560241,0.9961172342300416,1.5932370445170818e-07,partial,17,test,clean,1
+test/healthy/healthy_test.24.jpg,2,healthy,1,bean_rust,0.9019206762313844,7.0411385055813e-11,0.9019206762313844,0.0980793237686157,partial,17,test,clean,1
+test/angular_leaf_spot/angular_leaf_spot_test.42.jpg,0,angular_leaf_spot,0,angular_leaf_spot,0.562176525592804,0.562176525592804,0.4378235042095184,5.463598906629841e-09,partial,17,test,clean,0
+test/bean_rust/bean_rust_test.36.jpg,1,bean_rust,1,bean_rust,0.8289388418197632,0.1710611879825592,0.8289388418197632,3.0752872470785064e-10,partial,17,test,clean,1
+test/angular_leaf_spot/angular_leaf_spot_test.14.jpg,0,angular_leaf_spot,0,angular_leaf_spot,0.9739436507225036,0.9739436507225036,0.0260563045740127,8.335661050296038e-10,partial,17,test,clean,0
+test/healthy/healthy_test.9.jpg,2,healthy,2,healthy,0.9777137637138368,8.636132520223327e-08,0.0222861841320991,0.9777137637138368,partial,17,test,clean,2

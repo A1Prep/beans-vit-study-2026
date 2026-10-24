@@ -1,0 +1,29 @@
+{
+  "training_changes": false,
+  "checkpoint_selection_changes": false,
+  "test_evaluation_changes": false,
+  "raw_times_preserved": true,
+  "existing_metrics_retained": [
+    "Per-run total and mean training time",
+    "Configuration mean run time",
+    "Pooled total time, total epochs and time per epoch",
+    "Peak allocated CUDA memory"
+  ],
+  "additional_descriptive_statistics": [
+    "Per-run median observed training epoch time",
+    "Per-configuration median, first and third quartiles, interquartile range, minimum and maximum across every observed training epoch from all three seeds"
+  ],
+  "quantile_method": "NumPy linear interpolation",
+  "cost_figure_metric": "Median observed training epoch time with interquartile range, pooled across all completed epochs in each model/arm",
+  "exclusions_or_corrections": "None: no epoch is removed, replaced, corrected or assigned a cause",
+  "interpretation": "Medians describe typical observed durations; raw means and totals retain long observations. Unequal completed epoch counts weight seeds differently in pooled summaries. These durations are not corrected or controlled hardware benchmarks.",
+  "created_utc": "2026-10-24T13:50:14.753778+00:00",
+  "status": "Timing summary policy carried forward before this reproduction's execution",
+  "before_new_test_evaluation": true,
+  "original_dinov2_test_results_previously_known": true,
+  "observed_new_test_artifact_count": 0,
+  "original_amendment": "results/model_comparison/timing_analysis_amendment.json",
+  "original_amendment_sha256": "0e0e718ac1dbd191987d0ddb094170d9dfe204c7ffa27f80febbfd463237e7a0",
+  "original_amendment_created_utc": "2026-10-24T05:58:39.0055066Z",
+  "motivation": "Apply the original descriptive timing policy to all reproduction epochs; the original unusually long epoch is historical and is not asserted for this runtime."
+}

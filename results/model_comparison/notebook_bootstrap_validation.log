@@ -1,0 +1,48 @@
+LOCAL NOTEBOOK BOOTSTRAP UNIT TESTS
+test_bundle_contains_exact_canonical_sources_and_reusable_extraction (test_notebook_bootstrap.NotebookBootstrapTests.test_bundle_contains_exact_canonical_sources_and_reusable_extraction) ... ok
+test_existing_changed_project_is_not_overwritten (test_notebook_bootstrap.NotebookBootstrapTests.test_existing_changed_project_is_not_overwritten) ... ok
+test_nested_runtime_probe_has_valid_python (test_notebook_bootstrap.NotebookBootstrapTests.test_nested_runtime_probe_has_valid_python) ... ok
+test_path_escape_is_rejected_even_with_matching_checksums (test_notebook_bootstrap.NotebookBootstrapTests.test_path_escape_is_rejected_even_with_matching_checksums) ... ok
+test_portable_notebook_has_no_execution_claims (test_notebook_bootstrap.NotebookBootstrapTests.test_portable_notebook_has_no_execution_claims) ... ok
+test_tampered_archive_is_rejected_before_extraction (test_notebook_bootstrap.NotebookBootstrapTests.test_tampered_archive_is_rejected_before_extraction) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.404s
+
+OK
+
+LOCAL WINDOWS VIRTUALENV SEEDING SMOKE TEST
+Collecting virtualenv==20.34.0
+  Downloading virtualenv-20.34.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting distlib<1,>=0.3.7 (from virtualenv==20.34.0)
+  Downloading distlib-0.4.4-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting filelock<4,>=3.12.2 (from virtualenv==20.34.0)
+  Downloading filelock-3.32.7-py3-none-any.whl.metadata (2.0 kB)
+Collecting platformdirs<5,>=3.9.1 (from virtualenv==20.34.0)
+  Downloading platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Downloading virtualenv-20.34.0-py3-none-any.whl (6.0 MB)
+   ---------------------------------------- 6.0/6.0 MB 4.3 MB/s  0:00:01
+Downloading distlib-0.4.4-py2.py3-none-any.whl (472 kB)
+Downloading filelock-3.32.7-py3-none-any.whl (100 kB)
+Downloading platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Installing collected packages: distlib, platformdirs, filelock, virtualenv
+
+Successfully installed distlib-0.4.4 filelock-3.32.7 platformdirs-4.13.5 virtualenv-20.34.0
+created virtual environment CPython3.11.3.final.0-64 in 7811ms
+  creator CPython3Windows(dest=D:\CodexWork\beans-vit-project\notebook_bootstrap_smoke\isolated, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, via=copy, app_data_dir=C:\Users\Omar Ahmad\AppData\Local\pypa\virtualenv)
+    added seed packages: pip==25.2, setuptools==80.9.0
+  activators BashActivator,BatchActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+{
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "prefix": "D:\\CodexWork\\beans-vit-project\\notebook_bootstrap_smoke\\isolated",
+  "base_prefix": "C:\\Python311",
+  "torch_inherited": false,
+  "tested_utc": "2026-10-24T13:51:40.569350+00:00",
+  "virtualenv_version": "20.34.0",
+  "pip": "pip 25.2 from D:\\CodexWork\\beans-vit-project\\notebook_bootstrap_smoke\\isolated\\Lib\\site-packages\\pip (python 3.11)",
+  "global_site_packages_inherited": false,
+  "seeded_pip_without_ensurepip": true,
+  "platform_scope": "Local Windows only; not a hosted Colab execution claim",
+  "ml_packages_installed_in_smoke_test": false
+}

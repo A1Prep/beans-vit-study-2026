@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-24T17:31:19.928191+00:00",
+  "purpose": "Post-hoc diagnostic of fixed selected checkpoints, after original test evaluation",
+  "optimization_performed": false,
+  "new_test_evaluation_performed": false,
+  "train_and_validation_preprocessing": "Identical clean resize/normalization, model.eval(), no augmentation",
+  "validation_predictions_match_original": true,
+  "diagnostic_source_sha256": "3efffba4356ee1e56786d065459c1b1c46ddcc7d0eac99bc38bc6e594019eb24",
+  "protocol_lock_sha256": "835e41c16931b5197546cdd8e6611a4cabda0a4225c91b547005ea5d1555b008",
+  "summary": [
+    {
+      "arm": "frozen",
+      "runs": 3,
+      "train_macro_f1_mean": 0.9442163625,
+      "validation_macro_f1_mean": 0.957546606,
+      "test_macro_f1_mean": 0.9689719634,
+      "train_accuracy_mean": 0.9439071567,
+      "validation_accuracy_mean": 0.9573934837,
+      "train_loss_mean": 0.1679959213,
+      "validation_loss_mean": 0.1285544771,
+      "train_minus_validation_f1_pp_mean": -1.3330243507,
+      "train_minus_test_f1_pp_mean": -2.4755600864
+    },
+    {
+      "arm": "partial",
+      "runs": 3,
+      "train_macro_f1_mean": 0.989078162,
+      "validation_macro_f1_mean": 0.9825755811,
+      "test_macro_f1_mean": 0.9689885516,
+      "train_accuracy_mean": 0.9890393295,
+      "validation_accuracy_mean": 0.9824561404,
+      "train_loss_mean": 0.040315468,
+      "validation_loss_mean": 0.0665796753,
+      "train_minus_validation_f1_pp_mean": 0.6502580917,
+      "train_minus_test_f1_pp_mean": 2.0089610368
+    }
+  ],
+  "limitations": [
+    "Training and validation are reused, not independent external evaluation.",
+    "A small gap cannot prove absence of overfitting, leakage or distribution shift.",
+    "Online augmented training losses use evolving parameters, unlike fixed-checkpoint evaluation."
+  ]
+}

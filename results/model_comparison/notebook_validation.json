@@ -1,8 +1,8 @@
 {
-  "validated_utc": "2026-10-24T06:35:10.745470+00:00",
+  "validated_utc": "2026-10-24T17:31:57.538418+00:00",
   "training_notebook": "model_comparison.ipynb",
   "training_notebook_cells": 21,
-  "training_notebook_executed": false,
+  "training_notebook_executed": true,
   "training_notebook_static_validation": "nbformat schema and all Python cell syntax passed",
   "review_notebook": "model_comparison_review.ipynb",
   "review_notebook_cells": 10,
@@ -15,5 +15,11 @@
   "study_completion_sha256": "f0a42f37f61bf749542a67b4e52497ebc316a7d7f1bbab7a45e6553eb7498ef6",
   "read_evidence_hashes_unchanged": true,
   "colab_execution_verified": false,
-  "execution_note": "Executed locally as a reader of actual completed results; no training, optimization or test inference."
+  "execution_note": "The saved-results reader and the unchanged full 12-run reproduction notebook executed locally. Hosted Google Colab was opened but remained signed out; hosted execution and Colab-specific setup/export branches are not verified.",
+  "training_notebook_execution_location": "Local Windows RTX 3050 Laptop GPU",
+  "training_notebook_code_cells_executed": 10,
+  "training_notebook_errors": 0,
+  "training_notebook_source_sha256": "864d1a4d44231c1c7c9fe5c425a4e37947d734d1d7c683fe7380e5cca3f8f3db",
+  "training_notebook_execution_evidence": "model_comparison_executed_local.ipynb",
+  "training_notebook_verification": "validation/full_notebook_local/execution_verification.json"
 }

@@ -1,0 +1,58 @@
+{
+  "n": 128,
+  "accuracy": 0.9765625,
+  "macro_f1": 0.9767410412440839,
+  "confusion_matrix": [
+    [
+      41,
+      2,
+      0
+    ],
+    [
+      1,
+      42,
+      0
+    ],
+    [
+      0,
+      0,
+      42
+    ]
+  ],
+  "per_class": [
+    {
+      "label": 0,
+      "name": "angular_leaf_spot",
+      "precision": 0.9761904761904762,
+      "recall": 0.9534883720930233,
+      "f1": 0.9647058823529412,
+      "support": 43
+    },
+    {
+      "label": 1,
+      "name": "bean_rust",
+      "precision": 0.9545454545454546,
+      "recall": 0.9767441860465116,
+      "f1": 0.9655172413793104,
+      "support": 43
+    },
+    {
+      "label": 2,
+      "name": "healthy",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 42
+    }
+  ],
+  "loss": 0.06744263786822557,
+  "seconds": 1.4011497000028612,
+  "arm": "partial",
+  "seed": 42,
+  "split": "test",
+  "corruption": "clean",
+  "checkpoint_epoch": 4,
+  "checkpoint_sha256": "c27cb91098b8e641ada76c36ec451e51e189e2aa05643cacdaf25865c46daa5c",
+  "manifest_sha256": "97a098b142d5a72aa9986305b10543b8e41b8b67369ba76e4c43936e322724d6",
+  "protocol_lock_sha256": "8e037776539cd276ed5d54ec9d9012ebfada30a8989c5b2293313f49049cf48b"
+}
