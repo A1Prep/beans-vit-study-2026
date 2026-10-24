@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "reviewed_utc": "2026-10-24T17:58:47.035561+00:00",
+  "review_scope": "Independent report, notes, README, PROJECT_REVIEW and final PPTX content/data audit. PPTX XML, native chart caches, embedded XLSX numeric cells, tables and speaker notes inspected directly; no slide editing or GPU rerun. Parent performed separate final render inspection; native PowerPoint application was not opened.",
+  "source_sha256": {
+    "report/technical_report.md": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
+    "report/technical_report.pdf": "d7c25f5fc6c9a356c7b27f784b2c2c3c4c30056224c0b310b4e9c60fa898ed63",
+    "report/presentation_notes.md": "074fa56ac0a6dc18580e05573c72a6334ae0175e5c7f9fb61351ff09fa3adfab",
+    "report/presentation/bean_leaf_presentation.pptx": "e2d023d034fb9f230de3f7e1d9f633daebb720a3396ae760e70afdfafff4c504",
+    "report/presentation/sources.json": "736876ba471897913068ad42eeeae9bf065631a2844d360a75c82e275e60252c",
+    "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
+    "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
+    "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
+    "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
+    "results/model_comparison/report_claim_review.json": "88679d8b5fff5a9510e3712d58601bc44ba8d6bbb411d707b3483b13e4df63f0",
+    "results/model_comparison/colab_readiness_rubric_review.json": "5988eced64a935381d76b72b234c4a9a379ff8641dc3e672cbb3df3b79d9874e"
+  },
+  "report": {
+    "pages": 6,
+    "source_words": 2084,
+    "conservative_words_including_figure_text": 2248,
+    "word_limit": 2500,
+    "original_scientific_results_unchanged": true,
+    "separate_local_rerun_disclosure_accurate": true,
+    "source_and_pdf_updated": true
+  },
+  "presentation": {
+    "slides": 12,
+    "main": 7,
+    "backup": 5,
+    "native_charts": 2,
+    "native_tables": 6,
+    "embedded_chart_workbooks": 2,
+    "speaker_notes_with_sources": 12,
+    "main_script_words": 589,
+    "allocated_seconds": [
+      15,
+      45,
+      50,
+      50,
+      45,
+      55,
+      40
+    ],
+    "total_seconds": 300,
+    "performance_chart_rounding": "Original mean macro-F1 percentages rounded to 2 decimals; zero baseline retained.",
+    "loss_chart_rounding": "Original SigLIP partial seed 17 epoch history rounded to 6 decimals; cache and workbook agree, axes 0 to 0.5 retain every value.",
+    "verified_tables": [
+      "model configuration",
+      "original aggregate metrics and median times",
+      "DINOv2 reference confusion",
+      "SigLIP reference confusion",
+      "training settings",
+      "original versus separate reproduction partial means"
+    ],
+    "natural_delivery": "Clear conversational main script; 589 words permit approximately 118 words per minute over five minutes. Backup notes whitespace corrected. Rehearsal timings are targets, not observed speaking times."
+  },
+  "resolved_findings": [
+    "Backup speaker-note spacing around numbers corrected before final export.",
+    "Report/notes now include full local notebook proof and explicitly separate differing rerun means."
+  ],
+  "unresolved_material_findings": [],
+  "remaining_actions": [
+    "Student rehearsal and understanding; adapt delivery in their own words.",
+    "Provide assessor access or submit through permitted course route.",
+    "Hosted Colab remains optional and untested; do not describe local execution as hosted Colab execution."
+  ],
+  "grade_guarantee": false
+}

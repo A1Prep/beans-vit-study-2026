@@ -13,7 +13,8 @@ The partially fine-tuned models are practically tied (difference below 0.01 perc
 - [Complete reproduction notebook](model_comparison.ipynb): a self-contained notebook that downloads data and pinned models, runs pilots/training/evaluation/analysis, and exports results. It includes its required source files and needs no private GitHub login or second project ZIP. See the [step-by-step Colab guide](COLAB_GUIDE.md). Hosted Colab execution has **not** been verified.
 - [Executed full notebook](model_comparison_executed_local.ipynb): the unchanged reproduction notebook completed locally with all 10 code cells, 12 new training runs, 20 test evaluations, 24 clean training/validation evaluations, analysis and export; zero errors. [Verification evidence](validation/full_notebook_local/README.md) is separate from the original results used in the report.
 - [Comparison evidence and interpretation](results/model_comparison/README.md), [independent numerical verification](results/model_comparison/independent_review.json), and [rubric coverage](PROJECT_REVIEW.md).
-- [Presentation notes](report/presentation_notes.md), [AI-assistance disclosure](ASSISTANCE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+- [Five-minute presentation (editable PowerPoint)](report/presentation/bean_leaf_presentation.pptx): seven main slides and five backup slides, with embedded speaker notes and citations. [Timed script and question preparation](report/presentation_notes.md) match the report.
+- [AI-assistance disclosure](ASSISTANCE.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Measured results
 

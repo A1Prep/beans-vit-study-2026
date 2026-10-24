@@ -1,8 +1,8 @@
 {
   "status": "Completed actual 12-run exploratory comparison",
-  "updated_utc": "2026-10-24T07:59:48.092346+00:00",
+  "updated_utc": "2026-10-24T17:44:47.158634+00:00",
   "source": "report/technical_report.md",
-  "source_sha256": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
+  "source_sha256": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
   "sections": [
     {
       "heading": "1. Introduction and research question",
@@ -18,7 +18,7 @@
     },
     {
       "heading": "4. Pre-processing and training",
-      "text": "RGB images were resized in full to 224 × 224, preserving their square aspect ratio. SigLIP 2 followed its native bilinear resize and channel mean/standard deviation 0.5 [5]. DINOv2 used bicubic interpolation, means (0.485, 0.456, 0.406) and standard deviations (0.229, 0.224, 0.225). Its official resize-to-256/centre-crop processor was deliberately replaced with full-image resizing to retain peripheral regions [7]. Both approaches reduce fine detail.\n\nTraining used horizontal and vertical flips with probability 0.5 each, then rotation uniformly within ±15°, with model-specific mean-colour fill. This varied orientation without deliberately changing lesion colour or cropping symptoms. Seed-, epoch- and image-dependent randomness matched sample order and augmentation decisions. Validation/test preprocessing was deterministic. Frozen representations were computed from augmented training images.\n\nThe frozen arm trained only the classifier. Partial adaptation additionally trained the final two blocks and final normalisation. SigLIP's pretrained pooling head remained frozen while gradients passed through it. Backbones stayed in evaluation mode with gradients enabled for intended parameters. Classifier initialisation was paired within each backbone; representation dimensions prevent identical heads across backbones.\n\nCross-entropy used AdamW, classifier learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1 and CUDA FP16. Rates remained constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 improvement; checkpoint ties used lower loss, then earlier epoch. Three seeds (17, 42, 2026), two arms and two models completed 12 fresh runs. No hyperparameter search was performed; settings were not separately optimised for each backbone.\n\nFull-epoch pilots passed for both models/arms; 35 implementation, protocol and analysis tests passed. Execution used an RTX 3050 Laptop GPU (4 GB), PyTorch 2.6.0/CUDA 12.4 and Transformers 4.57.1. Configurations, histories, hashes and predictions support reproduction. Controlled seeds do not guarantee bitwise CUDA reproducibility. Codex assisted implementation, analysis and drafting."
+      "text": "RGB images were resized in full to 224 × 224, preserving their square aspect ratio. SigLIP 2 followed its native bilinear resize and channel mean/standard deviation 0.5 [5]. DINOv2 used bicubic interpolation, means (0.485, 0.456, 0.406) and standard deviations (0.229, 0.224, 0.225). Its official resize-to-256/centre-crop processor was deliberately replaced with full-image resizing to retain peripheral regions [7]. Both approaches reduce fine detail.\n\nTraining used horizontal and vertical flips with probability 0.5 each, then rotation uniformly within ±15°, with model-specific mean-colour fill. This varied orientation without deliberately changing lesion colour or cropping symptoms. Seed-, epoch- and image-dependent randomness matched sample order and augmentation decisions. Validation/test preprocessing was deterministic. Frozen representations were computed from augmented training images.\n\nThe frozen arm trained only the classifier. Partial adaptation additionally trained the final two blocks and final normalisation. SigLIP's pretrained pooling head remained frozen while gradients passed through it. Backbones stayed in evaluation mode with gradients enabled for intended parameters. Classifier initialisation was paired within each backbone; representation dimensions prevent identical heads across backbones.\n\nCross-entropy used AdamW, classifier learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1 and CUDA FP16. Rates remained constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 improvement; checkpoint ties used lower loss, then earlier epoch. Three seeds (17, 42, 2026), two arms and two models completed 12 fresh runs. No hyperparameter search was performed; settings were not separately optimised for each backbone.\n\nFull-epoch pilots passed for both models/arms; 35 implementation, protocol and analysis tests passed. Execution used an RTX 3050 Laptop GPU (4 GB), PyTorch 2.6.0/CUDA 12.4 and Transformers 4.57.1. Configurations, histories, hashes and predictions support reproduction. Controlled seeds do not guarantee bitwise CUDA reproducibility. Codex assisted implementation, analysis and drafting.\n\nA subsequent unchanged notebook completed all 10 code cells and 12 fresh runs locally without errors; six bootstrap checks also passed. Its separate partial-model means were 97.67% (DINOv2) and 96.90% (SigLIP 2), illustrating rerun variability. These verification outputs do not replace the original comparison below. Hosted Colab remains untested."
     },
     {
       "heading": "5. Evaluation design",
@@ -43,15 +43,15 @@
   ],
   "word_count": {
     "maximum": 2500,
-    "raw_markdown_whitespace_words": 2035,
-    "pdf_extracted_words_including_footers": 2008,
+    "raw_markdown_whitespace_words": 2084,
+    "pdf_extracted_words_including_footers": 2057,
     "figure_text_words_from_companion_vector_pdfs": {
       "model_comparison/figures/performance_cost": 54,
       "model_comparison/figures/partial_confusion": 52,
       "model_comparison/figures/siglip_sample_predictions": 58
     },
     "total_figure_text_words": 164,
-    "conservative_budget_count": 2199,
+    "conservative_budget_count": 2248,
     "within_limit": true,
     "method": "Maximum of raw Markdown whitespace tokens and extracted final PDF tokens including footers, plus all extracted words from the three companion vector figure PDFs. Report embeds these figures as raster images, so their labels are counted separately."
   },

@@ -2,10 +2,10 @@
   "status": "passed",
   "pages": 6,
   "all_pages_visually_inspected": true,
-  "extractable_words_including_footers": 2008,
+  "extractable_words_including_footers": 2057,
   "figure_text_words": 164,
-  "conservative_total_including_figures": 2199,
-  "pdf_sha256": "55fcfc3214799c582aa5137db892f1d753c48f5e113bf3e2584cce11e4e915dc",
-  "source_sha256": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
+  "conservative_total_including_figures": 2248,
+  "pdf_sha256": "d7c25f5fc6c9a356c7b27f784b2c2c3c4c30056224c0b310b4e9c60fa898ed63",
+  "source_sha256": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
   "notes": "Every page of the latest PDF was rendered and visually inspected. Figures, labels, tables, headings and references were reviewed for clipping, overlap, readability and missing glyphs."
 }

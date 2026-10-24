@@ -25,6 +25,10 @@ A separate AI reviewer independently recomputed predictions and intervals rather
 - A live-kernel package replacement problem was fixed by isolating Colab dependencies. An embedded verified source bundle removes private-repository access and a second ZIP upload. Six bootstrap checks and a Windows virtualenv smoke test passed alongside the 35 experiment/protocol/analysis tests.
 - Hosted Colab remains untested because the available browser session was signed out. Colab is optional, not a rubric requirement. The local complete notebook run does not verify Colab's Linux installation or browser download branches. See the [run guide](COLAB_GUIDE.md).
 
+## Final deliverables
+
+The [technical report](report/technical_report.pdf) remains within 2,500 words, including figure text, and now distinguishes the original experiment from the successful later notebook verification. The [five-minute PowerPoint](report/presentation/bean_leaf_presentation.pptx) has seven main slides and five backup slides, editable charts/tables, actual dataset photographs and embedded speaker notes. The [timed script](report/presentation_notes.md) covers the result, overfitting, errors and responsible use, with additional question preparation. Code, executed notebooks, visualizations and sample predictions are supplied through the repository and ZIP. No Moodle submission has been made.
+
 ## Remaining student actions
 
 Review and understand the final report/code, check course AI-assistance requirements, practise the presentation, and provide assessor access to the private GitHub repository or submit the ZIP via the permitted route. Nothing was submitted to Moodle. These student and submission steps are distinct from the completed technical experiment.

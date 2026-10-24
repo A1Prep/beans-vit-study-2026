@@ -1,0 +1,49 @@
+{
+  "main_results": "Original comparison in results/model_comparison; later notebook verification is separate",
+  "main_slide_count": 7,
+  "backup_slide_count": 5,
+  "target_minutes": 5,
+  "source_sha256": {
+    "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
+    "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
+    "results/model_comparison/siglip2/runs/partial/seed_17/history.csv": "3fc581ca1d7ec7e409e1d6561e34d025b8413e56ce1043ce0800d8d5e90255a0",
+    "results/model_comparison/siglip_selected_examples.csv": "559efb2173ef700fb29d6d3f13616c7fbd4bbd0631c79f3d9816797f94f69eb9",
+    "results/model_comparison/dinov2/runs/partial/seed_17/metrics_test.json": "c6fe396f5ea146a8e632f4bcbc43378340d327ad0295ddb20363a444f31964b2",
+    "results/model_comparison/siglip2/runs/partial/seed_17/metrics_test.json": "cd0a1e0fee8202e7de1cd39d18b6556a0eccb91aa78e1649b77d6a783292a203",
+    "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
+    "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f",
+    "report/technical_report.md": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a"
+  },
+  "images": [
+    {
+      "image_id": "train/healthy/healthy_train.0.jpg",
+      "sha256": "70d70ea39346062c67f7288d13ee1a18527fbe5cd4b93637639c9a89f032ca06",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    },
+    {
+      "image_id": "train/angular_leaf_spot/angular_leaf_spot_train.0.jpg",
+      "sha256": "581604b273ba420fb821f558c036ccfcdffa128b80c688e5c46288b4482ab534",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    },
+    {
+      "image_id": "train/bean_rust/bean_rust_train.0.jpg",
+      "sha256": "7983f1e3f538a1aeac96a07618511e742c367e52135438f24d538f69e893c651",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    },
+    {
+      "image_id": "train/healthy/healthy_train.1.jpg",
+      "sha256": "fe34f758653f94e5689b8d69c019d62fb2fadf2e0d06a9bbd34052a33d37491d",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    },
+    {
+      "image_id": "test/angular_leaf_spot/angular_leaf_spot_test.14.jpg",
+      "sha256": "5ece12a3927dce9e9cbf9821cbd8f62fb002e720d079230a47d388c9d27b1d60",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    },
+    {
+      "image_id": "test/angular_leaf_spot/angular_leaf_spot_test.36.jpg",
+      "sha256": "3a25b1a466e4b096d1bb812e719d6e5d211e061d0d4ced1f935788e96de5eeee",
+      "provider": "Makerere AI Lab Beans dataset (MIT)"
+    }
+  ]
+}

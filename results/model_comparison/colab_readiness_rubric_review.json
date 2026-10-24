@@ -1,27 +1,30 @@
 {
-  "created_utc": "2026-10-24T17:34:48.214956+00:00",
+  "created_utc": "2026-10-24T17:58:47.035561+00:00",
   "status": "rubric_content_supported; complete_unchanged_notebook_verified_locally; hosted_Colab_optional_and_untested",
-  "review_scope": "Final independent rubric/content review plus direct verification of unchanged notebook cell sources, saved execution/error state, new local predictions, actual checkpoint locks, copied export bytes and original-report preservation. No GPU inference or hosted Colab execution performed by this reviewer.",
+  "review_scope": "Independent rubric/content review, prior direct verification of the complete local notebook and predictions, and refreshed report/presentation claims. Scientific results are unchanged; the report now explicitly discusses separate rerun evidence. No hosted Colab execution claim.",
   "source_sha256": {
-    "README.md": "c52105d31676193bd1b65266b746fec9a8082e61d3694dc3a5655b7a2965dcb5",
-    "PROJECT_REVIEW.md": "1cf5d0d0e4d151bff7e21a5ebcbc732c3de7dd15ca86c858fe1b8dc8a5b8d182",
+    "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
+    "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
     "ASSISTANCE.md": "db018387f11e3a7b47fd6db572d61a3b31e4c1e76b31ab19da64ea94be9df3f4",
     "THIRD_PARTY_NOTICES.md": "e3359c6ee0b43d45686ca9932656d9ab54a081e841ea059c7599f78ecb2f8c3d",
-    "report/technical_report.md": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
-    "report/technical_report.pdf": "55fcfc3214799c582aa5137db892f1d753c48f5e113bf3e2584cce11e4e915dc",
-    "report/presentation_notes.md": "a25feaa4c4934bdb268508021f87c09aad02fc0eac9cadd199a06823395ba075",
+    "report/technical_report.md": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
+    "report/technical_report.pdf": "d7c25f5fc6c9a356c7b27f784b2c2c3c4c30056224c0b310b4e9c60fa898ed63",
+    "report/presentation_notes.md": "074fa56ac0a6dc18580e05573c72a6334ae0175e5c7f9fb61351ff09fa3adfab",
     "model_comparison.ipynb": "864d1a4d44231c1c7c9fe5c425a4e37947d734d1d7c683fe7380e5cca3f8f3db",
     "model_comparison_review.ipynb": "4e3ec2d89c1a0b795007706733c8ce3bd29a367dc3e727bd53adef481d4efbc4",
     "requirements.txt": "ecc7bceafbd72d6a93c3d3731b74b187a0cb4ca4cdcf0b253e550a289ca34a8c",
     "src/run_model_comparison.py": "a513ae5438c1be444a7a09b0e9bfc45f49165c87ec40a4bcbfa07f9fc2e002a0",
     "src/followup_experiment.py": "b1d193f8c46399089c9ff8c21ed0bb31455e0eee6055c5f87c3fe7d84a3dac0f",
     "results/model_comparison/independent_review.json": "32054c9ae773ce0cbe9e5d08463e95ee42434b733e91d960f5d6b296050877ef",
-    "results/model_comparison/report_claim_review.json": "6bd3ba1b50ca7019116d713bf1c162bac8d4e6c8341b3b240d6d26658a8340e9",
+    "results/model_comparison/report_claim_review.json": "88679d8b5fff5a9510e3712d58601bc44ba8d6bbb411d707b3483b13e4df63f0",
     "COLAB_GUIDE.md": "c181292f738d97b7d51a1b0d7101e542e6b48cd0517a541e0347e089df37bb55",
     "model_comparison_executed_local.ipynb": "591d6e43525cf2c93aaf1cb26f2027fcf1da5cb7393352c1ebd3f2c84bb192cf",
     "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
     "results/model_comparison/notebook_validation.json": "13c3b06085a8056405c8b2012e4e0e6c4f438b66441451655eefe433233b7a64",
-    "results/model_comparison/notebook_bootstrap_validation.json": "9b38198d08e23cb8732546f9f1e97f55d504cca7f97578e632e8a336e0a1dbd4"
+    "results/model_comparison/notebook_bootstrap_validation.json": "9b38198d08e23cb8732546f9f1e97f55d504cca7f97578e632e8a336e0a1dbd4",
+    "report/presentation/bean_leaf_presentation.pptx": "e2d023d034fb9f230de3f7e1d9f633daebb720a3396ae760e70afdfafff4c504",
+    "report/presentation/sources.json": "736876ba471897913068ad42eeeae9bf065631a2844d360a75c82e275e60252c",
+    "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f"
   },
   "exact_assignment_overview": "Apply a state-of-the-art ViT OR multimodal model (for example CLIP) on a visual dataset, using fine-tuning OR embedding extraction for classification/retrieval/tagging.",
   "overview_assessment": "Executed supervised classification using a recent advanced vision-language encoder image tower plus a DINOv2 comparator satisfies the allowed type of model/task. Defensible contemporary published performance is presented without asserting latest-2026 or Beans SOTA.",
@@ -90,7 +93,7 @@
         "report/technical_report.pdf",
         "results/model_comparison/report_claim_review.json"
       ],
-      "assessment": "Eight sections, seven primary references, linked sources, actual figures and a completed numerical narrative provide a coherent report. Independently reviewed source is 2,035 whitespace words; prior parent extraction adds 164 figure-text words (2,199), below 2,500. PDF visual QA was performed separately by the parent, not by this static reviewer.",
+      "assessment": "Eight sections, seven primary references and completed scientific results remain intact. Updated source has 2,084 whitespace words; conservative figure-text-inclusive count is 2,248, below 2,500. A 12-slide editable PowerPoint and 589-word five-minute main script now accompany it. PDF/slide visual QA was performed separately by the parent.",
       "material_omission_found": false
     }
   ],
@@ -98,7 +101,7 @@
     {
       "item": "Technical report, maximum 2500 words",
       "status": "present and within limit",
-      "evidence": "report/technical_report.pdf and report/technical_report.md; source 2035 words; separate figure-text-inclusive count 2199 reported by parent"
+      "evidence": "report/technical_report.pdf and report/technical_report.md; source 2,084 words; conservative figure-text-inclusive count 2,248."
     },
     {
       "item": "Jupyter notebook or Python code via GitHub OR Moodle",
@@ -112,8 +115,8 @@
     },
     {
       "item": "PPTX slide deck",
-      "status": "not a stated requirement",
-      "evidence": "Presentation notes supplied; exact user rubric does not mandate slides"
+      "status": "present as additionally requested deliverable",
+      "evidence": "report/presentation/bean_leaf_presentation.pptx: 7 main slides and 5 backup slides, 2 editable charts, 6 editable tables, speaker notes and citations; five-minute main script."
     }
   ],
   "notebook_static_checks": {
@@ -167,7 +170,7 @@
   "new_colab_execution_verified_by_this_review": false,
   "scientific_or_report_material_omissions_found": [],
   "grade_guarantee": false,
-  "limits": "All five rubric areas and required deliverables have substantive evidence. Full marks remain an assessor judgement. Actual hosted Colab execution is not claimed or required by the supplied rubric. The original experiment/report are preserved.",
+  "limits": "All five rubric areas and required deliverables have substantive evidence. Full marks remain an assessor judgement. Hosted Colab execution is not claimed or required by the supplied rubric. Original scientific results remain unchanged; the report was updated to disclose the separate local notebook run.",
   "complete_local_execution_independent_checks": {
     "status": "passed",
     "identical_all_cell_sources": true,
@@ -181,13 +184,15 @@
     },
     "export_zip_crc_and_exact_copied_file_bytes_verified": true,
     "exported_files": 244,
-    "original_report_pdf_source_and_main_results_unchanged": true,
     "download_weight_hash_scope": "Execution evidence records official fresh weight hashes matching the earlier independently verified acquisition. This refresh did not rehash those downloaded cache weights.",
     "local_reproduction_partial_macro_f1_means": {
       "dinov2": 0.9767008718658744,
       "siglip2": 0.9689885516310653
     },
-    "interpretation": "Local reproduction is separate from the original report study; small seeded CUDA result differences and large observed timing anomalies are retained, not substituted into the report."
+    "interpretation": "Local reproduction is separate from the original report study; small seeded CUDA result differences and large observed timing anomalies are retained, not substituted into the report.",
+    "original_scientific_results_unchanged": true,
+    "report_updated_to_disclose_separate_local_rerun": true,
+    "report_update_scope": "Original experimental metrics retained; narrative/PDF updated with separate notebook verification and its differing reproduction means."
   },
   "resolved_findings": [
     {
@@ -199,5 +204,15 @@
       "resolution": "Full unchanged notebook executed locally; direct checks verified all code cells, predictions, locks and exported evidence."
     }
   ],
-  "local_notebook_execution_verified_by_this_review": true
+  "local_notebook_execution_verified_by_this_review": true,
+  "report_word_count_source": 2084,
+  "report_conservative_word_count_including_figure_text": 2248,
+  "presentation_content_audit": {
+    "status": "passed",
+    "pptx_sha256": "e2d023d034fb9f230de3f7e1d9f633daebb720a3396ae760e70afdfafff4c504",
+    "chart_caches_workbooks_tables_and_notes_verified": true,
+    "backup_note_spacing_corrected": true,
+    "main_script_words": 589,
+    "rehearsal_seconds": 300
+  }
 }

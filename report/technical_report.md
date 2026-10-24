@@ -52,6 +52,8 @@ Cross-entropy used AdamW, classifier learning rate 0.001, backbone rate 0.00001,
 
 Full-epoch pilots passed for both models/arms; 35 implementation, protocol and analysis tests passed. Execution used an RTX 3050 Laptop GPU (4 GB), PyTorch 2.6.0/CUDA 12.4 and Transformers 4.57.1. Configurations, histories, hashes and predictions support reproduction. Controlled seeds do not guarantee bitwise CUDA reproducibility. Codex assisted implementation, analysis and drafting.
 
+A subsequent unchanged notebook completed all 10 code cells and 12 fresh runs locally without errors; six bootstrap checks also passed. Its separate partial-model means were 97.67% (DINOv2) and 96.90% (SigLIP 2), illustrating rerun variability. These verification outputs do not replace the original comparison below. Hosted Colab remains untested.
+
 ## 5. Evaluation design
 
 Macro-F1 was primary because it weights each class equally. Accuracy, class precision/recall/F1, confusion matrices and examples complemented it. The training-majority classifier supplied a baseline. All 12 runs finished before selected checkpoints were locked and new test inference began; prior test exposure still applies.

@@ -1,10 +1,10 @@
 {
   "status": "passed",
-  "created_utc": "2026-10-24T08:00:18.046729+00:00",
+  "created_utc": "2026-10-24T17:58:47.035561+00:00",
   "scope": "Independent numerical and scientific claim review of final report source and presentation notes; no grade guarantee or new model inference.",
   "source_sha256": {
-    "report/technical_report.md": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
-    "report/presentation_notes.md": "a25feaa4c4934bdb268508021f87c09aad02fc0eac9cadd199a06823395ba075",
+    "report/technical_report.md": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
+    "report/presentation_notes.md": "074fa56ac0a6dc18580e05573c72a6334ae0175e5c7f9fb61351ff09fa3adfab",
     "results/model_comparison/independent_review.json": "32054c9ae773ce0cbe9e5d08463e95ee42434b733e91d960f5d6b296050877ef",
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
@@ -14,10 +14,17 @@
     "results/model_comparison/timing_analysis_amendment.json": "0e0e718ac1dbd191987d0ddb094170d9dfe204c7ffa27f80febbfd463237e7a0",
     "results/model_comparison/implementation_tests.txt": "161a5ccd9970c11783795936c4f209f44ca48807cea72ffe1fe7d069fab60a57",
     "results/data_audit/audit_summary.json": "40bbbb7c94babeaae43097caa926d6e251811b66b6e1f90265a51504ee2bd855",
-    "results/data_audit/visual_review_record.json": "3bb0a21f2e978b8592f7a852b96b1cdbad4071451e53669ade1647c709c1c73f"
+    "results/data_audit/visual_review_record.json": "3bb0a21f2e978b8592f7a852b96b1cdbad4071451e53669ade1647c709c1c73f",
+    "report/technical_report.pdf": "d7c25f5fc6c9a356c7b27f784b2c2c3c4c30056224c0b310b4e9c60fa898ed63",
+    "report/presentation/bean_leaf_presentation.pptx": "e2d023d034fb9f230de3f7e1d9f633daebb720a3396ae760e70afdfafff4c504",
+    "report/presentation/sources.json": "736876ba471897913068ad42eeeae9bf065631a2844d360a75c82e275e60252c",
+    "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
+    "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
+    "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
+    "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f"
   },
   "unresolved_material_findings": [],
-  "report_whitespace_words_including_references_and_markers": 2035,
+  "report_whitespace_words_including_references_and_markers": 2084,
   "word_limit": 2500,
   "raw_source_below_word_limit": true,
   "pdf_visual_review_performed_by_this_reviewer": false,
@@ -72,5 +79,23 @@
     "Unknown plant/farm dependence is not corrected by the paired image bootstrap.",
     "No fresh confirmatory claim, deployment certification or grade guarantee.",
     "Full Colab training was not executed; presentation notes disclose local execution."
-  ]
+  ],
+  "prior_report_source_sha256": "8255ea525583c090af113307d38fe81d385b2802ea9502e6f6884f876848fd91",
+  "conservative_word_count_including_figure_text": 2248,
+  "report_update_scope": "Added a 49-word disclosure of the separate successful local notebook run and its 97.67/96.90 partial means. Original scientific result files and original main comparison remain unchanged.",
+  "presentation_review": {
+    "status": "passed",
+    "file": "report/presentation/bean_leaf_presentation.pptx",
+    "slides": 12,
+    "main_slides": 7,
+    "backup_slides": 5,
+    "editable_charts": 2,
+    "editable_tables": 6,
+    "chart_caches_and_embedded_workbooks_verified": true,
+    "tables_and_all_main_numerical_claims_verified": true,
+    "speaker_notes_and_sources_present": 12,
+    "main_script_words": 589,
+    "planned_seconds": 300,
+    "natural_delivery_assessment": "Main script uses complete conversational explanations, explains macro-F1, separates results from limitations, and preserves responsible-use/AI disclosures. Five minutes is a rehearsal target, not recorded delivery."
+  }
 }
