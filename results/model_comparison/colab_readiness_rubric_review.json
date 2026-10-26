@@ -7,8 +7,8 @@
     "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
     "ASSISTANCE.md": "db018387f11e3a7b47fd6db572d61a3b31e4c1e76b31ab19da64ea94be9df3f4",
     "THIRD_PARTY_NOTICES.md": "e3359c6ee0b43d45686ca9932656d9ab54a081e841ea059c7599f78ecb2f8c3d",
-    "report/technical_report.md": "4b836f2b456c0a3942411b17f96961c74b80eb67bbc511c179a2c507d5d11bdc",
-    "report/technical_report.pdf": "5ff21ed4da18053738d5a0764b0ede86881f16b5c196109046efacd68f4d9517",
+    "report/technical_report.md": "2bd51c769456f31e6e48ce5daa61b602b895592c96419b613edcb236a0a92792",
+    "report/technical_report.pdf": "8c61877fda0fd0b55cf768b4040bc17c6cf6eed57777e16596c04fa0e928ec47",
     "report/presentation_notes.md": "160509c32817de4976960df0b9e2dbdb3ad21a1321cccfd98dd4bd0936dec8c5",
     "model_comparison.ipynb": "864d1a4d44231c1c7c9fe5c425a4e37947d734d1d7c683fe7380e5cca3f8f3db",
     "model_comparison_review.ipynb": "4e3ec2d89c1a0b795007706733c8ce3bd29a367dc3e727bd53adef481d4efbc4",
@@ -16,14 +16,14 @@
     "src/run_model_comparison.py": "a513ae5438c1be444a7a09b0e9bfc45f49165c87ec40a4bcbfa07f9fc2e002a0",
     "src/followup_experiment.py": "b1d193f8c46399089c9ff8c21ed0bb31455e0eee6055c5f87c3fe7d84a3dac0f",
     "results/model_comparison/independent_review.json": "32054c9ae773ce0cbe9e5d08463e95ee42434b733e91d960f5d6b296050877ef",
-    "results/model_comparison/report_claim_review.json": "2ecfd36762b451502834e476bfc51e751aec7e621970c0c6b63f213851797260",
+    "results/model_comparison/report_claim_review.json": "eb237d8ecf4a75b874874503dec89f6e4f786ffdfa181cee3a677349806dc745",
     "COLAB_GUIDE.md": "c181292f738d97b7d51a1b0d7101e542e6b48cd0517a541e0347e089df37bb55",
     "model_comparison_executed_local.ipynb": "591d6e43525cf2c93aaf1cb26f2027fcf1da5cb7393352c1ebd3f2c84bb192cf",
     "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
     "results/model_comparison/notebook_validation.json": "13c3b06085a8056405c8b2012e4e0e6c4f438b66441451655eefe433233b7a64",
     "results/model_comparison/notebook_bootstrap_validation.json": "9b38198d08e23cb8732546f9f1e97f55d504cca7f97578e632e8a336e0a1dbd4",
     "report/presentation/bean_leaf_presentation.pptx": "dee9217a4fdd7d1faa18e8656660d80932bd146fe22d2776e21acd5d8d7630b3",
-    "report/presentation/sources.json": "82e7fe3e3d6a3ea2e5d9c30251792a8dc86ac3198c233f3dfba407efbae4781f",
+    "report/presentation/sources.json": "26167fb9110e4d3834f565a7c449b2e250ecfc86bbd06208692b9246066a69c1",
     "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f"
   },
   "exact_assignment_overview": "Apply a state-of-the-art ViT OR multimodal model (for example CLIP) on a visual dataset, using fine-tuning OR embedding extraction for classification/retrieval/tagging.",
@@ -215,6 +215,6 @@
     "main_script_words": 539,
     "rehearsal_seconds": 300
   },
-  "reviewed_utc": "2026-10-26T12:45:02.482367+00:00",
-  "submission_refinement_scope": "Submission wording and presentation clarity refinements; all report numeric tokens and reference URLs are unchanged. The two native chart XML parts and two embedded workbooks are byte-identical to the preceding delivered deck. Original experiment and complete local notebook proof remain unchanged. No new scientific experiment, hosted Colab execution, human grading, or detector guarantee is claimed."
+  "reviewed_utc": "2026-10-26T13:37:12.289111+00:00",
+  "submission_refinement_scope": "Rebuilt the report from the user-provided rewrite, correcting altered technical meanings and restoring omitted rubric material. All original table rows, source URLs, figure assets, saved scientific results, training code, notebooks, presentation and speaker notes remain unchanged. No new experiment or AI-detector scan was performed. Earlier detector scores concern the preceding report version."
 }

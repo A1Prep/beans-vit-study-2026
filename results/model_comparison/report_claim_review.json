@@ -3,7 +3,7 @@
   "created_utc": "2026-10-24T17:58:47.035561+00:00",
   "scope": "Independent numerical and scientific claim review of final report source and presentation notes; no grade guarantee or new model inference.",
   "source_sha256": {
-    "report/technical_report.md": "4b836f2b456c0a3942411b17f96961c74b80eb67bbc511c179a2c507d5d11bdc",
+    "report/technical_report.md": "2bd51c769456f31e6e48ce5daa61b602b895592c96419b613edcb236a0a92792",
     "report/presentation_notes.md": "160509c32817de4976960df0b9e2dbdb3ad21a1321cccfd98dd4bd0936dec8c5",
     "results/model_comparison/independent_review.json": "32054c9ae773ce0cbe9e5d08463e95ee42434b733e91d960f5d6b296050877ef",
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
@@ -15,9 +15,9 @@
     "results/model_comparison/implementation_tests.txt": "161a5ccd9970c11783795936c4f209f44ca48807cea72ffe1fe7d069fab60a57",
     "results/data_audit/audit_summary.json": "40bbbb7c94babeaae43097caa926d6e251811b66b6e1f90265a51504ee2bd855",
     "results/data_audit/visual_review_record.json": "3bb0a21f2e978b8592f7a852b96b1cdbad4071451e53669ade1647c709c1c73f",
-    "report/technical_report.pdf": "5ff21ed4da18053738d5a0764b0ede86881f16b5c196109046efacd68f4d9517",
+    "report/technical_report.pdf": "8c61877fda0fd0b55cf768b4040bc17c6cf6eed57777e16596c04fa0e928ec47",
     "report/presentation/bean_leaf_presentation.pptx": "dee9217a4fdd7d1faa18e8656660d80932bd146fe22d2776e21acd5d8d7630b3",
-    "report/presentation/sources.json": "82e7fe3e3d6a3ea2e5d9c30251792a8dc86ac3198c233f3dfba407efbae4781f",
+    "report/presentation/sources.json": "26167fb9110e4d3834f565a7c449b2e250ecfc86bbd06208692b9246066a69c1",
     "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
     "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
     "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
@@ -80,9 +80,9 @@
     "No fresh confirmatory claim, deployment certification or grade guarantee.",
     "Full Colab training was not executed; presentation notes disclose local execution."
   ],
-  "prior_report_source_sha256": "cfbbe9447c5322502b0336117a56b02ed9c4d5d67d173e98ff2ed5a813db999a",
+  "prior_report_source_sha256": "4b836f2b456c0a3942411b17f96961c74b80eb67bbc511c179a2c507d5d11bdc",
   "conservative_word_count_including_figure_text": 2247,
-  "report_update_scope": "Submission wording and presentation clarity refinements; all report numeric tokens and reference URLs are unchanged. The two native chart XML parts and two embedded workbooks are byte-identical to the preceding delivered deck. Original experiment and complete local notebook proof remain unchanged. No new scientific experiment, hosted Colab execution, human grading, or detector guarantee is claimed.",
+  "report_update_scope": "Rebuilt the report from the user-provided rewrite, correcting altered technical meanings and restoring omitted rubric material. All original table rows, source URLs, figure assets, saved scientific results, training code, notebooks, presentation and speaker notes remain unchanged. No new experiment or AI-detector scan was performed. Earlier detector scores concern the preceding report version.",
   "presentation_review": {
     "status": "passed",
     "file": "report/presentation/bean_leaf_presentation.pptx",
@@ -98,13 +98,15 @@
     "planned_seconds": 300,
     "natural_delivery_assessment": "Main script uses complete conversational explanations, explains macro-F1, separates results from limitations, and preserves responsible-use/AI disclosures. Five minutes is a rehearsal target, not recorded delivery."
   },
-  "reviewed_utc": "2026-10-26T12:45:02.482367+00:00",
+  "reviewed_utc": "2026-10-26T13:37:12.289111+00:00",
   "submission_refinement_review": {
-    "reviewed_utc": "2026-10-26T12:45:02.482367+00:00",
-    "report_numbers_and_urls_unchanged": true,
+    "reviewed_utc": "2026-10-26T13:37:12.289111+00:00",
+    "report_tables_urls_and_figures_unchanged": true,
     "original_charts_and_workbooks_byte_identical": true,
     "main_script_words": 539,
+    "user_rewrite_corrections": "report/user_revision_review.json",
+    "independent_material_content_review_passed": true,
     "automated_tests_reexecuted": false,
-    "reason": "Only report and presentation wording/layout changed; original code and execution proof are unchanged."
+    "reason": "Only report prose/layout and verification metadata changed; scientific code and execution proof are unchanged."
   }
 }

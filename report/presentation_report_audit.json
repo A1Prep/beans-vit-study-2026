@@ -1,19 +1,19 @@
 {
   "status": "passed",
-  "reviewed_utc": "2026-10-26T12:45:02.482367+00:00",
+  "reviewed_utc": "2026-10-26T13:37:12.289111+00:00",
   "review_scope": "Independent report, notes, README, PROJECT_REVIEW and final PPTX content/data audit. PPTX XML, native chart caches, embedded XLSX numeric cells, tables and speaker notes inspected directly; no slide editing or GPU rerun. Parent performed separate final render inspection; native PowerPoint application was not opened.",
   "source_sha256": {
-    "report/technical_report.md": "4b836f2b456c0a3942411b17f96961c74b80eb67bbc511c179a2c507d5d11bdc",
-    "report/technical_report.pdf": "5ff21ed4da18053738d5a0764b0ede86881f16b5c196109046efacd68f4d9517",
+    "report/technical_report.md": "2bd51c769456f31e6e48ce5daa61b602b895592c96419b613edcb236a0a92792",
+    "report/technical_report.pdf": "8c61877fda0fd0b55cf768b4040bc17c6cf6eed57777e16596c04fa0e928ec47",
     "report/presentation_notes.md": "160509c32817de4976960df0b9e2dbdb3ad21a1321cccfd98dd4bd0936dec8c5",
     "report/presentation/bean_leaf_presentation.pptx": "dee9217a4fdd7d1faa18e8656660d80932bd146fe22d2776e21acd5d8d7630b3",
-    "report/presentation/sources.json": "82e7fe3e3d6a3ea2e5d9c30251792a8dc86ac3198c233f3dfba407efbae4781f",
+    "report/presentation/sources.json": "26167fb9110e4d3834f565a7c449b2e250ecfc86bbd06208692b9246066a69c1",
     "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
     "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
-    "results/model_comparison/report_claim_review.json": "2ecfd36762b451502834e476bfc51e751aec7e621970c0c6b63f213851797260",
-    "results/model_comparison/colab_readiness_rubric_review.json": "4429b00397c17652185cd6a7f3719394bbd48fe769c3c999b9cf3d107753e8f7"
+    "results/model_comparison/report_claim_review.json": "eb237d8ecf4a75b874874503dec89f6e4f786ffdfa181cee3a677349806dc745",
+    "results/model_comparison/colab_readiness_rubric_review.json": "af243198a031b0d85ef32659b508585f096729abee5d68818aab8bd46735f922"
   },
   "report": {
     "pages": 6,
@@ -62,7 +62,17 @@
     "Encoder and classifier roles and the weights updated by each training setting are explained.",
     "Footer wording and readability improved while scientific limitations and AI disclosure remain.",
     "Ambiguous pretrained-initialization, optimizer/loss and notebook-code-cell wording clarified.",
-    "Unnatural farm-collection and carbon wording replaced with precise statements."
+    "Unnatural farm-collection and carbon wording replaced with precise statements.",
+    "Distinguished macro-F1 from accuracy in original, clean-split and later notebook results.",
+    "Identified 809.10 seconds as frozen SigLIP seed-17 epoch 9, not a mean.",
+    "Assigned partial-model differences to seeds 17, 42 and 2026; kept bootstrap scope at seed 17.",
+    "Restored classifier training in partial fine-tuning, normalisation-before-pooling and resize-256/crop-224 details.",
+    "Specified the training-majority baseline, checkpoint tiebreakers and lack of separate hyperparameter tuning.",
+    "Clarified model-specific pretrained initialisation, candidate image pairs and unknown farm/plant independence.",
+    "Preserved exploratory test-reuse limitations without claiming that results provide no evidence at all.",
+    "Restored synthetic-sensitivity results, actual figure assets and all reference links.",
+    "Restored fairness, restricted classes, expert referral, access, attribution, privacy and environmental discussion.",
+    "Removed pasted page headers/numbers and rebuilt consistent tables, headings, captions and references."
   ],
   "unresolved_material_findings": [],
   "remaining_actions": [
@@ -71,5 +81,6 @@
     "Hosted Colab remains optional and untested; do not describe local execution as hosted Colab execution."
   ],
   "grade_guarantee": false,
-  "submission_refinement_scope": "Submission wording and presentation clarity refinements; all report numeric tokens and reference URLs are unchanged. The two native chart XML parts and two embedded workbooks are byte-identical to the preceding delivered deck. Original experiment and complete local notebook proof remain unchanged. No new scientific experiment, hosted Colab execution, human grading, or detector guarantee is claimed."
+  "submission_refinement_scope": "Rebuilt the report from the user-provided rewrite, correcting altered technical meanings and restoring omitted rubric material. All original table rows, source URLs, figure assets, saved scientific results, training code, notebooks, presentation and speaker notes remain unchanged. No new experiment or AI-detector scan was performed. Earlier detector scores concern the preceding report version.",
+  "user_report_revision_review": "report/user_revision_review.json"
 }
