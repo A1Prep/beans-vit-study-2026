@@ -6,7 +6,7 @@ Experiments executed: 24 October 2026.
 
 This study compares the recent SigLIP 2 (2025) vision-language encoder with DINOv2 (2023) for bean-leaf classification [1,2]. Both use attention over image-patch representations learned through pretraining.
 
-The primary question was whether partial SigLIP 2 fine-tuning improved macro-F1 over partial DINOv2. Frozen features, adaptation benefits, cost and failures provided secondary comparisons. This was an exploratory extension: original DINOv2 test results were already known. Both backbones were trained afresh under fixed settings, but the reused test set cannot provide fresh confirmatory evidence.
+The primary question was whether partial SigLIP 2 fine-tuning improved macro-F1 over partial DINOv2. Frozen features, adaptation benefits, cost and failures provided secondary comparisons. This was an exploratory extension: original DINOv2 test results were already known. Each configuration started from the original pretrained encoder weights and was run under fixed settings, but the reused test set cannot provide fresh confirmatory evidence.
 
 ## 2. Dataset selection and audit
 
@@ -48,11 +48,11 @@ Training used horizontal and vertical flips with probability 0.5 each, then rota
 
 The frozen arm trained only the classifier. Partial adaptation additionally trained the final two blocks and final normalisation. SigLIP's pretrained pooling head remained frozen while gradients passed through it. Backbones stayed in evaluation mode with gradients enabled for intended parameters. Classifier initialisation was paired within each backbone; representation dimensions prevent identical heads across backbones.
 
-Cross-entropy used AdamW, classifier learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1 and CUDA FP16. Rates remained constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 improvement; checkpoint ties used lower loss, then earlier epoch. Three seeds (17, 42, 2026), two arms and two models completed 12 fresh runs. No hyperparameter search was performed; settings were not separately optimised for each backbone.
+Training minimised cross-entropy using AdamW, classifier learning rate 0.001, backbone rate 0.00001, weight decay 0.01, batch size 8, gradient clipping at norm 1 and CUDA FP16. Rates remained constant. Training allowed 10 epochs with patience 3 on strict validation macro-F1 improvement; checkpoint ties used lower loss, then earlier epoch. Three seeds (17, 42, 2026), two arms and two models completed 12 fresh runs. No hyperparameter search was performed; settings were not separately optimised for each backbone.
 
 Full-epoch pilots passed for both models/arms; 35 implementation, protocol and analysis tests passed. Execution used an RTX 3050 Laptop GPU (4 GB), PyTorch 2.6.0/CUDA 12.4 and Transformers 4.57.1. Configurations, histories, hashes and predictions support reproduction. Controlled seeds do not guarantee bitwise CUDA reproducibility. Codex assisted implementation, analysis and drafting.
 
-A subsequent unchanged notebook completed all 10 code cells and 12 fresh runs locally without errors; six bootstrap checks also passed. Its separate partial-model means were 97.67% (DINOv2) and 96.90% (SigLIP 2), illustrating rerun variability. These verification outputs do not replace the original comparison below. Hosted Colab remains untested.
+A subsequent unchanged notebook completed all 10 code cells and 12 fresh runs locally without errors; six notebook setup checks also passed. Its separate partial-model means were 97.67% (DINOv2) and 96.90% (SigLIP 2), illustrating rerun variability. These verification outputs do not replace the original comparison below. Hosted Colab remains untested.
 
 ## 5. Evaluation design
 
@@ -103,15 +103,15 @@ Figure 3. SigLIP 2 partial predictions: highest-confidence errors first, then lo
 
 The potential benefit is accessible assistance with recognising visible symptoms where agronomic advice is difficult to obtain. Errors have unequal consequences: missed disease could delay expert assessment; false alarms could cause expense or inappropriate intervention. The reported harm-related counts are small-sample observations, not measured deployment outcomes. Zero observed disease-as-healthy errors does not establish zero risk. Any future system should assist agricultural experts and avoid automatically prescribing treatment.
 
-The dataset represents one crop and two disease categories from a restricted collection. Other diseases, pests and nutrient problems would still be forced into one of three labels. Softmax confidence cannot establish correctness, especially outside the training distribution. Before deployment, prospective evaluation should cover independently collected farms, seasons, devices and disease presentations. A calibrated rejection or referral policy would need separate validation, and users should be able to obtain expert review rather than receiving an unsupported definitive diagnosis.
+The dataset represents one crop and two disease categories from a restricted collection. Other diseases, pests and nutrient problems would still be forced into one of three labels. Softmax confidence cannot establish correctness, especially outside the training distribution. Before deployment, prospective evaluation should cover images from independent farms, seasons, devices and disease presentations. A calibrated rejection or referral policy would need separate validation, and users should be able to obtain expert review rather than receiving an unsupported definitive diagnosis.
 
 Balanced classes do not establish fairness across farmers. Farm, location and relevant demographic metadata are insufficient for subgroup evaluation here. The models' large pretraining collections may also encode unequal geographic or socioeconomic representation. SigLIP 2's reported fairness improvements concern separate benchmarks [1]; they do not certify fairness for this agricultural application. Testing performance across local collection conditions and involving agricultural practitioners would be necessary. Phone quality, connectivity and access to advice could influence who benefits, even if model accuracy were similar.
 
-Makerere AI Lab, expert annotators and model authors require attribution. Dataset MIT and model Apache-2.0 notices accompany the project; public availability does not itself demonstrate consent for unrelated future collection or deployment. New field data should minimise unnecessary personal or farm-identifying information. Reusing pretrained weights and restricting adaptation reduces the work performed in this experiment, but local runtime excludes the models' substantial pretraining costs and does not justify invented carbon savings. Transparent limitations and disclosure of AI assistance support accountable reporting rather than an exaggerated claim of readiness.
+Makerere AI Lab, expert annotators and model authors require attribution. Dataset MIT and model Apache-2.0 notices accompany the project; public availability does not itself demonstrate consent for unrelated future collection or deployment. New field data should minimise unnecessary personal or farm-identifying information. Reusing pretrained weights and restricting adaptation limited the training performed here. Local runtime excludes pretraining, and energy use and carbon emissions were not measured. The code, saved predictions and assistance disclosure document how the results were produced.
 
 ## 8. Conclusion
 
-SigLIP 2 was accessible and feasible, and supplied stronger frozen features; the partial-model means were effectively tied. For this exploratory resource-limited setting, partial DINOv2 offers comparable accuracy with a smaller model and memory requirement. Testing recent models remains valuable without assuming improvement. Independent farm-level validation and validation-only tuning are the next priorities.
+SigLIP 2 was accessible and feasible, and supplied stronger frozen features; the partial-model means were effectively tied. For this exploratory resource-limited setting, partial DINOv2 offers comparable accuracy with a smaller model and memory requirement. Next steps are to test images from independent farms and tune hyperparameters using validation data.
 
 ## References
 
