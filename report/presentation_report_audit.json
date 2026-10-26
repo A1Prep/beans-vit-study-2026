@@ -1,45 +1,45 @@
 {
   "status": "passed",
-  "reviewed_utc": "2026-10-26T13:37:12.289111+00:00",
+  "reviewed_utc": "2026-10-26T14:53:05.190209+00:00",
   "review_scope": "Independent report, notes, README, PROJECT_REVIEW and final PPTX content/data audit. PPTX XML, native chart caches, embedded XLSX numeric cells, tables and speaker notes inspected directly; no slide editing or GPU rerun. Parent performed separate final render inspection; native PowerPoint application was not opened.",
   "source_sha256": {
-    "report/technical_report.md": "2bd51c769456f31e6e48ce5daa61b602b895592c96419b613edcb236a0a92792",
-    "report/technical_report.pdf": "8c61877fda0fd0b55cf768b4040bc17c6cf6eed57777e16596c04fa0e928ec47",
-    "report/presentation_notes.md": "160509c32817de4976960df0b9e2dbdb3ad21a1321cccfd98dd4bd0936dec8c5",
-    "report/presentation/bean_leaf_presentation.pptx": "dee9217a4fdd7d1faa18e8656660d80932bd146fe22d2776e21acd5d8d7630b3",
-    "report/presentation/sources.json": "26167fb9110e4d3834f565a7c449b2e250ecfc86bbd06208692b9246066a69c1",
-    "README.md": "3ff8f7dc62232375628577099cf84f4a9420c52e0d01c1565a3dd7c18959ceb4",
-    "PROJECT_REVIEW.md": "46c1230eda0fd477f194fde041166b2a29b106e827b1e79eff36ce8b2c6af751",
+    "report/technical_report.md": "fa0dde6a2def7ef733d74cf10af532f75e2c9e91d34d21e59fdc128b101ac0bf",
+    "report/technical_report.pdf": "a784789871954ef4949a27d32aa9e28bfeec074b0c90f83747b297348a0fdd59",
+    "report/presentation_notes.md": "83efdf98ef1e21e4747416dfde693dd94caec9de9ef332716ae08a9584c73fe4",
+    "report/presentation/bean_leaf_presentation.pptx": "fc377d4f7f22752898895231aeaf9e9bfa8594fb266063f02488551d94fa7cc4",
+    "report/presentation/sources.json": "8e187003e17253d6f15e4776560285809f70997e07fbf9ebbddc63217d67b079",
+    "README.md": "d5b724656a1b588bbe717a3b59a4b541ace96ca218a0e724d8da705c8b609ce0",
+    "PROJECT_REVIEW.md": "cb71a6ff52d5e889875f7fed65685fc689a7584002e6e0435c90d6d343ac897e",
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
-    "results/model_comparison/report_claim_review.json": "eb237d8ecf4a75b874874503dec89f6e4f786ffdfa181cee3a677349806dc745",
-    "results/model_comparison/colab_readiness_rubric_review.json": "af243198a031b0d85ef32659b508585f096729abee5d68818aab8bd46735f922"
+    "results/model_comparison/report_claim_review.json": "f62be486f80f8b42a1e7742a37e4c5edd82f1ae9d089f97f87e4c05a454a9c6e",
+    "results/model_comparison/colab_readiness_rubric_review.json": "3ee95166cb0594cb3b781c881c4efc5e5329de972065dedc02e345bc63e310da"
   },
   "report": {
     "pages": 6,
-    "source_words": 2083,
-    "conservative_words_including_figure_text": 2247,
+    "source_words": 2096,
+    "conservative_words_including_figure_text": 2260,
     "word_limit": 2500,
     "original_scientific_results_unchanged": true,
     "separate_local_rerun_disclosure_accurate": true,
     "source_and_pdf_updated": true
   },
   "presentation": {
-    "slides": 12,
+    "slides": 14,
     "main": 7,
-    "backup": 5,
+    "backup": 7,
     "native_charts": 2,
-    "native_tables": 6,
+    "native_tables": 8,
     "embedded_chart_workbooks": 2,
-    "speaker_notes_with_sources": 12,
-    "main_script_words": 539,
+    "speaker_notes_with_sources": 14,
+    "main_script_words": 564,
     "allocated_seconds": [
       15,
       45,
+      60,
       50,
+      40,
       50,
-      45,
-      55,
       40
     ],
     "total_seconds": 300,
@@ -51,9 +51,11 @@
       "DINOv2 reference confusion",
       "SigLIP reference confusion",
       "training settings",
-      "original versus separate reproduction partial means"
+      "original versus separate reproduction partial means",
+      "reference per-class precision/recall/F1 and majority baseline",
+      "reference synthetic blur/darkening results"
     ],
-    "natural_delivery": "Main script contains 539 words. Allocated timings total 300 seconds; actual speaking time still requires student rehearsal."
+    "natural_delivery": "Main script contains 564 words. Allocated time remains 300 seconds; actual delivery requires rehearsal."
   },
   "resolved_findings": [
     "Backup speaker-note spacing around numbers corrected before final export.",
@@ -72,7 +74,10 @@
     "Preserved exploratory test-reuse limitations without claiming that results provide no evidence at all.",
     "Restored synthetic-sensitivity results, actual figure assets and all reference links.",
     "Restored fairness, restricted classes, expert referral, access, attribution, privacy and environmental discussion.",
-    "Removed pasted page headers/numbers and rebuilt consistent tables, headings, captions and references."
+    "Removed pasted page headers/numbers and rebuilt consistent tables, headings, captions and references.",
+    "Name, student ID and course added to both document covers.",
+    "Dataset and model selection rationale made explicit.",
+    "Two backup slides add majority baseline, per-class metrics and synthetic-sensitivity results."
   ],
   "unresolved_material_findings": [],
   "remaining_actions": [
@@ -81,6 +86,7 @@
     "Hosted Colab remains optional and untested; do not describe local execution as hosted Colab execution."
   ],
   "grade_guarantee": false,
-  "submission_refinement_scope": "Rebuilt the report from the user-provided rewrite, correcting altered technical meanings and restoring omitted rubric material. All original table rows, source URLs, figure assets, saved scientific results, training code, notebooks, presentation and speaker notes remain unchanged. No new experiment or AI-detector scan was performed. Earlier detector scores concern the preceding report version.",
-  "user_report_revision_review": "report/user_revision_review.json"
+  "submission_refinement_scope": "Added user-supplied identity to the report and presentation; strengthened dataset/model selection rationale and added two backup slides using existing baseline, per-class and synthetic-sensitivity results. Report scientific body, experiment evidence, original chart/workbook bytes and photographs are unchanged. No new training, hosted Colab run or AI-detector scan is claimed.",
+  "user_report_revision_review": "report/user_revision_review.json",
+  "submission_details_review": "report/submission_details_review.json"
 }

@@ -44,5 +44,6 @@
     "results/model_comparison/figures/siglip_sample_predictions.pdf": "72eaf69bf44b526005e794c28ac5d3a6a86dc7ee822dc1fcccbab3e5315f8d40"
   },
   "ai_detector_status": "This revised report has not been detector-scanned.",
-  "grade_guarantee": false
+  "grade_guarantee": false,
+  "scope_notice": "Historical review of the user rewrite before identity and presentation changes. See submission_details_review.json for the latest files."
 }

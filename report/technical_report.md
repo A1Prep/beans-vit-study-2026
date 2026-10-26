@@ -1,5 +1,9 @@
 # Bean Leaf Disease Classification with SigLIP 2 and DINOv2: Accuracy, Adaptation and Cost
 
+**Omar Ahmad Obaid** - Student ID: 7309429
+
+MAAI901 Deep Learning for Visual Data
+
 Experiments completed on 24 October 2026.
 
 ## 1. Introduction and research question

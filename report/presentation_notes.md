@@ -1,6 +1,6 @@
 # Five-minute presentation: SigLIP 2 versus DINOv2
 
-Presentation: 27 October 2026, 6:30 pm. Use slides 1–7 for the five-minute talk. Slides 8–12 are backup material for questions. The main results match the original 12-run experiment in the report; slide 11 explains the separate notebook verification.
+Presentation: 27 October 2026, 6:30 pm. Use slides 1–7 for the five-minute talk. Slides 8–14 are backup material for questions. The main results match the original 12-run experiment in the report; slide 11 explains the separate notebook verification.
 
 [Editable PowerPoint](presentation/bean_leaf_presentation.pptx)
 
@@ -14,21 +14,21 @@ This project asks whether a newer vision model improves bean-leaf disease classi
 
 ### Slide 2: Three classes in field photographs (0:15–1:00)
 
-The task has three labels: angular leaf spot, bean rust and healthy. The photographs come from Ugandan fields, with varied backgrounds and lighting. The audited release contains 1,295 images. I kept the published split: 1,034 training, 133 validation and 128 test images. Every split contains all three classes. There were no corrupt files or exact duplicates. However, farm and plant identifiers are unavailable, so we cannot verify that the test images come from separate farms.
+The task has three labels: angular leaf spot, bean rust and healthy. I chose this small, expert-labelled dataset because field photographs have varied backgrounds and lighting, and transfer learning is feasible with limited computing. The audited release contains 1,295 images. I kept the published split: 1,034 training, 133 validation and 128 test images. Every split contains all three classes. There were no corrupt files or exact duplicates. However, farm and plant identifiers are unavailable, so we cannot verify that test images come from separate farms.
 
-### Slide 3: Models and training settings (1:00–1:50)
+### Slide 3: Models and training settings (1:00–2:00)
 
-Both models start from public pretrained weights. The encoder turns image pixels into numerical features. A new classifier uses those features to predict the three labels. Frozen training changes only the classifier weights. Partial fine-tuning also changes the final two encoder blocks and final normalisation. Each setting starts again from the original pretrained checkpoint. SigLIP 2 supports text, but this experiment uses only its image encoder. Both models receive 224-pixel images with matching flips and rotations. Three seeds for each model and setting give twelve runs. Validation performance selects the saved model in each run.
+SigLIP 2 is a public advanced model from 2025. DINOv2 is an established comparison. The SigLIP 2 paper reports 78.2 percent ImageNet zero-shot accuracy against 76.2 for the same-size original SigLIP. That motivated selection, without claiming the latest 2026 model. All runs fit four gigabytes. The encoder converts pixels into features. A new classifier predicts three labels. Frozen training changes only classifier weights. Partial training also updates the final two encoder blocks and normalisation. Each starts from original pretrained weights. We use only images, not text prompts. Both receive 224-pixel images with matching flips and rotations. Two models, two settings and three seeds give twelve runs. Validation selects each checkpoint.
 
-### Slide 4: SigLIP 2 helped most with frozen features (1:50–2:40)
+### Slide 4: SigLIP 2 helped most with frozen features (2:00–2:50)
 
 Macro-F1 gives each class equal weight. With frozen encoders, DINOv2 reaches 90.71 percent and SigLIP 2 reaches 96.90 percent, a difference of 6.18 percentage points. After partial fine-tuning, both average 96.90 percent. The three-seed means are practically tied, although that does not prove the models are equivalent. DINOv2 uses less allocated GPU memory. There are only 128 test images, and earlier DINOv2 results on this test set were already known. The comparison is therefore exploratory. The reference confidence interval includes zero, and the backup table shows the variation across runs.
 
-### Slide 5: Later epochs showed overfitting or instability (2:40–3:25)
+### Slide 5: Later epochs showed overfitting or instability (2:50–3:30)
 
 I also checked for overfitting. This graph shows the partial SigLIP run with seed seventeen. Training loss generally falls, but validation loss rises sharply near the end. Validation macro-F1 selected epoch six, so that earlier version was retained. Across the selected runs, the clean training-to-test F1 gap averages 1.27 points for DINOv2 and 2.01 for SigLIP. Those gaps do not rule out overfitting, because validation already influenced model selection. Evaluation on images from independent farms would provide a stronger check.
 
-### Slide 6: A confident prediction can still be wrong (3:25–4:20)
+### Slide 6: A confident prediction can still be wrong (3:30–4:20)
 
 Both photographs are labelled angular leaf spot, but SigLIP predicts rust. One wrong prediction has 98.65 percent confidence. A wrong disease label could lead to the wrong treatment. Missing disease could delay advice, while false alarms could add unnecessary cost. Other diseases or nutrient problems would still be forced into these three labels. We also lack evidence of equal performance across farms and devices. Phone quality and access to advice could affect who benefits. A future application needs independent field testing and expert review, with a validated way to refer uncertain cases rather than automatically prescribe treatment.
 
@@ -42,7 +42,9 @@ SigLIP 2 gave stronger frozen features. Partial fine-tuning brought DINOv2 to a 
 - Slide 9: where the reference models failed.
 - Slide 10: preprocessing and training settings.
 - Slide 11: reproducibility and remaining limits.
-- Slide 12: sources.
+- Slide 12: class precision, recall and F1, plus the training-majority baseline.
+- Slide 13: blur and darkening sensitivity.
+- Slide 14: sources.
 
 ## Results to have ready
 
@@ -95,3 +97,14 @@ Values are means ± sample SD across three seeds. Training time excludes validat
 - Locate the study plan, checkpoint locks, timing amendment, histories and predictions.
 - Use the current `results/model_comparison` figures, avoiding earlier DINOv2-only results.
 - Verify course-specific duration, submission access and AI-disclosure requirements.
+
+
+## Added backup slide notes
+
+### Slide 12: Class results and a simple baseline
+
+These are the partial-model results for reference seed seventeen. Precision measures how often a predicted class is correct. Recall measures how many true examples of that class were found. F1 combines both. Leaf-spot recall is 97.67 percent for DINOv2 and 93.02 for SigLIP 2. The training-majority baseline always predicts rust, achieving 33.59 percent accuracy and 16.76 percent macro-F1. These class results describe one seed on this small test set.
+
+### Slide 13: A small check under blur and darkening
+
+For the reference seed-seventeen partial models, DINOv2 macro-F1 is 98.45 percent on clean images, 97.67 under Gaussian blur of radius one, and 98.45 after brightness is multiplied by 0.7. SigLIP 2 scores 97.67, 96.07 and 97.67 percent. These changes use the same 128 test images at one synthetic severity each. They do not establish performance across independent farms, devices, seasons or other image changes.

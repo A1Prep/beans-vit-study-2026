@@ -27,7 +27,7 @@ A separate AI reviewer independently recomputed predictions and intervals rather
 
 ## Final deliverables
 
-The [technical report](report/technical_report.pdf) remains within 2,500 words, including figure text, and now distinguishes the original experiment from the successful later notebook verification. The [five-minute PowerPoint](report/presentation/bean_leaf_presentation.pptx) has seven main slides and five backup slides, editable charts/tables, actual dataset photographs and embedded speaker notes. The [timed script](report/presentation_notes.md) covers the result, overfitting, errors and responsible use, with additional question preparation. Code, executed notebooks, visualizations and sample predictions are supplied through the repository and ZIP. No Moodle submission has been made.
+The [technical report](report/technical_report.pdf) remains within 2,500 words, including figure text, and distinguishes the original experiment from the successful later notebook verification. The [five-minute PowerPoint](report/presentation/bean_leaf_presentation.pptx) has seven main slides and seven backup slides, editable charts/tables, actual dataset photographs and embedded speaker notes. Backup material includes the majority baseline, per-class precision/recall/F1 and synthetic blur/darkening checks. The [timed script](report/presentation_notes.md) covers the result, overfitting, errors and responsible use, with additional question preparation. Code, executed notebooks, visualizations and sample predictions are supplied through the repository and ZIP. No Moodle submission has been made.
 
 ## Remaining student actions
 

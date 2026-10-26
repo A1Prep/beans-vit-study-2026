@@ -1,7 +1,7 @@
 {
   "main_results": "Original comparison in results/model_comparison; later notebook verification is separate",
   "main_slide_count": 7,
-  "backup_slide_count": 5,
+  "backup_slide_count": 7,
   "target_minutes": 5,
   "source_sha256": {
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
@@ -12,7 +12,11 @@
     "results/model_comparison/siglip2/runs/partial/seed_17/metrics_test.json": "cd0a1e0fee8202e7de1cd39d18b6556a0eccb91aa78e1649b77d6a783292a203",
     "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
     "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f",
-    "report/technical_report.md": "2bd51c769456f31e6e48ce5daa61b602b895592c96419b613edcb236a0a92792"
+    "report/technical_report.md": "fa0dde6a2def7ef733d74cf10af532f75e2c9e91d34d21e59fdc128b101ac0bf",
+    "results/model_comparison/dinov2/runs/partial/seed_17/metrics_test_blur.json": "93c181a30f77e934aec9b7375cf07d833ae0a7d159eb31938e6eac88cc092e96",
+    "results/model_comparison/dinov2/runs/partial/seed_17/metrics_test_brightness.json": "5799d9193ae568abcf714e563135ae69e5c75fbd5e28d37ca64c0f494382157a",
+    "results/model_comparison/siglip2/runs/partial/seed_17/metrics_test_blur.json": "dac683428d7618b21bb215395b7ccb5add9969b3f82e36ce6edbab7c0eba2f29",
+    "results/model_comparison/siglip2/runs/partial/seed_17/metrics_test_brightness.json": "ccc79814c38c0b77a6242933621a9b4d323fe96ed0a0cddb6c8193306291b4f0"
   },
   "images": [
     {
@@ -45,5 +49,6 @@
       "sha256": "3a25b1a466e4b096d1bb812e719d6e5d211e061d0d4ced1f935788e96de5eeee",
       "provider": "Makerere AI Lab Beans dataset (MIT)"
     }
-  ]
+  ],
+  "main_script_word_count": 564
 }
