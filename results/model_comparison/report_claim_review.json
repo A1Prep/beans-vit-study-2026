@@ -16,10 +16,10 @@
     "results/data_audit/audit_summary.json": "40bbbb7c94babeaae43097caa926d6e251811b66b6e1f90265a51504ee2bd855",
     "results/data_audit/visual_review_record.json": "3bb0a21f2e978b8592f7a852b96b1cdbad4071451e53669ade1647c709c1c73f",
     "report/technical_report.pdf": "a784789871954ef4949a27d32aa9e28bfeec074b0c90f83747b297348a0fdd59",
-    "report/presentation/bean_leaf_presentation.pptx": "fc377d4f7f22752898895231aeaf9e9bfa8594fb266063f02488551d94fa7cc4",
-    "report/presentation/sources.json": "8e187003e17253d6f15e4776560285809f70997e07fbf9ebbddc63217d67b079",
-    "README.md": "d5b724656a1b588bbe717a3b59a4b541ace96ca218a0e724d8da705c8b609ce0",
-    "PROJECT_REVIEW.md": "cb71a6ff52d5e889875f7fed65685fc689a7584002e6e0435c90d6d343ac897e",
+    "report/presentation/bean_leaf_presentation.pptx": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23",
+    "report/presentation/sources.json": "ce786053182eb721cdc884955e39e46c826efc4ce479b91b6f6fab619e941ba3",
+    "README.md": "816479cc37517a5fe38e95360607bc33d33486d04dd779c81ea53a5797ef2766",
+    "PROJECT_REVIEW.md": "2c4476ce1e4883f56dbe741d334f01411348b8544eb8c39a4099d3c3d455ce1c",
     "validation/full_notebook_local/execution_verification.json": "80c076097b55146fc0f826bdbcf15cb968c07342818e3f9330b810d57b4366dc",
     "validation/full_notebook_local/evidence/combined_summary.csv": "a471e7929f711fd4a8d1ad59297739b190c2005bf07e507ab19ae176c96a665f"
   },
@@ -86,17 +86,18 @@
   "presentation_review": {
     "status": "passed",
     "file": "report/presentation/bean_leaf_presentation.pptx",
-    "slides": 14,
+    "slides": 15,
     "main_slides": 7,
     "backup_slides": 7,
     "editable_charts": 2,
     "editable_tables": 8,
     "chart_caches_and_embedded_workbooks_verified": true,
     "tables_and_all_main_numerical_claims_verified": true,
-    "speaker_notes_and_sources_present": 14,
+    "speaker_notes_and_sources_present": 15,
     "main_script_words": 564,
     "planned_seconds": 300,
-    "natural_delivery_assessment": "Main script uses complete conversational explanations, explains macro-F1, separates results from limitations, and preserves responsible-use/AI disclosures. Five minutes is a rehearsal target, not recorded delivery."
+    "natural_delivery_assessment": "Main script uses complete conversational explanations, explains macro-F1, separates results from limitations, and preserves responsible-use/AI disclosures. Five minutes is a rehearsal target, not recorded delivery.",
+    "repository_link_slides": 1
   },
   "reviewed_utc": "2026-10-26T14:53:05.190209+00:00",
   "submission_refinement_review": {
@@ -108,5 +109,15 @@
     "automated_tests_reexecuted": false,
     "verification": "report/submission_details_review.json",
     "reason": "Only document metadata and presentation content changed; experiment code and evidence are unchanged."
+  },
+  "repository_slide_update": {
+    "reviewed_utc": "2026-10-27T12:12:03.124884+00:00",
+    "scope": "Added only a final clickable repository URL slide; all original 14 slide, notes, image, chart, workbook and master parts preserved exactly.",
+    "repository_url": "https://github.com/A1Prep/beans-vit-study-2026",
+    "slides": 15,
+    "original_slide_renders_pixel_identical": true,
+    "new_slide_visually_inspected": true,
+    "strict_package_and_layout_validation_passed": true,
+    "pptx_sha256": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23"
   }
 }

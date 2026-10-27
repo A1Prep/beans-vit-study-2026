@@ -5,9 +5,9 @@
   "source_sha256": {
     "report/technical_report.md": "fa0dde6a2def7ef733d74cf10af532f75e2c9e91d34d21e59fdc128b101ac0bf",
     "report/technical_report.pdf": "a784789871954ef4949a27d32aa9e28bfeec074b0c90f83747b297348a0fdd59",
-    "report/presentation/bean_leaf_presentation.pptx": "fc377d4f7f22752898895231aeaf9e9bfa8594fb266063f02488551d94fa7cc4",
+    "report/presentation/bean_leaf_presentation.pptx": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23",
     "report/presentation_notes.md": "83efdf98ef1e21e4747416dfde693dd94caec9de9ef332716ae08a9584c73fe4",
-    "report/presentation/sources.json": "8e187003e17253d6f15e4776560285809f70997e07fbf9ebbddc63217d67b079"
+    "report/presentation/sources.json": "ce786053182eb721cdc884955e39e46c826efc4ce479b91b6f6fab619e941ba3"
   },
   "identity": {
     "name": "Omar Ahmad Obaid",
@@ -17,7 +17,7 @@
   "report_scientific_body_unchanged": true,
   "report_pages": 6,
   "conservative_report_words": 2260,
-  "presentation_slides": 14,
+  "presentation_slides": 15,
   "main_slides": 7,
   "backup_slides": 7,
   "native_tables": 8,
@@ -47,5 +47,16 @@
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
     "results/model_comparison/study_plan.json": "afaa8f66d972f829d10410cac3cec5a0554051cbbe6c32feda11582c5e45164b"
+  },
+  "repository_link_slides": 1,
+  "repository_slide_update": {
+    "reviewed_utc": "2026-10-27T12:12:03.124884+00:00",
+    "scope": "Added only a final clickable repository URL slide; all original 14 slide, notes, image, chart, workbook and master parts preserved exactly.",
+    "repository_url": "https://github.com/A1Prep/beans-vit-study-2026",
+    "slides": 15,
+    "original_slide_renders_pixel_identical": true,
+    "new_slide_visually_inspected": true,
+    "strict_package_and_layout_validation_passed": true,
+    "pptx_sha256": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23"
   }
 }

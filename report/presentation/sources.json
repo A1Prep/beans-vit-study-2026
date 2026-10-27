@@ -50,5 +50,7 @@
       "provider": "Makerere AI Lab Beans dataset (MIT)"
     }
   ],
-  "main_script_word_count": 564
+  "main_script_word_count": 564,
+  "repository_link_slide_count": 1,
+  "repository_url": "https://github.com/A1Prep/beans-vit-study-2026"
 }

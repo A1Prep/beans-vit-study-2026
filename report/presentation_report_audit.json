@@ -6,14 +6,14 @@
     "report/technical_report.md": "fa0dde6a2def7ef733d74cf10af532f75e2c9e91d34d21e59fdc128b101ac0bf",
     "report/technical_report.pdf": "a784789871954ef4949a27d32aa9e28bfeec074b0c90f83747b297348a0fdd59",
     "report/presentation_notes.md": "83efdf98ef1e21e4747416dfde693dd94caec9de9ef332716ae08a9584c73fe4",
-    "report/presentation/bean_leaf_presentation.pptx": "fc377d4f7f22752898895231aeaf9e9bfa8594fb266063f02488551d94fa7cc4",
-    "report/presentation/sources.json": "8e187003e17253d6f15e4776560285809f70997e07fbf9ebbddc63217d67b079",
-    "README.md": "d5b724656a1b588bbe717a3b59a4b541ace96ca218a0e724d8da705c8b609ce0",
-    "PROJECT_REVIEW.md": "cb71a6ff52d5e889875f7fed65685fc689a7584002e6e0435c90d6d343ac897e",
+    "report/presentation/bean_leaf_presentation.pptx": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23",
+    "report/presentation/sources.json": "ce786053182eb721cdc884955e39e46c826efc4ce479b91b6f6fab619e941ba3",
+    "README.md": "816479cc37517a5fe38e95360607bc33d33486d04dd779c81ea53a5797ef2766",
+    "PROJECT_REVIEW.md": "2c4476ce1e4883f56dbe741d334f01411348b8544eb8c39a4099d3c3d455ce1c",
     "results/model_comparison/comparison_analysis.json": "beeb79c825c06295e274c3d2e668a912dd04e5012111b097c47019f74ae3f0ca",
     "results/model_comparison/combined_summary.csv": "d5f6066c3cc9ca70946e5cf3e86233fd3c2fb3b2a1c52fd7997a9f8f5d0d5fa7",
-    "results/model_comparison/report_claim_review.json": "f62be486f80f8b42a1e7742a37e4c5edd82f1ae9d089f97f87e4c05a454a9c6e",
-    "results/model_comparison/colab_readiness_rubric_review.json": "3ee95166cb0594cb3b781c881c4efc5e5329de972065dedc02e345bc63e310da"
+    "results/model_comparison/report_claim_review.json": "a37d9050532d4bcd9ccfc6b8e73ef6f732f4875889b7115e15d46d560b517bcf",
+    "results/model_comparison/colab_readiness_rubric_review.json": "af8940503dd8986532f5015ebc4f9ef39f8a257c9fd5e562e50df2fffa1fc198"
   },
   "report": {
     "pages": 6,
@@ -25,13 +25,13 @@
     "source_and_pdf_updated": true
   },
   "presentation": {
-    "slides": 14,
+    "slides": 15,
     "main": 7,
     "backup": 7,
     "native_charts": 2,
     "native_tables": 8,
     "embedded_chart_workbooks": 2,
-    "speaker_notes_with_sources": 14,
+    "speaker_notes_with_sources": 15,
     "main_script_words": 564,
     "allocated_seconds": [
       15,
@@ -55,7 +55,8 @@
       "reference per-class precision/recall/F1 and majority baseline",
       "reference synthetic blur/darkening results"
     ],
-    "natural_delivery": "Main script contains 564 words. Allocated time remains 300 seconds; actual delivery requires rehearsal."
+    "natural_delivery": "Main script contains 564 words. Allocated time remains 300 seconds; actual delivery requires rehearsal.",
+    "repository_link_slides": 1
   },
   "resolved_findings": [
     "Backup speaker-note spacing around numbers corrected before final export.",
@@ -88,5 +89,15 @@
   "grade_guarantee": false,
   "submission_refinement_scope": "Added user-supplied identity to the report and presentation; strengthened dataset/model selection rationale and added two backup slides using existing baseline, per-class and synthetic-sensitivity results. Report scientific body, experiment evidence, original chart/workbook bytes and photographs are unchanged. No new training, hosted Colab run or AI-detector scan is claimed.",
   "user_report_revision_review": "report/user_revision_review.json",
-  "submission_details_review": "report/submission_details_review.json"
+  "submission_details_review": "report/submission_details_review.json",
+  "repository_slide_update": {
+    "reviewed_utc": "2026-10-27T12:12:03.124884+00:00",
+    "scope": "Added only a final clickable repository URL slide; all original 14 slide, notes, image, chart, workbook and master parts preserved exactly.",
+    "repository_url": "https://github.com/A1Prep/beans-vit-study-2026",
+    "slides": 15,
+    "original_slide_renders_pixel_identical": true,
+    "new_slide_visually_inspected": true,
+    "strict_package_and_layout_validation_passed": true,
+    "pptx_sha256": "b40078148cb9de3e4644aece5c5dd3eaa1740b96b1ef501423144dc3c2c2fd23"
+  }
 }
